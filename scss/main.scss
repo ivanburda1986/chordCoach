@@ -108,13 +108,12 @@
 .chord-option {
   @extend %flex-justify-align-center;
   background: $lightUI;
-  border-radius: 10px;
+  border-radius: 100px;
   padding: 2px 4px;
   margin: 1px 1px;
-  width: 15%;
+  width: 5rem;
+  height: 5rem;
   margin: auto 2.5%;
-  min-height: 8vh;
-  height: auto;
   font-size: 3rem;
   text-align: center;
   color: $light;

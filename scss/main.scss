@@ -1,5 +1,118 @@
-$color: pink;
+@import "config";
+@import "reset-and-utils";
 
-body {
-  background: $color;
+//TOP PADDING
+.top-padding {
+  min-height: 7.5vh;
+  display: flex;
 }
+
+//BOTTOM PADDING
+.bottom-padding {
+  min-height: 7.5vh;
+  display: flex;
+}
+
+//TOP NAV
+#top-navigation {
+  display: flex;
+  width: 90%;
+  min-height: 10vh;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+#show-feedback-btn {
+  @extend %defaultBtn;
+}
+
+#show-settings-btn {
+  @extend %defaultBtn;
+}
+
+//CHORD TO RECOGNIZE
+#chord-to-recognize-container {
+  min-height: 27.5vh;
+}
+
+#chord-to-recognize-display {
+  @extend %flex-justify-align-center;
+  flex-direction: column;
+  padding: 0.5rem;
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#chord-to-recognize {
+  @extend %flex-justify-align-center;
+  position: relative;
+  font-size: 5rem;
+  margin: 0 auto;
+  color: $light;
+}
+
+#progress-container {
+  @extend %flex-justify-align-center;
+  flex-direction: row;
+  width: 90%;
+  margin: 0 auto;
+}
+
+#wrong-display,
+#correct-display,
+#remaining-display {
+  @extend %flex-justify-align-center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50px;
+  background: $light;
+  color: $appBackground;
+  font-size: 1.2rem;
+}
+
+//CHORD OPTIONS
+#chord-options-container {
+  @extend %flex-justify-align-center;
+  flex-direction: row;
+  min-height: 32.5vh;
+}
+
+
+//CONTROLLERS
+#controllers-container {
+  display: flex;
+  flex-direction: column;
+  align-items: initial !important;
+  min-height: 15vh;
+}
+
+#copyright {
+  padding-top: 1.5rem;
+  @extend %flex-justify-align-center;
+  color: $light;
+  font-size: 0.8rem;
+}
+
+#controllers-buttons {
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+
+  i {
+    margin-right: 5px;
+  }
+}
+
+#play-pause-btn {
+  @extend %controlsBtn;
+  margin-right: 2rem;
+}
+
+#stop-btn {
+  @extend %controlsBtn;
+}
+
+@import "responsive";

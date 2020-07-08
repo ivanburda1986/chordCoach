@@ -1,0 +1,149 @@
+//GENERAL
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $appBackground;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+
+}
+
+a {
+  color: $light;
+  text-decoration: none;
+}
+
+
+a:visited {
+  color: $light;
+}
+
+a:active {
+  color: tomato;
+}
+
+
+%flex-justify-align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//UTILITIES
+.app-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  max-width: 1024px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  flex: 1;
+  @extend %flex-justify-align-center;
+  flex-direction: row;
+  border: 1px solid green;
+}
+
+//BUTTONS
+%defaultBtn {
+  background: none;
+  border: none;
+  height: 100%;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  color: $light;
+  outline: none;
+  cursor: pointer;
+
+  &:hover i {
+    color: $green;
+  }
+}
+
+%controlsBtn {
+  border: none;
+  outline: none;
+  width: 7rem;
+  height: 2rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  background: $light;
+  color: $appBackground;
+  cursor: pointer;
+
+  &.enabled {
+    background: $green;
+  }
+
+  &.paused {
+    background: gold;
+  }
+
+  &.restart {
+    background: tomato;
+  }
+
+}
+
+
+//OVERLAYS
+%overlay {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 1024px;
+  background: $appBackground;
+  visibility: vissible;
+  color: $light;
+  margin: 0 auto;
+
+  &.show {
+    visibility: visible;
+  }
+
+  &.hide {
+    visibility: hidden;
+  }
+}
+
+%overlay-header {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  height: 10%;
+  margin: 0 auto;
+}
+
+%overlay-title {
+  display: flex;
+  justify-content: space-around;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.button-placeholder {
+  visibility: hidden;
+}
+
+.placeholder-btn {
+  @extend %flex-justify-align-center;
+  width: 2.2rem;
+  height: 2.2rem;
+  padding: 5px;
+}

@@ -3,8 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Font Awesome Kit-->
+    <script
+      src="https://kit.fontawesome.com/4b83083c38.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--Styles-->
     <link rel="stylesheet" href="css/main.css" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <div class="app-container">
+      <!-- Top padding -->
+      <div class="top-padding"></div>
+      <!-- Top navigation -->
+      <div id="top-navigation" class="container">
+        <button id="show-feedback-btn">
+          <i class="far fa-envelope"></i>
+        </button>
+        <button id="show-settings-btn"><i class="fas fa-cog"></i></button>
+      </div>
+      <!-- Chord to play -->
+      <div id="chord-to-recognize-container" class="container">
+        <div id="chord-to-recognize-display">
+          <div id="progress-container">
+            <!-- Wrong -->
+            <div id="wrong-display">
+              <i class="far fa-thumbs-down"></i>
+              <p id="wrong-display-value"></p>
+            </div>
+            <!-- Countdown -->
+            <div id="remaining-display" class="remaining-display-background">
+              <i class="fas fa-hourglass-start"></i>
+              <p id="remaining-display-value"></p>
+            </div>
+            <!-- Correct -->
+            <div id="correct-display">
+              <i class="far fa-thumbs-up"></i>
+              <p id="correct-display-value"></p>
+            </div>
+          </div>
+          <div id="chord-to-recognize">
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <!-- Chord grip -->
+      <div id="chord-options-container" class="container"></div>
+      <!-- Controllers -->
+      <div id="controllers-container" class="container">
+        <div id="controllers-buttons">
+          <button id="play-pause-btn">Play</button>
+          <button id="stop-btn"><i class="fas fa-history"></i>Restart</button>
+        </div>
+        <div id="copyright">
+          <p>
+            <a href="http://ivanburda.com" target="_blank"
+              >Copyright &copy; <span id="footer-year"></span> - Ivan Burda -
+              All Rights Reserved</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

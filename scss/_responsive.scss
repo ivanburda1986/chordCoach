@@ -1,0 +1,101 @@
+//MIN-HEIGHT: 600px
+@media only screen and (min-height: 600px) {
+
+  //Chord name display
+  #chord-to-recognize {
+    font-size: 8rem;
+  }
+
+}
+
+//MIN-HEIGHT: 800px
+@media only screen and (min-height: 800px) {
+
+  //DISPLAY
+
+  //Top buttons
+  #show-settings-btn,
+  #show-feedback-btn {
+    font-size: 2rem;
+  }
+
+  //Chord name display
+  #chord-to-recognize {
+    font-size: 8rem;
+  }
+
+  //Control buttons
+  %controlsBtn {
+    width: 10.5rem;
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+
+  //FEEDBACK
+  #feedback-hide-btn {
+    font-size: 2rem;
+  }
+
+  //SETTINGS
+  %overlay-title {
+    font-size: 3rem;
+  }
+
+  #settings-hide-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .setup-btn-label {
+    font-size: 1.2rem;
+  }
+
+
+}
+
+
+//MIN-HEIGHT: 1000px
+@media only screen and (min-height: 1000px) {
+
+  //DISPLAY
+
+  //Top buttons
+  #show-settings-btn,
+  #show-feedback-btn {
+    font-size: 3rem;
+  }
+
+  //Chord name display
+  #chord-to-recognize {
+    font-size: 11rem;
+  }
+
+
+  //Control buttons
+  %controlsBtn {
+    width: 12rem;
+    height: 3rem;
+    font-size: 1.7rem;
+  }
+
+
+  //SETTINGS
+  %overlay-title {
+    font-size: 4rem;
+  }
+
+  #settings-hide-btn {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .setup-btn-label {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+}
+
+
+//Iphone X and Pixel2x
+@media (min-width: 375px) and (max-width: 420px) and (min-height: 810px) and (max-height: 825px) {}

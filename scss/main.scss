@@ -48,7 +48,11 @@
 #chord-to-recognize {
   @extend %flex-justify-align-center;
   position: relative;
-  font-size: 5rem;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 100px;
+  border: 0.5rem solid $light;
+  font-size: 3rem;
   margin: 0 auto;
   color: $light;
 }
@@ -56,20 +60,34 @@
 #progress-container {
   @extend %flex-justify-align-center;
   flex-direction: row;
+  justify-content: space-between;
   width: 90%;
   margin: 0 auto;
+  padding-bottom: 3rem;
 }
 
-#wrong-display,
-#correct-display,
-#remaining-display {
+.training-status-icon {
   @extend %flex-justify-align-center;
   width: 5rem;
   height: 5rem;
   border-radius: 50px;
-  background: $light;
-  color: $appBackground;
-  font-size: 1.2rem;
+  font-size: 3rem;
+
+  i {
+    padding: 0.5rem;
+  }
+}
+
+#wrong-display {
+  color: $dominant;
+}
+
+#remaining-display {
+  color: $light;
+}
+
+#correct-display {
+  color: $green;
 }
 
 //CHORD OPTIONS
@@ -77,6 +95,36 @@
   @extend %flex-justify-align-center;
   flex-direction: row;
   min-height: 32.5vh;
+}
+
+#chord-options {
+  @extend %flex-justify-align-center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  min-height: 32.5vh;
+}
+
+.chord-option {
+  @extend %flex-justify-align-center;
+  background: $lightUI;
+  border-radius: 10px;
+  padding: 2px 4px;
+  margin: 1px 1px;
+  width: 15%;
+  margin: auto 2.5%;
+  min-height: 8vh;
+  height: auto;
+  font-size: 3rem;
+  text-align: center;
+  color: $light;
+  cursor: pointer;
+
+  &.selected {
+    background: $green;
+    color: $appBackground;
+    border: 2px solid $lightUI;
+  }
 }
 
 
@@ -111,7 +159,12 @@
   margin-right: 2rem;
 }
 
-#stop-btn {
+#confirm-btn {
+  @extend %controlsBtn;
+  margin-right: 2rem;
+}
+
+#restart-btn {
   @extend %controlsBtn;
 }
 

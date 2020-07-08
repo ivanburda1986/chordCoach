@@ -21,9 +21,7 @@ a:visited {
 a:active {
   color: tomato; }
 
-.container, .placeholder-btn, #chord-to-recognize-display, #chord-to-recognize, #progress-container, #wrong-display,
-#correct-display,
-#remaining-display, #chord-options-container, #copyright {
+.container, .placeholder-btn, #chord-to-recognize-display, #chord-to-recognize, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #copyright {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -38,8 +36,7 @@ a:active {
 
 .container {
   flex: 1;
-  flex-direction: row;
-  border: 1px solid green; }
+  flex-direction: row; }
 
 #show-feedback-btn, #show-settings-btn {
   background: none;
@@ -53,7 +50,7 @@ a:active {
   #show-feedback-btn:hover i, #show-settings-btn:hover i {
     color: lightgreen; }
 
-#play-pause-btn, #stop-btn {
+#play-pause-btn, #confirm-btn, #restart-btn {
   border: none;
   outline: none;
   width: 7rem;
@@ -64,11 +61,11 @@ a:active {
   background: #D0E1F9;
   color: #023147;
   cursor: pointer; }
-  .enabled#play-pause-btn, .enabled#stop-btn {
+  .enabled#play-pause-btn, .enabled#confirm-btn, .enabled#restart-btn {
     background: lightgreen; }
-  .paused#play-pause-btn, .paused#stop-btn {
+  .paused#play-pause-btn, .paused#confirm-btn, .paused#restart-btn {
     background: gold; }
-  .restart#play-pause-btn, .restart#stop-btn {
+  .restart#play-pause-btn, .restart#confirm-btn, .restart#restart-btn {
     background: tomato; }
 
 .button-placeholder {
@@ -107,28 +104,65 @@ a:active {
 
 #chord-to-recognize {
   position: relative;
-  font-size: 5rem;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 100px;
+  border: 0.5rem solid #D0E1F9;
+  font-size: 3rem;
   margin: 0 auto;
   color: #D0E1F9; }
 
 #progress-container {
   flex-direction: row;
+  justify-content: space-between;
   width: 90%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding-bottom: 3rem; }
 
-#wrong-display,
-#correct-display,
-#remaining-display {
+.training-status-icon {
   width: 5rem;
   height: 5rem;
   border-radius: 50px;
-  background: #D0E1F9;
-  color: #023147;
-  font-size: 1.2rem; }
+  font-size: 3rem; }
+  .training-status-icon i {
+    padding: 0.5rem; }
+
+#wrong-display {
+  color: tomato; }
+
+#remaining-display {
+  color: #D0E1F9; }
+
+#correct-display {
+  color: lightgreen; }
 
 #chord-options-container {
   flex-direction: row;
   min-height: 32.5vh; }
+
+#chord-options {
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  min-height: 32.5vh; }
+
+.chord-option {
+  background: #4D648D;
+  border-radius: 10px;
+  padding: 2px 4px;
+  margin: 1px 1px;
+  width: 15%;
+  margin: auto 2.5%;
+  min-height: 8vh;
+  height: auto;
+  font-size: 3rem;
+  text-align: center;
+  color: #D0E1F9;
+  cursor: pointer; }
+  .chord-option.selected {
+    background: lightgreen;
+    color: #023147;
+    border: 2px solid #4D648D; }
 
 #controllers-container {
   display: flex;
@@ -152,17 +186,14 @@ a:active {
 #play-pause-btn {
   margin-right: 2rem; }
 
-@media only screen and (min-height: 600px) {
-  #chord-to-recognize {
-    font-size: 8rem; } }
+#confirm-btn {
+  margin-right: 2rem; }
 
 @media only screen and (min-height: 800px) {
   #show-settings-btn,
   #show-feedback-btn {
     font-size: 2rem; }
-  #chord-to-recognize {
-    font-size: 8rem; }
-  #play-pause-btn, #stop-btn {
+  #play-pause-btn, #confirm-btn, #restart-btn {
     width: 10.5rem;
     height: 3rem;
     font-size: 1.2rem; }
@@ -178,9 +209,7 @@ a:active {
   #show-settings-btn,
   #show-feedback-btn {
     font-size: 3rem; }
-  #chord-to-recognize {
-    font-size: 11rem; }
-  #play-pause-btn, #stop-btn {
+  #play-pause-btn, #confirm-btn, #restart-btn {
     width: 12rem;
     height: 3rem;
     font-size: 1.7rem; }

@@ -38,6 +38,10 @@ const DataCtrl = (function () {
     "Folk G": "FolkG.mp3",
   };
 
+  const soundSelectors = {
+    currentChord: document.getElementById('currentChord'),
+  }
+
   return {
     getAppData: function () {
       return appData;
@@ -57,6 +61,9 @@ const DataCtrl = (function () {
     },
     getChordSoundFileName: function (chordName) {
       return allChords[chordName];
+    },
+    getSoundSelectors: function () {
+      return soundSelectors;
     },
 
   }

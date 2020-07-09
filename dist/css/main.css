@@ -118,7 +118,8 @@ a:active {
   border: none;
   outline: none;
   font-size: 3rem;
-  color: #D0E1F9; }
+  color: #D0E1F9;
+  cursor: pointer; }
 
 #progress-container {
   flex-direction: row;

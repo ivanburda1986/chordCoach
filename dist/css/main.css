@@ -108,8 +108,16 @@ a:active {
   height: 10rem;
   border-radius: 100px;
   border: 0.5rem solid #D0E1F9;
+  margin: 0 auto; }
+
+#chord-to-recognize-button {
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  background: none;
+  border: none;
+  outline: none;
   font-size: 3rem;
-  margin: 0 auto;
   color: #D0E1F9; }
 
 #progress-container {

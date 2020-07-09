@@ -30,22 +30,24 @@
           <!-- Wrong -->
           <div id="wrong-display" class="training-status-icon">
             <i class="fas fa-thumbs-down"></i>
-            <p id="wrong-display-value">1</p>
+            <p id="wrong-display-total">1</p>
           </div>
           <!-- Countdown -->
           <div id="remaining-display" class="training-status-icon">
             <i class="fas fa-hourglass-start"></i>
-            <p id="remaining-display-value">3</p>
+            <p id="remaining-display-total">3</p>
           </div>
           <!-- Correct -->
           <div id="correct-display" class="training-status-icon">
-            <p id="correct-display-value">6</p>
+            <p id="correct-display-total">6</p>
             <i class="fas fa-thumbs-up"></i>
           </div>
         </div>
         <div id="chord-to-recognize">
-          <p></p>
-          <i class="fas fa-music"></i>
+          <button id="chord-to-recognize-button">
+            <p></p>
+            <i id="chord-to-recognize-graphics" class="fas fa-music"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -56,31 +58,16 @@
           <input type="checkbox" name="chordOption" value="A" id="a" /><label for="a">A</label>
         </div>
         <div class="chord-option">
-          <input type="checkbox" name="chordOption" value="A" id="a" /><label for="a">A</label>
+          <input type="checkbox" name="chordOption" value="C" id="c" /><label for="c">C</label>
         </div>
         <div class="chord-option">
-          <input type="checkbox" name="chordOption" value="A" id="a" /><label for="a">A</label>
+          <input type="checkbox" name="chordOption" value="D" id="d" /><label for="d">D</label>
         </div>
         <div class="chord-option">
-          <input type="checkbox" name="chordOption" value="A" id="a" /><label for="a">A</label>
+          <input type="checkbox" name="chordOption" value="E" id="e" /><label for="e">E</label>
         </div>
         <div class="chord-option">
-          <input type="checkbox" name="chordOption" value="A" id="a" /><label for="a">A</label>
-        </div>
-        <div class="chord-option">
-          <input type="checkbox" name="chordOption" value="A" id="a" /><label for="a">A</label>
-        </div>
-        <div class="chord-option">
-          <input type="checkbox" name="chordOption" value="A" id="a" /><label for="a">A</label>
-        </div>
-        <div class="chord-option">
-          <input type="checkbox" name="chordOption" value="A" id="a" /><label for="a">A</label>
-        </div>
-        <div class="chord-option">
-          <input type="checkbox" name="chordOption" value="A" id="a" /><label for="a">A</label>
-        </div>
-        <div class="chord-option">
-          <input type="checkbox" name="chordOption" value="A" id="a" /><label for="a">A</label>
+          <input type="checkbox" name="chordOption" value="G" id="g" /><label for="g">G</label>
         </div>
       </div>
     </div>
@@ -107,6 +94,9 @@
       </div>
     </div>
   </div>
+  <script src="js/data.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
 </body>
 
 </html>

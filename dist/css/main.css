@@ -21,7 +21,13 @@ a:visited {
 a:active {
   color: tomato; }
 
-.container, .placeholder-btn, #chord-to-recognize-display, #chord-to-recognize, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #copyright {
+label {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  display: inline-block; }
+
+label, .container, .placeholder-btn, #chord-to-recognize-display, #chord-to-recognize, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #copyright {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -167,6 +173,10 @@ a:active {
   text-align: center;
   color: #D0E1F9;
   cursor: pointer; }
+  .chord-option input {
+    visibility: hidden;
+    opacity: 1;
+    position: absolute; }
   .chord-option.selected {
     background: lightgreen;
     color: #023147;

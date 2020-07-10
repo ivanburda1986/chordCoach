@@ -29,6 +29,14 @@ a:active {
   color: tomato;
 }
 
+label {
+  @extend %flex-justify-align-center;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 
 %flex-justify-align-center {
   display: flex;

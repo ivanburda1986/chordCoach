@@ -40,6 +40,7 @@ const DataCtrl = (function () {
 
   const soundSelectors = {
     currentChord: document.getElementById('currentChord'),
+    chordOnDemand: document.getElementById('chordOnDemand'),
   }
 
   return {

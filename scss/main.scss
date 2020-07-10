@@ -130,6 +130,12 @@
   color: $light;
   cursor: pointer;
 
+  input {
+    visibility: hidden;
+    opacity: 1;
+    position: absolute;
+  }
+
   &.selected {
     background: $green;
     color: $appBackground;

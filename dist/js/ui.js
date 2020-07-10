@@ -6,6 +6,7 @@ const UICtrl = (function () {
     remainingDisplayTotal: document.getElementById('remaining-display-total'),
     correctDisplayTotal: document.getElementById('correct-display-total'),
     chordToRecognizeBtn: document.getElementById('chord-to-recognize-button'),
+
   };
 
 

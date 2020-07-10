@@ -6,6 +6,7 @@ const DataCtrl = (function () {
     wrongTotal: null,
     loadedChords: null,
     currentChord: null,
+    selectedAnswer: null,
   };
 
   const allChords = {
@@ -47,9 +48,6 @@ const DataCtrl = (function () {
     getAppData: function () {
       return appData;
     },
-    setAppData: function (key, value) {
-      appData[key] = value;
-    },
     setDefaultAppData: function () {
       appData.correctTotal = 0;
       appData.remainingTotal = 10;
@@ -65,6 +63,9 @@ const DataCtrl = (function () {
     },
     getSoundSelectors: function () {
       return soundSelectors;
+    },
+    getNextChord: function () {
+      appData.currentChord = appData.loadedChords[Math.floor(Math.random() * appData.loadedChords.length)];
     },
 
   }

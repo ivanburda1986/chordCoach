@@ -174,7 +174,7 @@ label, .container, .placeholder-btn, #chord-to-recognize-display, #chord-to-reco
   color: #D0E1F9;
   cursor: pointer; }
   .chord-option input {
-    visibility: hidden;
+    visibility: visible;
     opacity: 1;
     position: absolute; }
   .chord-option.selected {

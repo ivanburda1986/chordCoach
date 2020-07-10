@@ -8,36 +8,67 @@ const App = (function (DataCtrl, UICtrl) {
     //Play the current chord
     UISelectors.chordToRecognizeBtn.addEventListener('click', playCurrentChord);
 
-    //Play a chord on demand
+    //Save answer and play a chord on demand
     document.getElementById('chord-options').addEventListener('click', (e) => {
       if (e.target.classList.contains("chord-option-label")) {
-        playChordOnDemand(e.target.parentNode.children[0].id)
+        saveAnswer(e.target.parentNode.children[0].id);
+        playChordOnDemand(e.target.parentNode.children[0].id);
       }
     });
+
+    //Evaluate the answer
+    UISelectors.confirmBtn.addEventListener('click', evaluateAnswer);
   };
 
   //Play the current chord
   const playCurrentChord = function (e) {
     DataCtrl.getSoundSelectors().currentChord.src = `/dist/sounds/chords/${DataCtrl.getChordSoundFileName(DataCtrl.getAppData().currentChord)}`;
     DataCtrl.getSoundSelectors().currentChord.play();
-    e.preventDefault();
-  }
+    //e.preventDefault();
+  };
 
   //Play a chord on demand
   const playChordOnDemand = function (chordId) {
     DataCtrl.getSoundSelectors().chordOnDemand.src = `/dist/sounds/chords/${DataCtrl.getChordSoundFileName(chordId)}`;
     DataCtrl.getSoundSelectors().chordOnDemand.play();
-    console.log(chordId);
-  }
+  };
 
+  //Save an answer
+  const saveAnswer = function (answer) {
+    DataCtrl.getAppData().selectedAnswer = answer;
+  };
+
+  //Evaluate the answer
+  const evaluateAnswer = function () {
+    if (DataCtrl.getAppData().selectedAnswer === DataCtrl.getAppData().currentChord) {
+      //If answer correct: 
+      DataCtrl.getAppData().correctTotal += 1;
+      UICtrl.updateCorrectDisplayTotal();
+      nextChord();
+    } else {
+      //If answer incorrect: 
+      DataCtrl.getAppData().wrongTotal += 1;
+      UICtrl.updateWrongDisplayTotal();
+      nextChord();
+    }
+  };
+
+  //Continue to the next chord
+  const nextChord = function () {
+    DataCtrl.getAppData().remainingTotal -= 1;
+    UICtrl.updateRemainingDisplayTotal();
+    DataCtrl.getAppData().selectedAnswer = null;
+    UICtrl.clearAnswer();
+    DataCtrl.getNextChord();
+  };
 
   //Public methods
   return {
     init: function () {
       DataCtrl.setDefaultAppData();
-      UICtrl.updateWrongDisplayTotal(DataCtrl.getAppData().wrongTotal);
-      UICtrl.updateRemainingDisplayTotal(DataCtrl.getAppData().remainingTotal);
-      UICtrl.updateCorrectDisplayTotal(DataCtrl.getAppData().correctTotal);
+      UICtrl.updateWrongDisplayTotal();
+      UICtrl.updateRemainingDisplayTotal();
+      UICtrl.updateCorrectDisplayTotal();
       loadEventListeners();
     }
   }

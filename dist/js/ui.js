@@ -6,6 +6,7 @@ const UICtrl = (function () {
     remainingDisplayTotal: document.getElementById('remaining-display-total'),
     correctDisplayTotal: document.getElementById('correct-display-total'),
     chordToRecognizeBtn: document.getElementById('chord-to-recognize-button'),
+    confirmBtn: document.getElementById('confirm-btn'),
 
   };
 
@@ -15,14 +16,19 @@ const UICtrl = (function () {
     getSelectors: function () {
       return UISelectors;
     },
-    updateWrongDisplayTotal: function (value) {
-      UISelectors.wrongDisplayTotal.innerText = value;
+    updateWrongDisplayTotal: function () {
+      UISelectors.wrongDisplayTotal.innerText = DataCtrl.getAppData().wrongTotal;
     },
-    updateRemainingDisplayTotal: function (value) {
-      UISelectors.remainingDisplayTotal.innerText = value;
+    updateRemainingDisplayTotal: function () {
+      UISelectors.remainingDisplayTotal.innerText = DataCtrl.getAppData().remainingTotal;
     },
-    updateCorrectDisplayTotal: function (value) {
-      UISelectors.correctDisplayTotal.innerText = value;
+    updateCorrectDisplayTotal: function () {
+      UISelectors.correctDisplayTotal.innerText = DataCtrl.getAppData().correctTotal;
     },
+    clearAnswer: function () {
+      document.getElementsByName('chordOption').forEach((item) => {
+        console.log(item.checked = false);
+      })
+    }
   };
 })();

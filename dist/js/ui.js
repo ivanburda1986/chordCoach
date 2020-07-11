@@ -9,6 +9,7 @@ const UICtrl = (function () {
     primaryActionIcon: document.getElementById('primary-action-graphics'),
     primaryActionText: document.getElementById('primary-action-text'),
     confirmBtn: document.getElementById('confirm-btn'),
+    restartBtn: document.getElementById('restart-btn'),
   };
 
 
@@ -31,11 +32,15 @@ const UICtrl = (function () {
         item.checked = false;
       })
     },
-    setMainBtnState: function (state) {
-      switch (state) {
+    setMainBtnState: function () {
+      switch (DataCtrl.getAppData().appState) {
         case "readyToStart":
           UISelectors.primaryActionIcon.classList.value = "fas fa-play";
           UISelectors.primaryActionText.innerText = "Start";
+          break;
+        case "playNext":
+          UISelectors.primaryActionIcon.classList.value = "fas fa-play";
+          UISelectors.primaryActionText.innerText = "Next";
           break;
         case "playing":
           UISelectors.primaryActionIcon.classList.value = "fas fa-music";

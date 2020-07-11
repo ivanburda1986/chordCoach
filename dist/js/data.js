@@ -51,7 +51,7 @@ const DataCtrl = (function () {
     },
     setDefaultAppData: function () {
       appData.correctTotal = 0;
-      appData.remainingTotal = 10;
+      appData.remainingTotal = 3;
       appData.wrongTotal = 0;
       appData.loadedChords = ["A", "C", "D", "E", "G"];
       appData.currentChord = appData.loadedChords[Math.floor(Math.random() * appData.loadedChords.length)];

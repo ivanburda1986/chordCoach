@@ -25,7 +25,8 @@ label {
   height: 100%;
   width: 100%;
   border-radius: 50%;
-  display: inline-block; }
+  display: inline-block;
+  cursor: pointer; }
 
 label, .container, .placeholder-btn, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #copyright {
   display: flex;
@@ -177,7 +178,7 @@ label, .container, .placeholder-btn, #primary-action-display, #primary-action, #
   color: #D0E1F9;
   cursor: pointer; }
   .chord-option input {
-    visibility: visible;
+    visibility: hidden;
     opacity: 1;
     position: absolute; }
   .chord-option.selected {

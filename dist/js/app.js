@@ -12,6 +12,7 @@ const App = (function (DataCtrl, UICtrl) {
     document.getElementById('chord-options').addEventListener('click', (e) => {
       if (e.target.classList.contains("chord-option-label")) {
         saveAnswer(e.target.parentNode.children[0].id);
+        UICtrl.highlightSelectedAnswer(e.target.parentNode);
         playChordOnDemand(e.target.parentNode.children[0].id);
       }
     });
@@ -85,6 +86,7 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.updateCorrectDisplayTotal();
       DataCtrl.getAppData().remainingTotal -= 1;
       UICtrl.updateRemainingDisplayTotal();
+      UICtrl.highlightSelectedAnswer();
       decideNextStep();
     } else {
       //If answer incorrect: 
@@ -92,6 +94,7 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.updateWrongDisplayTotal();
       DataCtrl.getAppData().remainingTotal -= 1;
       UICtrl.updateRemainingDisplayTotal();
+      UICtrl.highlightSelectedAnswer();
       decideNextStep();
     }
   };
@@ -128,6 +131,7 @@ const App = (function (DataCtrl, UICtrl) {
     UICtrl.updateCorrectDisplayTotal();
     DataCtrl.getAppData().selectedAnswer = null;
     UICtrl.clearAnswer();
+    UICtrl.highlightSelectedAnswer();
     DataCtrl.getAppData().appState = "readyToStart";
     UICtrl.setMainBtnState();
   }

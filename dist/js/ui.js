@@ -27,6 +27,14 @@ const UICtrl = (function () {
     updateCorrectDisplayTotal: function () {
       UISelectors.correctDisplayTotal.innerText = DataCtrl.getAppData().correctTotal;
     },
+    highlightSelectedAnswer: function (clickedObject) {
+      document.getElementsByName('chordOption').forEach((option) => {
+        option.parentNode.style.background = "#4D648D";
+      });
+      if (clickedObject) {
+        clickedObject.style.background = "orange";
+      }
+    },
     clearAnswer: function () {
       document.getElementsByName('chordOption').forEach((item) => {
         item.checked = false;

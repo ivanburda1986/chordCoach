@@ -27,7 +27,7 @@ label {
   border-radius: 50%;
   display: inline-block; }
 
-label, .container, .placeholder-btn, #chord-to-recognize-display, #chord-to-recognize, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #copyright {
+label, .container, .placeholder-btn, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #copyright {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -98,25 +98,26 @@ label, .container, .placeholder-btn, #chord-to-recognize-display, #chord-to-reco
   justify-content: space-between;
   margin: 0 auto; }
 
-#chord-to-recognize-container {
+#primary-action-container {
   min-height: 27.5vh; }
 
-#chord-to-recognize-display {
+#primary-action-display {
   flex-direction: column;
   padding: 0.5rem;
   width: 90%;
   height: 100%;
   margin: 0 auto; }
 
-#chord-to-recognize {
+#primary-action {
   position: relative;
-  width: 10rem;
-  height: 10rem;
+  width: 12rem;
+  height: 12rem;
   border-radius: 100px;
   border: 0.5rem solid #D0E1F9;
+  padding: 1rem;
   margin: 0 auto; }
 
-#chord-to-recognize-button {
+#primary-action-button {
   height: 100%;
   width: 100%;
   border-radius: 100px;
@@ -126,6 +127,8 @@ label, .container, .placeholder-btn, #chord-to-recognize-display, #chord-to-reco
   font-size: 3rem;
   color: #D0E1F9;
   cursor: pointer; }
+  #primary-action-button p {
+    font-size: 1.5rem; }
 
 #progress-container {
   flex-direction: row;

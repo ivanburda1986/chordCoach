@@ -5,9 +5,10 @@ const UICtrl = (function () {
     wrongDisplayTotal: document.getElementById('wrong-display-total'),
     remainingDisplayTotal: document.getElementById('remaining-display-total'),
     correctDisplayTotal: document.getElementById('correct-display-total'),
-    chordToRecognizeBtn: document.getElementById('chord-to-recognize-button'),
+    primaryActionBtn: document.getElementById('primary-action-button'),
+    primaryActionIcon: document.getElementById('primary-action-graphics'),
+    primaryActionText: document.getElementById('primary-action-text'),
     confirmBtn: document.getElementById('confirm-btn'),
-
   };
 
 
@@ -27,8 +28,32 @@ const UICtrl = (function () {
     },
     clearAnswer: function () {
       document.getElementsByName('chordOption').forEach((item) => {
-        console.log(item.checked = false);
+        item.checked = false;
       })
+    },
+    setMainBtnState: function (state) {
+      switch (state) {
+        case "readyToStart":
+          UISelectors.primaryActionIcon.classList.value = "fas fa-play";
+          UISelectors.primaryActionText.innerText = "Start";
+          break;
+        case "playing":
+          UISelectors.primaryActionIcon.classList.value = "fas fa-music";
+          UISelectors.primaryActionText.innerText = "Playing";
+          break;
+        case "repeat":
+          UISelectors.primaryActionIcon.classList.value = "fas fa-redo-alt";
+          UISelectors.primaryActionText.innerText = "Repeat";
+          break;
+        case "finished-victory":
+          UISelectors.primaryActionIcon.classList.value = "fas fa-medal";
+          UISelectors.primaryActionText.innerText = "Awesome!";
+          break;
+        case "finished-standard":
+          UISelectors.primaryActionIcon.classList.value = "far fa-smile-wink";
+          UISelectors.primaryActionText.innerText = "Getting there...";
+          break;
+      }
     }
   };
 })();

@@ -31,12 +31,12 @@
   @extend %defaultBtn;
 }
 
-//CHORD TO RECOGNIZE
-#chord-to-recognize-container {
+//PRIMARY ACTION
+#primary-action-container {
   min-height: 27.5vh;
 }
 
-#chord-to-recognize-display {
+#primary-action-display {
   @extend %flex-justify-align-center;
   flex-direction: column;
   padding: 0.5rem;
@@ -45,18 +45,18 @@
   margin: 0 auto;
 }
 
-#chord-to-recognize {
+#primary-action {
   @extend %flex-justify-align-center;
   position: relative;
-  width: 10rem;
-  height: 10rem;
+  width: 12rem;
+  height: 12rem;
   border-radius: 100px;
   border: 0.5rem solid $light;
-
+  padding: 1rem;
   margin: 0 auto;
 }
 
-#chord-to-recognize-button {
+#primary-action-button {
   height: 100%;
   width: 100%;
   border-radius: 100px;
@@ -66,6 +66,10 @@
   font-size: 3rem;
   color: $light;
   cursor: pointer;
+
+  p {
+    font-size: 1.5rem;
+  }
 }
 
 #progress-container {

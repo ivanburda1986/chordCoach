@@ -7,6 +7,7 @@ const DataCtrl = (function () {
     loadedChords: null,
     currentChord: null,
     selectedAnswer: null,
+    appState: null,
   };
 
   const allChords = {
@@ -54,6 +55,7 @@ const DataCtrl = (function () {
       appData.wrongTotal = 0;
       appData.loadedChords = ["A", "C", "D", "E", "G"];
       appData.currentChord = appData.loadedChords[Math.floor(Math.random() * appData.loadedChords.length)];
+      appData.appState = "readyToStart";
     },
     getAllChordNames: function () {
       return Array.from(Object.keys(allChords));

@@ -77,7 +77,7 @@ label {
   }
 }
 
-%controlsBtn {
+.controlsBtn {
   border: none;
   outline: none;
   width: 7rem;
@@ -89,12 +89,16 @@ label {
   color: $appBackground;
   cursor: pointer;
 
-  &.enabled {
-    background: $green;
+  &.disabled {
+    display: none;
   }
 
-  &.paused {
-    background: gold;
+  &.enabled {
+    display: block;
+  }
+
+  &.confirm {
+    background: $green;
   }
 
   &.restart {

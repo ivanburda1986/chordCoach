@@ -67,6 +67,17 @@ const UICtrl = (function () {
           UISelectors.primaryActionText.innerText = "Getting there...";
           break;
       }
+    },
+    setButtonState: function (buttonName, stateToSet) {
+      if (stateToSet === "enabled") {
+        UISelectors[buttonName].disabled = false;
+        UISelectors[buttonName].classList.remove("disabled");
+        UISelectors[buttonName].classList.add("enabled");
+      } else if (stateToSet === "disabled") {
+        UISelectors[buttonName].disabled = true;
+        UISelectors[buttonName].classList.remove("enabled");
+        UISelectors[buttonName].classList.add("disabled");
+      }
     }
   };
 })();

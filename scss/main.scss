@@ -173,18 +173,11 @@
   }
 }
 
-#play-pause-btn {
-  @extend %controlsBtn;
-  margin-right: 2rem;
-}
 
 #confirm-btn {
-  @extend %controlsBtn;
   margin-right: 2rem;
 }
 
-#restart-btn {
-  @extend %controlsBtn;
-}
+#restart-btn {}
 
 @import "responsive";

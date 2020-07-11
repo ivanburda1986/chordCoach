@@ -57,7 +57,7 @@ label, .container, .placeholder-btn, #primary-action-display, #primary-action, #
   #show-feedback-btn:hover i, #show-settings-btn:hover i {
     color: lightgreen; }
 
-#play-pause-btn, #confirm-btn, #restart-btn {
+.controlsBtn {
   border: none;
   outline: none;
   width: 7rem;
@@ -68,11 +68,13 @@ label, .container, .placeholder-btn, #primary-action-display, #primary-action, #
   background: #D0E1F9;
   color: #023147;
   cursor: pointer; }
-  .enabled#play-pause-btn, .enabled#confirm-btn, .enabled#restart-btn {
+  .controlsBtn.disabled {
+    display: none; }
+  .controlsBtn.enabled {
+    display: block; }
+  .controlsBtn.confirm {
     background: lightgreen; }
-  .paused#play-pause-btn, .paused#confirm-btn, .paused#restart-btn {
-    background: gold; }
-  .restart#play-pause-btn, .restart#confirm-btn, .restart#restart-btn {
+  .controlsBtn.restart {
     background: tomato; }
 
 .button-placeholder {
@@ -205,9 +207,6 @@ label, .container, .placeholder-btn, #primary-action-display, #primary-action, #
   #controllers-buttons i {
     margin-right: 5px; }
 
-#play-pause-btn {
-  margin-right: 2rem; }
-
 #confirm-btn {
   margin-right: 2rem; }
 
@@ -215,10 +214,6 @@ label, .container, .placeholder-btn, #primary-action-display, #primary-action, #
   #show-settings-btn,
   #show-feedback-btn {
     font-size: 2rem; }
-  #play-pause-btn, #confirm-btn, #restart-btn {
-    width: 10.5rem;
-    height: 3rem;
-    font-size: 1.2rem; }
   #feedback-hide-btn {
     font-size: 2rem; }
   #settings-hide-btn {
@@ -231,10 +226,6 @@ label, .container, .placeholder-btn, #primary-action-display, #primary-action, #
   #show-settings-btn,
   #show-feedback-btn {
     font-size: 3rem; }
-  #play-pause-btn, #confirm-btn, #restart-btn {
-    width: 12rem;
-    height: 3rem;
-    font-size: 1.7rem; }
   #settings-hide-btn {
     width: 3rem;
     height: 3rem; }

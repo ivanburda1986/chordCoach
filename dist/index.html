@@ -1,107 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Font Awesome Kit-->
+    <script src="https://kit.fontawesome.com/4b83083c38.js" crossorigin="anonymous"></script>
+    <!--Styles-->
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Document</title>
+  </head>
 
-  <!--Font Awesome Kit-->
-  <script src="https://kit.fontawesome.com/4b83083c38.js" crossorigin="anonymous"></script>
-  <!--Styles-->
-  <link rel="stylesheet" href="css/main.css" />
-  <title>Document</title>
-</head>
+  <body>
+    <!-- Audio -->
+    <audio id="currentChord">
+      <source src="sounds/nobeep.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="chordOnDemand">
+      <source src="sounds/nobeep.mp3" type="audio/mpeg" />
+    </audio>
 
-<body>
-  <!-- Audio -->
-  <audio id="currentChord">
-    <source src="sounds/nobeep.mp3" type="audio/mpeg">
-  </audio>
-  <audio id="chordOnDemand">
-    <source src="sounds/nobeep.mp3" type="audio/mpeg">
-  </audio>
-
-
-  <div class="app-container">
-    <!-- Top padding -->
-    <div class="top-padding"></div>
-    <!-- Top navigation -->
-    <div id="top-navigation" class="container">
-      <button id="show-feedback-btn">
-        <i class="far fa-envelope"></i>
-      </button>
-      <button id="show-settings-btn"><i class="fas fa-cog"></i></button>
-    </div>
-    <!-- Chord to play -->
-    <div id="primary-action-container" class="container">
-      <div id="primary-action-display">
-        <div id="progress-container">
-          <!-- Wrong -->
-          <div id="wrong-display" class="training-status-icon">
-            <i class="fas fa-thumbs-down"></i>
-            <p id="wrong-display-total">1</p>
+    <div class="app-container">
+      <!-- Top padding -->
+      <div class="top-padding"></div>
+      <!-- Top navigation -->
+      <div id="top-navigation" class="container">
+        <button id="show-feedback-btn">
+          <i class="far fa-envelope"></i>
+        </button>
+        <button id="show-settings-btn"><i class="fas fa-cog"></i></button>
+      </div>
+      <!-- Chord to play -->
+      <div id="primary-action-container" class="container">
+        <div id="primary-action-display">
+          <div id="progress-container">
+            <!-- Wrong -->
+            <div id="wrong-display" class="training-status-icon">
+              <i class="fas fa-thumbs-down"></i>
+              <p id="wrong-display-total">1</p>
+            </div>
+            <!-- Countdown -->
+            <div id="remaining-display" class="training-status-icon">
+              <i class="fas fa-hourglass-start"></i>
+              <p id="remaining-display-total">3</p>
+            </div>
+            <!-- Correct -->
+            <div id="correct-display" class="training-status-icon">
+              <p id="correct-display-total">6</p>
+              <i class="fas fa-thumbs-up"></i>
+            </div>
           </div>
-          <!-- Countdown -->
-          <div id="remaining-display" class="training-status-icon">
-            <i class="fas fa-hourglass-start"></i>
-            <p id="remaining-display-total">3</p>
-          </div>
-          <!-- Correct -->
-          <div id="correct-display" class="training-status-icon">
-            <p id="correct-display-total">6</p>
-            <i class="fas fa-thumbs-up"></i>
+          <div id="primary-action">
+            <button id="primary-action-button">
+              <i id="primary-action-graphics" class="fas fa-music"></i>
+              <p id="primary-action-text">Start</p>
+            </button>
           </div>
         </div>
-        <div id="primary-action">
-          <button id="primary-action-button">
-            <i id="primary-action-graphics" class="fas fa-music"></i>
-            <p id="primary-action-text">Start</p>
+      </div>
+      <!-- Chord options -->
+      <div id="chord-options-container" class="container">
+        <div id="chord-options">
+          <div class="chord-option"><input type="radio" name="chordOption" value="A" id="A" /><label class="chord-option-label" for="A">A</label></div>
+          <div class="chord-option"><input type="radio" name="chordOption" value="C" id="C" /><label class="chord-option-label" for="C">C</label></div>
+          <div class="chord-option"><input type="radio" name="chordOption" value="D" id="D" /><label class="chord-option-label" for="D">D</label></div>
+          <div class="chord-option"><input type="radio" name="chordOption" value="E" id="E" /><label class="chord-option-label" for="E">E</label></div>
+          <div class="chord-option"><input type="radio" name="chordOption" value="G" id="G" /><label class="chord-option-label" for="G">G</label></div>
+        </div>
+      </div>
+      <!-- Controllers -->
+      <div id="controllers-container" class="container">
+        <div id="controllers-buttons">
+          <button id="confirm-btn" class="controlsBtn confirm">
+            <i class="fas fa-check-circle"></i>
+            Confirm
           </button>
+          <button id="restart-btn" class="controlsBtn restart"><i class="fas fa-history"></i>Restart</button>
+        </div>
+        <div id="copyright">
+          <p>
+            <a href="http://ivanburda.com" target="_blank">Copyright &copy; <span id="footer-year"></span> - Ivan Burda - All Rights Reserved</a>
+          </p>
         </div>
       </div>
     </div>
-    <!-- Chord options -->
-    <div id="chord-options-container" class="container">
-      <div id="chord-options">
-        <div class="chord-option">
-          <input type="radio" name="chordOption" value="A" id="A" /><label class="chord-option-label" for="A">A</label>
-        </div>
-        <div class="chord-option">
-          <input type="radio" name="chordOption" value="C" id="C" /><label class="chord-option-label" for="C">C</label>
-        </div>
-        <div class="chord-option">
-          <input type="radio" name="chordOption" value="D" id="D" /><label class="chord-option-label" for="D">D</label>
-        </div>
-        <div class="chord-option">
-          <input type="radio" name="chordOption" value="E" id="E" /><label class="chord-option-label" for="E">E</label>
-        </div>
-        <div class="chord-option">
-          <input type="radio" name="chordOption" value="G" id="G" /><label class="chord-option-label" for="G">G</label>
-        </div>
-      </div>
-    </div>
-    <!-- Controllers -->
-    <div id="controllers-container" class="container">
-      <div id="controllers-buttons">
-        <button id="confirm-btn">
-          <i class="fas fa-check-circle"></i>
-          Confirm
-        </button>
-        <button id="restart-btn">
-          <i class="fas fa-history"></i>Restart
-        </button>
-      </div>
-      <div id="copyright">
-        <p>
-          <a href="http://ivanburda.com" target="_blank">Copyright &copy; <span id="footer-year"></span> - Ivan Burda -
-            All Rights Reserved</a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <script src="js/data.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/app.js"></script>
-</body>
-
+    <script src="js/data.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+  </body>
 </html>

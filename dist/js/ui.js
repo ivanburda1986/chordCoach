@@ -5,7 +5,7 @@ const UICtrl = (function () {
     wrongDisplayTotal: document.getElementById('wrong-display-total'),
     remainingDisplayTotal: document.getElementById('remaining-display-total'),
     correctDisplayTotal: document.getElementById('correct-display-total'),
-    primaryActionBtn: document.getElementById('primary-action-button'),
+    primaryActionBtn: document.querySelector('.primary-action-button'),
     primaryActionIcon: document.getElementById('primary-action-graphics'),
     primaryActionText: document.getElementById('primary-action-text'),
     confirmBtn: document.getElementById('confirm-btn'),
@@ -29,11 +29,24 @@ const UICtrl = (function () {
     },
     highlightSelectedAnswer: function (clickedObject) {
       document.getElementsByName('chordOption').forEach((option) => {
-        option.parentNode.style.background = "#4D648D";
+        option.parentNode.classList.remove('selected');
       });
       if (clickedObject) {
-        clickedObject.style.background = "orange";
+        clickedObject.classList.add('selected');
       }
+    },
+    unHighlightSelectedAnswer: function (clickedObject) {
+      document.getElementsByName('chordOption').forEach((option) => {
+        option.parentNode.classList.remove('selected');
+      });
+    },
+    highlightCorrectAnswer: function () {
+      document.getElementById(DataCtrl.getAppData().currentChord).parentNode.classList.add('correct');
+    },
+    unHighlightCorrectAnswer: function () {
+      document.querySelectorAll('.chord-option').forEach((option) => {
+        option.classList.remove("correct");
+      });
     },
     clearAnswer: function () {
       document.getElementsByName('chordOption').forEach((item) => {
@@ -68,16 +81,49 @@ const UICtrl = (function () {
           break;
       }
     },
-    setButtonState: function (buttonName, stateToSet) {
-      if (stateToSet === "enabled") {
-        UISelectors[buttonName].disabled = false;
-        UISelectors[buttonName].classList.remove("disabled");
-        UISelectors[buttonName].classList.add("enabled");
-      } else if (stateToSet === "disabled") {
-        UISelectors[buttonName].disabled = true;
-        UISelectors[buttonName].classList.remove("enabled");
-        UISelectors[buttonName].classList.add("disabled");
-      }
+    makeAnswerOptionsInactive: function () {
+      document.querySelectorAll('.chord-option').forEach((option) => {
+        if (option.classList.contains('selected')) {
+          option.children[0].disabled = true;
+        } else {
+          option.children[0].disabled = true;
+          option.classList.add("inactive");
+        }
+      });
+    },
+    makeAnswerOptionsActive: function () {
+      document.querySelectorAll('.chord-option').forEach((option) => {
+        option.children[0].disabled = false;
+        option.classList.remove("inactive");
+      });
+    },
+    makeConfirmBtnInactive: function () {
+      UISelectors.confirmBtn.disabled = true;
+      UISelectors.confirmBtn.classList.remove('confirm');
+      UISelectors.confirmBtn.classList.add('inactive');
+    },
+    makeConfirmBtnActive: function () {
+      UISelectors.confirmBtn.disabled = false;
+      UISelectors.confirmBtn.classList.remove('inactive');
+      UISelectors.confirmBtn.classList.add('confirm');
+    },
+    makeRestartBtnInactive: function () {
+      UISelectors.restartBtn.disabled = true;
+      UISelectors.restartBtn.classList.remove('restart');
+      UISelectors.restartBtn.classList.add('inactive');
+    },
+    makeRestartBtnActive: function () {
+      UISelectors.restartBtn.disabled = false;
+      UISelectors.restartBtn.classList.remove('inactive');
+      UISelectors.restartBtn.classList.add('restart');
+    },
+    makeMainBtnInactive: function () {
+      UISelectors.primaryActionBtn.disabled = true;
+      UISelectors.primaryActionBtn.classList.add('inactive');
+    },
+    makeMainBtnActive: function () {
+      UISelectors.primaryActionBtn.disabled = false;
+      UISelectors.primaryActionBtn.classList.remove('inactive');
     }
   };
 })();

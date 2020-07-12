@@ -9,24 +9,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $appBackground;
+  background: $dark;
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
 
 }
 
 a {
-  color: $light;
+  color: $veryLight;
   text-decoration: none;
 }
 
 
 a:visited {
-  color: $light;
+  color: $veryLight;
 }
 
 a:active {
-  color: tomato;
+  color: $dominant1;
 }
 
 label {
@@ -68,12 +68,12 @@ label {
   height: 100%;
   font-size: 1.5rem;
   padding: 0.5rem;
-  color: $light;
+  color: $veryLight;
   outline: none;
   cursor: pointer;
 
   &:hover i {
-    color: $green;
+    color: $dominant2;
   }
 }
 
@@ -85,24 +85,23 @@ label {
   border-radius: 10px;
   text-transform: uppercase;
   font-weight: 700;
-  background: $light;
-  color: $appBackground;
+  background: $veryLight;
+  color: $dark;
   cursor: pointer;
 
-  &.disabled {
-    display: none;
-  }
-
-  &.enabled {
-    display: block;
+  &.inactive {
+    color: $inactiveText;
+    background: $inactiveBackground;
   }
 
   &.confirm {
-    background: $green;
+    background: $dominant2;
+    color: $dark;
   }
 
   &.restart {
-    background: tomato;
+    background: $dominant1;
+    color: $dark;
   }
 
 }
@@ -118,9 +117,9 @@ label {
   width: 100vw;
   min-height: 100vh;
   max-width: 1024px;
-  background: $appBackground;
+  background: $dark;
   visibility: vissible;
-  color: $light;
+  color: $veryLight;
   margin: 0 auto;
 
   &.show {

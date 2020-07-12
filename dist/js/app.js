@@ -10,10 +10,20 @@ const App = (function (DataCtrl, UICtrl) {
 
     //Save answer and play a chord on demand
     document.getElementById('chord-options').addEventListener('click', (e) => {
-      if (e.target.classList.contains("chord-option-label")) {
+      if (e.target.classList.contains("chord-option-label") && e.target.parentNode.children[0].disabled != true) {
         saveAnswer(e.target.parentNode.children[0].id);
         UICtrl.highlightSelectedAnswer(e.target.parentNode);
         playChordOnDemand(e.target.parentNode.children[0].id);
+        UICtrl.makeAnswerOptionsInactive();
+        UICtrl.makeConfirmBtnInactive();
+        UICtrl.makeRestartBtnInactive();
+        UICtrl.makeMainBtnInactive();
+        setTimeout(function () {
+          UICtrl.makeAnswerOptionsActive();
+          UICtrl.makeConfirmBtnActive();
+          UICtrl.makeRestartBtnActive();
+          UICtrl.makeMainBtnActive();
+        }, 4000);
       }
     });
 
@@ -35,18 +45,26 @@ const App = (function (DataCtrl, UICtrl) {
       case "playNext":
         DataCtrl.getAppData().appState = "playing";
         UICtrl.setMainBtnState();
+        UICtrl.unHighlightCorrectAnswer();
+        UICtrl.unHighlightSelectedAnswer();
+        UICtrl.makeAnswerOptionsInactive();
         playCurrentChord();
         break;
       case "playing":
         setTimeout(function () {
           DataCtrl.getAppData().appState = "repeat";
           UICtrl.setMainBtnState();
+          UICtrl.makeRestartBtnActive();
+          UICtrl.makeAnswerOptionsActive();
         }, 4000);
         break;
       case "repeat":
         DataCtrl.getAppData().appState = "playing";
         UICtrl.setMainBtnState();
         playCurrentChord();
+        UICtrl.makeConfirmBtnInactive();
+        UICtrl.makeRestartBtnInactive();
+        UICtrl.makeAnswerOptionsInactive();
         break;
       case "finished-victory":
         UICtrl.setMainBtnState();
@@ -80,21 +98,25 @@ const App = (function (DataCtrl, UICtrl) {
 
   //Evaluate the answer
   const evaluateAnswer = function () {
+    //If answer correct: 
     if (DataCtrl.getAppData().selectedAnswer === DataCtrl.getAppData().currentChord) {
-      //If answer correct: 
       DataCtrl.getAppData().correctTotal += 1;
       UICtrl.updateCorrectDisplayTotal();
       DataCtrl.getAppData().remainingTotal -= 1;
       UICtrl.updateRemainingDisplayTotal();
-      UICtrl.highlightSelectedAnswer();
+      UICtrl.makeAnswerOptionsInactive();
+      UICtrl.makeConfirmBtnInactive();
+      UICtrl.highlightCorrectAnswer();
       decideNextStep();
-    } else {
       //If answer incorrect: 
+    } else {
       DataCtrl.getAppData().wrongTotal += 1;
       UICtrl.updateWrongDisplayTotal();
       DataCtrl.getAppData().remainingTotal -= 1;
       UICtrl.updateRemainingDisplayTotal();
-      UICtrl.highlightSelectedAnswer();
+      UICtrl.makeAnswerOptionsInactive();
+      UICtrl.makeConfirmBtnInactive();
+      UICtrl.highlightCorrectAnswer();
       decideNextStep();
     }
   };
@@ -131,7 +153,11 @@ const App = (function (DataCtrl, UICtrl) {
     UICtrl.updateCorrectDisplayTotal();
     DataCtrl.getAppData().selectedAnswer = null;
     UICtrl.clearAnswer();
-    UICtrl.highlightSelectedAnswer();
+    UICtrl.unHighlightCorrectAnswer();
+    UICtrl.unHighlightSelectedAnswer();
+    UICtrl.makeAnswerOptionsInactive();
+    UICtrl.makeRestartBtnInactive();
+    UICtrl.makeConfirmBtnInactive();
     DataCtrl.getAppData().appState = "readyToStart";
     UICtrl.setMainBtnState();
   }
@@ -144,6 +170,9 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.updateRemainingDisplayTotal();
       UICtrl.updateCorrectDisplayTotal();
       UICtrl.setMainBtnState();
+      UICtrl.makeConfirmBtnInactive();
+      UICtrl.makeRestartBtnInactive();
+      UICtrl.makeAnswerOptionsInactive();
       loadEventListeners();
     }
   }

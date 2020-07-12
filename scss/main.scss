@@ -51,26 +51,32 @@
   width: 12rem;
   height: 12rem;
   border-radius: 100px;
-  border: 0.5rem solid $light;
-  padding: 1rem;
   margin: 0 auto;
+
+  .inactive {
+    color: $inactiveText;
+    border: 0.5rem solid $inactiveBackground;
+  }
 }
 
-#primary-action-button {
+.primary-action-button {
   height: 100%;
   width: 100%;
-  border-radius: 100px;
   background: none;
-  border: none;
   outline: none;
+  border-radius: 100px;
+  border: 0.5rem solid $veryLight;
+  padding: 1rem;
   font-size: 3rem;
-  color: $light;
+  color: $veryLight;
   cursor: pointer;
 
   p {
     font-size: 1.5rem;
   }
 }
+
+
 
 #progress-container {
   @extend %flex-justify-align-center;
@@ -94,15 +100,15 @@
 }
 
 #wrong-display {
-  color: $dominant;
+  color: $dominant1;
 }
 
 #remaining-display {
-  color: $light;
+  color: $veryLight;
 }
 
 #correct-display {
-  color: $green;
+  color: $dominant2;
 }
 
 //CHORD OPTIONS
@@ -122,7 +128,6 @@
 
 .chord-option {
   @extend %flex-justify-align-center;
-  background: $lightUI;
   border-radius: 100px;
   padding: 2px 4px;
   margin: 1px 1px;
@@ -131,8 +136,9 @@
   margin: auto 2.5%;
   font-size: 3rem;
   text-align: center;
-  color: $light;
   cursor: pointer;
+  color: $veryLight;
+  background: $lightUI;
 
   input {
     visibility: hidden;
@@ -141,9 +147,17 @@
   }
 
   &.selected {
-    background: $green;
-    color: $appBackground;
-    border: 2px solid $lightUI;
+    color: $dark;
+    background: $dominant3;
+  }
+
+  &.inactive {
+    color: $inactiveText;
+    background: $inactiveBackground;
+  }
+
+  &.correct {
+    border: 10px solid $dominant2;
   }
 }
 
@@ -158,7 +172,7 @@
 #copyright {
   padding-top: 1.5rem;
   @extend %flex-justify-align-center;
-  color: $light;
+  color: $veryLight;
   font-size: 0.8rem;
 }
 

@@ -68,14 +68,15 @@ label, .container, .placeholder-btn, #primary-action-display, #primary-action, #
   background: #D0E1F9;
   color: #023147;
   cursor: pointer; }
-  .controlsBtn.disabled {
-    display: none; }
-  .controlsBtn.enabled {
-    display: block; }
+  .controlsBtn.inactive {
+    color: #0c6b97;
+    background: #054766; }
   .controlsBtn.confirm {
-    background: lightgreen; }
+    background: lightgreen;
+    color: #023147; }
   .controlsBtn.restart {
-    background: tomato; }
+    background: tomato;
+    color: #023147; }
 
 .button-placeholder {
   visibility: hidden; }
@@ -116,21 +117,23 @@ label, .container, .placeholder-btn, #primary-action-display, #primary-action, #
   width: 12rem;
   height: 12rem;
   border-radius: 100px;
-  border: 0.5rem solid #D0E1F9;
-  padding: 1rem;
   margin: 0 auto; }
+  #primary-action .inactive {
+    color: #0c6b97;
+    border: 0.5rem solid #054766; }
 
-#primary-action-button {
+.primary-action-button {
   height: 100%;
   width: 100%;
-  border-radius: 100px;
   background: none;
-  border: none;
   outline: none;
+  border-radius: 100px;
+  border: 0.5rem solid #D0E1F9;
+  padding: 1rem;
   font-size: 3rem;
   color: #D0E1F9;
   cursor: pointer; }
-  #primary-action-button p {
+  .primary-action-button p {
     font-size: 1.5rem; }
 
 #progress-container {
@@ -168,7 +171,6 @@ label, .container, .placeholder-btn, #primary-action-display, #primary-action, #
   min-height: 32.5vh; }
 
 .chord-option {
-  background: #4D648D;
   border-radius: 100px;
   padding: 2px 4px;
   margin: 1px 1px;
@@ -177,16 +179,21 @@ label, .container, .placeholder-btn, #primary-action-display, #primary-action, #
   margin: auto 2.5%;
   font-size: 3rem;
   text-align: center;
+  cursor: pointer;
   color: #D0E1F9;
-  cursor: pointer; }
+  background: #4D648D; }
   .chord-option input {
     visibility: hidden;
     opacity: 1;
     position: absolute; }
   .chord-option.selected {
-    background: lightgreen;
     color: #023147;
-    border: 2px solid #4D648D; }
+    background: orange; }
+  .chord-option.inactive {
+    color: #0c6b97;
+    background: #054766; }
+  .chord-option.correct {
+    border: 10px solid lightgreen; }
 
 #controllers-container {
   display: flex;

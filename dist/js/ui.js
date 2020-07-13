@@ -10,6 +10,9 @@ const UICtrl = (function () {
     primaryActionText: document.getElementById('primary-action-text'),
     confirmBtn: document.getElementById('confirm-btn'),
     restartBtn: document.getElementById('restart-btn'),
+    showSettingsBtn: document.getElementById('show-settings-btn'),
+    hideSettingsBtn: document.getElementById('settings-hide-btn'),
+    settingsOverlay: document.getElementById('settings-overlay'),
   };
 
 
@@ -124,6 +127,14 @@ const UICtrl = (function () {
     makeMainBtnActive: function () {
       UISelectors.primaryActionBtn.disabled = false;
       UISelectors.primaryActionBtn.classList.remove('inactive');
+    },
+    showSettings: function () {
+      UISelectors.settingsOverlay.classList.add('show');
+      UISelectors.settingsOverlay.classList.remove('hide');
+    },
+    hideSettings: function () {
+      UISelectors.settingsOverlay.classList.add('hide');
+      UISelectors.settingsOverlay.classList.remove('show');
     }
   };
 })();

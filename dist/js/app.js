@@ -27,11 +27,17 @@ const App = (function (DataCtrl, UICtrl) {
       }
     });
 
-    //Evaluate the answer
+    //Evaluate (Confirm) the answer
     UISelectors.confirmBtn.addEventListener('click', evaluateAnswer);
 
     //Restart the training
     UISelectors.restartBtn.addEventListener('click', restartTraining);
+
+    //Show settings
+    UISelectors.showSettingsBtn.addEventListener('click', UICtrl.showSettings);
+
+    //Hide settings
+    UISelectors.hideSettingsBtn.addEventListener('click', UICtrl.hideSettings);
   };
 
   //Execute the primary action

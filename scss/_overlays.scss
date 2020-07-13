@@ -1,0 +1,113 @@
+//SETTINGS OVERLAY
+#settings-overlay {
+  @extend %overlay;
+}
+
+//Settings: Header
+#settings-header {
+  @extend %overlay-header;
+  flex: 1;
+  padding-top: 1rem;
+}
+
+.overlay-title {
+  @extend %flex-justify-align-center;
+  @extend %overlay-title;
+}
+
+#settings-hide {
+  @extend %flex-justify-align-center;
+}
+
+#settings-hide-btn {
+  @extend %flex-justify-align-center;
+  border-radius: 50px;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: none;
+  font-size: 1.5rem;
+  padding: 5px;
+  outline: none;
+  cursor: pointer;
+
+  &.disabled {
+    background: $veryLight;
+    color: $lightUI;
+  }
+
+  &.enabled {
+    background: $dominant2;
+    color: $dark;
+  }
+}
+
+//Settings: Chordselection
+#settings-main {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  height: auto;
+  width: 90%;
+
+  input {
+    visibility: hidden;
+    opacity: 1;
+    position: absolute;
+  }
+}
+
+//----------->Individual chords
+.custom-chord-selection-headline {
+  @extend %flex-justify-align-center;
+  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+}
+
+#custom-chord-selection {
+  @extend %flex-justify-align-center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  #individual-chords {
+    //background: $inactiveBackground;
+    padding: 2rem 1rem;
+    border: 5px solid $inactiveBackground;
+    border-radius: 10px;
+    color: $dark;
+    position: relative;
+  }
+
+
+  .individual-chord {
+    display: inline-block;
+    @extend %flex-justify-align-center;
+    border-radius: 100px;
+    padding: 2px 4px;
+    margin: 1px 1px;
+    width: 4rem;
+    height: 4rem;
+    margin: 1% 1%;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    color: $veryLight;
+    background: $lightUI;
+  }
+
+}
+
+//Settings: Interval, Countdown setup
+#settings-buttons-container {
+  display: flex;
+  flex: 2;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}

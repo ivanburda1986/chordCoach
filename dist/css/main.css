@@ -28,7 +28,7 @@ label {
   display: inline-block;
   cursor: pointer; }
 
-label, .container, .placeholder-btn, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #copyright {
+label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-hide-btn, .custom-chord-selection-headline, #custom-chord-selection, #custom-chord-selection .individual-chord, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #copyright {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -78,6 +78,39 @@ label, .container, .placeholder-btn, #primary-action-display, #primary-action, #
     background: tomato;
     color: #023147; }
 
+#settings-overlay {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 1024px;
+  background: #023147;
+  visibility: vissible;
+  color: #D0E1F9;
+  margin: 0 auto; }
+  .show#settings-overlay {
+    visibility: visible; }
+  .hide#settings-overlay {
+    visibility: hidden; }
+
+#settings-header {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  height: 10%;
+  margin: 0 auto; }
+
+.overlay-title {
+  display: flex;
+  justify-content: space-around;
+  font-size: 2rem;
+  font-weight: 700; }
+
 .button-placeholder {
   visibility: hidden; }
 
@@ -85,6 +118,78 @@ label, .container, .placeholder-btn, #primary-action-display, #primary-action, #
   width: 2.2rem;
   height: 2.2rem;
   padding: 5px; }
+
+#settings-header {
+  flex: 1;
+  padding-top: 1rem; }
+
+#settings-hide-btn {
+  border-radius: 50px;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: none;
+  font-size: 1.5rem;
+  padding: 5px;
+  outline: none;
+  cursor: pointer; }
+  #settings-hide-btn.disabled {
+    background: #D0E1F9;
+    color: #4D648D; }
+  #settings-hide-btn.enabled {
+    background: lightgreen;
+    color: #023147; }
+
+#settings-main {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  height: auto;
+  width: 90%; }
+  #settings-main input {
+    visibility: hidden;
+    opacity: 1;
+    position: absolute; }
+
+.custom-chord-selection-headline {
+  padding-bottom: 1rem;
+  padding-top: 0.5rem; }
+
+#custom-chord-selection {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%; }
+  #custom-chord-selection #individual-chords {
+    padding: 2rem 1rem;
+    border: 5px solid #054766;
+    border-radius: 10px;
+    color: #023147;
+    position: relative; }
+  #custom-chord-selection .individual-chord {
+    display: inline-block;
+    border-radius: 100px;
+    padding: 2px 4px;
+    margin: 1px 1px;
+    width: 4rem;
+    height: 4rem;
+    margin: 1% 1%;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    color: #D0E1F9;
+    background: #4D648D; }
+
+#settings-buttons-container {
+  display: flex;
+  flex: 2;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 2rem; }
 
 .top-padding {
   min-height: 7.5vh;
@@ -223,6 +328,8 @@ label, .container, .placeholder-btn, #primary-action-display, #primary-action, #
     font-size: 2rem; }
   #feedback-hide-btn {
     font-size: 2rem; }
+  .overlay-title {
+    font-size: 3rem; }
   #settings-hide-btn {
     width: 2.5rem;
     height: 2.5rem; }
@@ -233,6 +340,8 @@ label, .container, .placeholder-btn, #primary-action-display, #primary-action, #
   #show-settings-btn,
   #show-feedback-btn {
     font-size: 3rem; }
+  .overlay-title {
+    font-size: 4rem; }
   #settings-hide-btn {
     width: 3rem;
     height: 3rem; }

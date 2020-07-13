@@ -11,9 +11,13 @@ const App = (function (DataCtrl, UICtrl) {
     //Save answer and play a chord on demand
     document.getElementById('chord-options').addEventListener('click', (e) => {
       if (e.target.classList.contains("chord-option-label") && e.target.parentNode.children[0].disabled != true) {
+        //Request saving the answer
         saveAnswer(e.target.parentNode.children[0].id);
-        UICtrl.highlightSelectedAnswer(e.target.parentNode);
+        //Request playing the chord
         playChordOnDemand(e.target.parentNode.children[0].id);
+        //Hihglight the selected answer
+        UICtrl.highlightSelectedAnswer(e.target.parentNode);
+        //Request management of the UI elements
         UICtrl.makeAnswerOptionsInactive();
         UICtrl.makeConfirmBtnInactive();
         UICtrl.makeRestartBtnInactive();
@@ -38,6 +42,18 @@ const App = (function (DataCtrl, UICtrl) {
 
     //Hide settings
     UISelectors.hideSettingsBtn.addEventListener('click', UICtrl.hideSettings);
+
+    //Add a chord to the training set
+    document.getElementById('individual-chords').addEventListener('click', (e) => {
+      if (e.target.classList.contains('individual-chord-label')) {
+        if (e.target.parentNode.children[0].checked) {
+          UICtrl.unHighlightChordRemovedFromTraining(e.target.parentNode);
+        } else {
+          UICtrl.highlightChordAddedToTraining(e.target.parentNode);
+        }
+      }
+    })
+
   };
 
   //Execute the primary action

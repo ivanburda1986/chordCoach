@@ -181,6 +181,9 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
     cursor: pointer;
     color: #D0E1F9;
     background: #4D648D; }
+    #custom-chord-selection .individual-chord.selected {
+      color: #023147;
+      background: orange; }
 
 #settings-buttons-container {
   display: flex;

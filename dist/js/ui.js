@@ -135,6 +135,13 @@ const UICtrl = (function () {
     hideSettings: function () {
       UISelectors.settingsOverlay.classList.add('hide');
       UISelectors.settingsOverlay.classList.remove('show');
+    },
+    highlightChordAddedToTraining: function (clickedObject) {
+      clickedObject.classList.add('selected');
+    },
+    unHighlightChordRemovedFromTraining: function (clickedObject) {
+      console.log('ahoj');
+      clickedObject.classList.remove('selected');
     }
   };
 })();

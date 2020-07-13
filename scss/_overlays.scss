@@ -97,6 +97,11 @@
     cursor: pointer;
     color: $veryLight;
     background: $lightUI;
+
+    &.selected {
+      color: $dark;
+      background: $dominant3;
+    }
   }
 
 }

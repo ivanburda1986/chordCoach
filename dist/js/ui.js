@@ -131,17 +131,23 @@ const UICtrl = (function () {
     showSettings: function () {
       UISelectors.settingsOverlay.classList.add("show");
       UISelectors.settingsOverlay.classList.remove("hide");
+      Array.from(document.getElementsByClassName('individual-chord')).forEach((chord) => {
+        chord.children[0].style.visibility = "visible";
+      });
     },
     hideSettings: function () {
       UISelectors.settingsOverlay.classList.add("hide");
       UISelectors.settingsOverlay.classList.remove("show");
+      Array.from(document.getElementsByClassName('individual-chord')).forEach((chord) => {
+        chord.children[0].style.visibility = "hidden";
+      });
     },
     highlightChordSetup: function (clickedChord) {
-      if (clickedChord.target.classList.contains("individual-chord-label")) {
+      if (clickedChord.target.parentNode.classList.contains("individual-chord")) {
         if (clickedChord.target.parentNode.children[0].checked) {
-          clickedChord.target.parentNode.classList.remove("selected");
-        } else {
           clickedChord.target.parentNode.classList.add("selected");
+        } else {
+          clickedChord.target.parentNode.classList.remove("selected");
         }
       }
     },

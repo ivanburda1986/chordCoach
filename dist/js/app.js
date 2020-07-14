@@ -49,7 +49,7 @@ const App = (function (DataCtrl, UICtrl) {
     });
 
     //Save chords selected in settings
-    UISelectors.hideSettingsBtn.addEventListener('click', () => {
+    UISelectors.hideSettingsBtn.addEventListener('click', (e) => {
       saveChordSetup();
       restartTraining();
     });
@@ -210,6 +210,12 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.makeRestartBtnInactive();
       UICtrl.makeAnswerOptionsInactive();
       loadEventListeners();
+      // document.getElementsByName('individualChord').forEach((e) => {
+      //   e.disabled = true;
+      // })
+    },
+    restart: function () {
+      restartTraining();
     }
   }
 })(DataCtrl, UICtrl);

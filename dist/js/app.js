@@ -43,15 +43,9 @@ const App = (function (DataCtrl, UICtrl) {
     //Hide settings
     UISelectors.hideSettingsBtn.addEventListener('click', UICtrl.hideSettings);
 
-    //Add a chord to the training set
+    //Hihglighting chords when selecting them in settings
     document.getElementById('individual-chords').addEventListener('click', (e) => {
-      if (e.target.classList.contains('individual-chord-label')) {
-        if (e.target.parentNode.children[0].checked) {
-          UICtrl.unHighlightChordRemovedFromTraining(e.target.parentNode);
-        } else {
-          UICtrl.highlightChordAddedToTraining(e.target.parentNode);
-        }
-      }
+      UICtrl.highlightChordSetup(e);
     })
 
   };
@@ -182,7 +176,8 @@ const App = (function (DataCtrl, UICtrl) {
     UICtrl.makeConfirmBtnInactive();
     DataCtrl.getAppData().appState = "readyToStart";
     UICtrl.setMainBtnState();
-  }
+  };
+
 
   //Public methods
   return {

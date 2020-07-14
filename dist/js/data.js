@@ -70,5 +70,6 @@ const DataCtrl = (function () {
       appData.currentChord = appData.loadedChords[Math.floor(Math.random() * appData.loadedChords.length)];
     },
 
+
   }
 })();

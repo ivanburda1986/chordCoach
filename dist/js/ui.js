@@ -136,12 +136,14 @@ const UICtrl = (function () {
       UISelectors.settingsOverlay.classList.add('hide');
       UISelectors.settingsOverlay.classList.remove('show');
     },
-    highlightChordAddedToTraining: function (clickedObject) {
-      clickedObject.classList.add('selected');
-    },
-    unHighlightChordRemovedFromTraining: function (clickedObject) {
-      console.log('ahoj');
-      clickedObject.classList.remove('selected');
+    highlightChordSetup: function (clickedChord) {
+      if (clickedChord.target.classList.contains('individual-chord-label')) {
+        if (clickedChord.target.parentNode.children[0].checked) {
+          clickedChord.target.parentNode.classList.remove('selected');
+        } else {
+          clickedChord.target.parentNode.classList.add('selected');
+        }
+      }
     }
   };
 })();

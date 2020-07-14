@@ -2,19 +2,19 @@
 const UICtrl = (function () {
   //UI selectors
   const UISelectors = {
-    wrongDisplayTotal: document.getElementById('wrong-display-total'),
-    remainingDisplayTotal: document.getElementById('remaining-display-total'),
-    correctDisplayTotal: document.getElementById('correct-display-total'),
-    primaryActionBtn: document.querySelector('.primary-action-button'),
-    primaryActionIcon: document.getElementById('primary-action-graphics'),
-    primaryActionText: document.getElementById('primary-action-text'),
-    confirmBtn: document.getElementById('confirm-btn'),
-    restartBtn: document.getElementById('restart-btn'),
-    showSettingsBtn: document.getElementById('show-settings-btn'),
-    hideSettingsBtn: document.getElementById('settings-hide-btn'),
-    settingsOverlay: document.getElementById('settings-overlay'),
+    wrongDisplayTotal: document.getElementById("wrong-display-total"),
+    remainingDisplayTotal: document.getElementById("remaining-display-total"),
+    correctDisplayTotal: document.getElementById("correct-display-total"),
+    primaryActionBtn: document.querySelector(".primary-action-button"),
+    primaryActionIcon: document.getElementById("primary-action-graphics"),
+    primaryActionText: document.getElementById("primary-action-text"),
+    confirmBtn: document.getElementById("confirm-btn"),
+    restartBtn: document.getElementById("restart-btn"),
+    showSettingsBtn: document.getElementById("show-settings-btn"),
+    hideSettingsBtn: document.getElementById("settings-hide-btn"),
+    settingsOverlay: document.getElementById("settings-overlay"),
+    answerSetContainer: document.getElementById('chord-options'),
   };
-
 
   //Public methods
   return {
@@ -31,30 +31,30 @@ const UICtrl = (function () {
       UISelectors.correctDisplayTotal.innerText = DataCtrl.getAppData().correctTotal;
     },
     highlightSelectedAnswer: function (clickedObject) {
-      document.getElementsByName('chordOption').forEach((option) => {
-        option.parentNode.classList.remove('selected');
+      document.getElementsByName("chordOption").forEach((option) => {
+        option.parentNode.classList.remove("selected");
       });
       if (clickedObject) {
-        clickedObject.classList.add('selected');
+        clickedObject.classList.add("selected");
       }
     },
     unHighlightSelectedAnswer: function (clickedObject) {
-      document.getElementsByName('chordOption').forEach((option) => {
-        option.parentNode.classList.remove('selected');
+      document.getElementsByName("chordOption").forEach((option) => {
+        option.parentNode.classList.remove("selected");
       });
     },
     highlightCorrectAnswer: function () {
-      document.getElementById(DataCtrl.getAppData().currentChord).parentNode.classList.add('correct');
+      document.getElementById(DataCtrl.getAppData().currentChord).parentNode.classList.add("correct");
     },
     unHighlightCorrectAnswer: function () {
-      document.querySelectorAll('.chord-option').forEach((option) => {
+      document.querySelectorAll(".chord-option").forEach((option) => {
         option.classList.remove("correct");
       });
     },
     clearAnswer: function () {
-      document.getElementsByName('chordOption').forEach((item) => {
+      document.getElementsByName("chordOption").forEach((item) => {
         item.checked = false;
-      })
+      });
     },
     setMainBtnState: function () {
       switch (DataCtrl.getAppData().appState) {
@@ -85,8 +85,8 @@ const UICtrl = (function () {
       }
     },
     makeAnswerOptionsInactive: function () {
-      document.querySelectorAll('.chord-option').forEach((option) => {
-        if (option.classList.contains('selected')) {
+      document.querySelectorAll(".chord-option").forEach((option) => {
+        if (option.classList.contains("selected")) {
           option.children[0].disabled = true;
         } else {
           option.children[0].disabled = true;
@@ -95,55 +95,65 @@ const UICtrl = (function () {
       });
     },
     makeAnswerOptionsActive: function () {
-      document.querySelectorAll('.chord-option').forEach((option) => {
+      document.querySelectorAll(".chord-option").forEach((option) => {
         option.children[0].disabled = false;
         option.classList.remove("inactive");
       });
     },
     makeConfirmBtnInactive: function () {
       UISelectors.confirmBtn.disabled = true;
-      UISelectors.confirmBtn.classList.remove('confirm');
-      UISelectors.confirmBtn.classList.add('inactive');
+      UISelectors.confirmBtn.classList.remove("confirm");
+      UISelectors.confirmBtn.classList.add("inactive");
     },
     makeConfirmBtnActive: function () {
       UISelectors.confirmBtn.disabled = false;
-      UISelectors.confirmBtn.classList.remove('inactive');
-      UISelectors.confirmBtn.classList.add('confirm');
+      UISelectors.confirmBtn.classList.remove("inactive");
+      UISelectors.confirmBtn.classList.add("confirm");
     },
     makeRestartBtnInactive: function () {
       UISelectors.restartBtn.disabled = true;
-      UISelectors.restartBtn.classList.remove('restart');
-      UISelectors.restartBtn.classList.add('inactive');
+      UISelectors.restartBtn.classList.remove("restart");
+      UISelectors.restartBtn.classList.add("inactive");
     },
     makeRestartBtnActive: function () {
       UISelectors.restartBtn.disabled = false;
-      UISelectors.restartBtn.classList.remove('inactive');
-      UISelectors.restartBtn.classList.add('restart');
+      UISelectors.restartBtn.classList.remove("inactive");
+      UISelectors.restartBtn.classList.add("restart");
     },
     makeMainBtnInactive: function () {
       UISelectors.primaryActionBtn.disabled = true;
-      UISelectors.primaryActionBtn.classList.add('inactive');
+      UISelectors.primaryActionBtn.classList.add("inactive");
     },
     makeMainBtnActive: function () {
       UISelectors.primaryActionBtn.disabled = false;
-      UISelectors.primaryActionBtn.classList.remove('inactive');
+      UISelectors.primaryActionBtn.classList.remove("inactive");
     },
     showSettings: function () {
-      UISelectors.settingsOverlay.classList.add('show');
-      UISelectors.settingsOverlay.classList.remove('hide');
+      UISelectors.settingsOverlay.classList.add("show");
+      UISelectors.settingsOverlay.classList.remove("hide");
     },
     hideSettings: function () {
-      UISelectors.settingsOverlay.classList.add('hide');
-      UISelectors.settingsOverlay.classList.remove('show');
+      UISelectors.settingsOverlay.classList.add("hide");
+      UISelectors.settingsOverlay.classList.remove("show");
     },
     highlightChordSetup: function (clickedChord) {
-      if (clickedChord.target.classList.contains('individual-chord-label')) {
+      if (clickedChord.target.classList.contains("individual-chord-label")) {
         if (clickedChord.target.parentNode.children[0].checked) {
-          clickedChord.target.parentNode.classList.remove('selected');
+          clickedChord.target.parentNode.classList.remove("selected");
         } else {
-          clickedChord.target.parentNode.classList.add('selected');
+          clickedChord.target.parentNode.classList.add("selected");
         }
       }
-    }
+    },
+    displayAnswerSet: function () {
+      UISelectors.answerSetContainer.innerHTML = '';
+      DataCtrl.getAppData().loadedChords.forEach((chord) => {
+        const div = document.createElement("div");
+        div.className = "chord-option";
+        div.innerHTML = `<input type="radio" name="chordOption" value="${chord}" id="${chord}"/><label
+        class="chord-option-label" for="${chord}">${chord}</label>`;
+        document.getElementById("chord-options").appendChild(div);
+      });
+    },
   };
 })();

@@ -49,7 +49,10 @@ const App = (function (DataCtrl, UICtrl) {
     });
 
     //Save chords selected in settings
-    UISelectors.hideSettingsBtn.addEventListener('click', saveChordSetup);
+    UISelectors.hideSettingsBtn.addEventListener('click', () => {
+      saveChordSetup();
+      restartTraining();
+    });
   };
 
   //Execute the primary action
@@ -168,17 +171,19 @@ const App = (function (DataCtrl, UICtrl) {
     DataCtrl.getAppData().correctTotal = 0;
     DataCtrl.getAppData().remainingTotal = 3;
     DataCtrl.getAppData().wrongTotal = 0;
+    DataCtrl.getAppData().currentChord = DataCtrl.getAppData().loadedChords[Math.floor(Math.random() * DataCtrl.getAppData().loadedChords.length)];
+    DataCtrl.getAppData().selectedAnswer = null;
+    DataCtrl.getAppData().appState = "readyToStart";
     UICtrl.updateWrongDisplayTotal();
     UICtrl.updateRemainingDisplayTotal();
     UICtrl.updateCorrectDisplayTotal();
-    DataCtrl.getAppData().selectedAnswer = null;
+    UICtrl.displayAnswerSet();
     UICtrl.clearAnswer();
     UICtrl.unHighlightCorrectAnswer();
     UICtrl.unHighlightSelectedAnswer();
     UICtrl.makeAnswerOptionsInactive();
     UICtrl.makeRestartBtnInactive();
     UICtrl.makeConfirmBtnInactive();
-    DataCtrl.getAppData().appState = "readyToStart";
     UICtrl.setMainBtnState();
   };
 
@@ -196,6 +201,7 @@ const App = (function (DataCtrl, UICtrl) {
   return {
     init: function () {
       DataCtrl.setDefaultAppData();
+      UICtrl.displayAnswerSet();
       UICtrl.updateWrongDisplayTotal();
       UICtrl.updateRemainingDisplayTotal();
       UICtrl.updateCorrectDisplayTotal();

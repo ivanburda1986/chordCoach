@@ -68,8 +68,7 @@ const DataCtrl = (function () {
     },
     getNextChord: function () {
       appData.currentChord = appData.loadedChords[Math.floor(Math.random() * appData.loadedChords.length)];
-    },
-
+    }
 
   }
 })();

@@ -12,9 +12,9 @@ const App = (function (DataCtrl, UICtrl) {
     document.getElementById('chord-options').addEventListener('click', (e) => {
       if (e.target.classList.contains("chord-option-label") && e.target.parentNode.children[0].disabled != true) {
         //Request saving the answer
-        saveAnswer(e.target.parentNode.children[0].id);
+        saveAnswer(e.target.parentNode.children[0].value);
         //Request playing the chord
-        playChordOnDemand(e.target.parentNode.children[0].id);
+        playChordOnDemand(e.target.parentNode.children[0].value);
         //Hihglight the selected answer
         UICtrl.highlightSelectedAnswer(e.target.parentNode);
         //Request management of the UI elements
@@ -46,8 +46,10 @@ const App = (function (DataCtrl, UICtrl) {
     //Hihglighting chords when selecting them in settings
     document.getElementById('individual-chords').addEventListener('click', (e) => {
       UICtrl.highlightChordSetup(e);
-    })
+    });
 
+    //Save chords selected in settings
+    UISelectors.hideSettingsBtn.addEventListener('click', saveChordSetup);
   };
 
   //Execute the primary action
@@ -102,8 +104,8 @@ const App = (function (DataCtrl, UICtrl) {
   };
 
   //Play a chord on demand
-  const playChordOnDemand = function (chordId) {
-    DataCtrl.getSoundSelectors().chordOnDemand.src = `/dist/sounds/chords/${DataCtrl.getChordSoundFileName(chordId)}`;
+  const playChordOnDemand = function (chordName) {
+    DataCtrl.getSoundSelectors().chordOnDemand.src = `/dist/sounds/chords/${DataCtrl.getChordSoundFileName(chordName)}`;
     DataCtrl.getSoundSelectors().chordOnDemand.play();
   };
 
@@ -160,6 +162,8 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.setMainBtnState();
     }
   };
+
+  //Restart the training
   const restartTraining = function () {
     DataCtrl.getAppData().correctTotal = 0;
     DataCtrl.getAppData().remainingTotal = 3;
@@ -176,6 +180,15 @@ const App = (function (DataCtrl, UICtrl) {
     UICtrl.makeConfirmBtnInactive();
     DataCtrl.getAppData().appState = "readyToStart";
     UICtrl.setMainBtnState();
+  };
+
+  const saveChordSetup = function () {
+    DataCtrl.getAppData().loadedChords = [];
+    document.getElementsByName('individualChord').forEach((chord) => {
+      if (chord.checked) {
+        DataCtrl.getAppData().loadedChords.push(chord.value);
+      }
+    })
   };
 
 

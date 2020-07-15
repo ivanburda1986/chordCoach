@@ -31,8 +31,8 @@
   cursor: pointer;
 
   &.disabled {
-    background: $veryLight;
-    color: $lightUI;
+    background: $inactiveBackground;
+    color: $inactiveText;
   }
 
   &.enabled {

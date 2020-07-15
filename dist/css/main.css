@@ -131,8 +131,8 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   outline: none;
   cursor: pointer; }
   #settings-hide-btn.disabled {
-    background: #D0E1F9;
-    color: #4D648D; }
+    background: #054766;
+    color: #0c6b97; }
   #settings-hide-btn.enabled {
     background: lightgreen;
     color: #023147; }
@@ -290,13 +290,13 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   width: 5rem;
   height: 5rem;
   margin: auto 2.5%;
-  font-size: 3rem;
+  font-size: 1.5rem;
   text-align: center;
   cursor: pointer;
   color: #D0E1F9;
   background: #4D648D; }
   .chord-option input {
-    visibility: visible;
+    visibility: hidden;
     opacity: 1;
     position: absolute; }
   .chord-option.selected {

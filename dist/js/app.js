@@ -10,7 +10,7 @@ const App = (function (DataCtrl, UICtrl) {
 
     //Save answer and play a chord on demand
     document.getElementById('chord-options').addEventListener('click', (e) => {
-      if (e.target.classList.contains("chord-option-label") && e.target.parentNode.children[0].disabled != true) {
+      if (e.target.classList.contains("chord-option") && e.target.parentNode.children[0].disabled != true) {
         //Request saving the answer
         saveAnswer(e.target.parentNode.children[0].value);
         //Request playing the chord
@@ -43,9 +43,10 @@ const App = (function (DataCtrl, UICtrl) {
     //Hide settings
     UISelectors.hideSettingsBtn.addEventListener('click', UICtrl.hideSettings);
 
-    //Hihglighting chords when selecting them in settings
+    //Hihglighting chords + trigger "save settings" validation when selecting chords in settings
     document.getElementById('individual-chords').addEventListener('click', (e) => {
       UICtrl.highlightChordSetup(e);
+      validateChordSettings();
     });
 
     //Save chords selected in settings
@@ -53,6 +54,7 @@ const App = (function (DataCtrl, UICtrl) {
       saveChordSetup();
       restartTraining();
     });
+
   };
 
   //Execute the primary action
@@ -187,6 +189,7 @@ const App = (function (DataCtrl, UICtrl) {
     UICtrl.setMainBtnState();
   };
 
+  //Save chord setup
   const saveChordSetup = function () {
     DataCtrl.getAppData().loadedChords = [];
     document.getElementsByName('individualChord').forEach((chord) => {
@@ -196,6 +199,19 @@ const App = (function (DataCtrl, UICtrl) {
     })
   };
 
+  //Settings - min/max chords validation
+  const validateChordSettings = function () {
+    let appData = DataCtrl.getAppData();
+    if (appData.currentlyNumberChordsForTraining >= appData.minChordsForTraining && appData.currentlyNumberChordsForTraining <= appData.maxChordsForTraining) {
+      UICtrl.getSelectors().hideSettingsBtn.classList.add('enabled');
+      UICtrl.getSelectors().hideSettingsBtn.classList.remove('disable');
+      UICtrl.getSelectors().hideSettingsBtn.disabled = false;
+    } else {
+      UICtrl.getSelectors().hideSettingsBtn.classList.remove('enabled');
+      UICtrl.getSelectors().hideSettingsBtn.classList.add('disable');
+      UICtrl.getSelectors().hideSettingsBtn.disabled = true;
+    }
+  };
 
   //Public methods
   return {
@@ -210,9 +226,6 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.makeRestartBtnInactive();
       UICtrl.makeAnswerOptionsInactive();
       loadEventListeners();
-      // document.getElementsByName('individualChord').forEach((e) => {
-      //   e.disabled = true;
-      // })
     },
     restart: function () {
       restartTraining();

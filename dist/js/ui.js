@@ -146,8 +146,10 @@ const UICtrl = (function () {
       if (clickedChord.target.parentNode.classList.contains("individual-chord")) {
         if (clickedChord.target.parentNode.children[0].checked) {
           clickedChord.target.parentNode.classList.add("selected");
+          DataCtrl.getAppData().currentlyNumberChordsForTraining += 1;
         } else {
           clickedChord.target.parentNode.classList.remove("selected");
+          DataCtrl.getAppData().currentlyNumberChordsForTraining -= 1;
         }
       }
     },

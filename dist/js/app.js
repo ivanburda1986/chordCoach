@@ -12,11 +12,11 @@ const App = (function (DataCtrl, UICtrl) {
     document.getElementById('chord-options').addEventListener('click', (e) => {
       if (e.target.classList.contains("chord-option") && e.target.parentNode.children[0].disabled != true) {
         //Request saving the answer
-        saveAnswer(e.target.parentNode.children[0].value);
+        saveAnswer(e.target.children[0].value);
         //Request playing the chord
-        playChordOnDemand(e.target.parentNode.children[0].value);
+        playChordOnDemand(e.target.children[0].value);
         //Hihglight the selected answer
-        UICtrl.highlightSelectedAnswer(e.target.parentNode);
+        UICtrl.highlightSelectedAnswer(e.target);
         //Request management of the UI elements
         UICtrl.makeAnswerOptionsInactive();
         UICtrl.makeConfirmBtnInactive();
@@ -45,8 +45,54 @@ const App = (function (DataCtrl, UICtrl) {
 
     //Hihglighting chords + trigger "save settings" validation when selecting chords in settings
     document.getElementById('individual-chords').addEventListener('click', (e) => {
-      UICtrl.highlightChordSetup(e);
-      validateChordSettings();
+
+      if (DataCtrl.getAppData().currentlyNumberChordsForTraining < DataCtrl.getAppData().maxChordsForTraining) {
+        if (e.target.checked === true) {
+          DataCtrl.getAppData().currentlyNumberChordsForTraining += 1;
+          validateChordSettings();
+          e.target.parentNode.classList.add("selected");
+          console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
+        } else if (e.target.checked === false) {
+          DataCtrl.getAppData().currentlyNumberChordsForTraining -= 1;
+          validateChordSettings();
+          e.target.parentNode.classList.remove("selected");
+          console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
+        }
+      }
+      if (DataCtrl.getAppData().currentlyNumberChordsForTraining === DataCtrl.getAppData().maxChordsForTraining) {
+        console.log('max num of chords reached');
+        Array.from(document.getElementsByClassName('individual-chord')).forEach((item) => {
+          if (item.children[0].checked === false) {
+            item.children[0].disabled = true;
+          }
+        });
+        if (e.target.checked === false) {
+          DataCtrl.getAppData().currentlyNumberChordsForTraining -= 1;
+          e.target.parentNode.classList.remove("selected");
+          console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
+          Array.from(document.getElementsByClassName('individual-chord')).forEach((item) => {
+            item.children[0].disabled = false;
+          });
+        }
+      }
+
+      // DataCtrl.getAppData().currentlyNumberChordsForTraining += 1;
+      // UICtrl.highlightChordSetup(e);
+      // 
+      // highlightChordSetup: function (clickedChord) {
+      //   if (clickedChord.target.parentNode.classList.contains("individual-chord")) {
+      //     if (clickedChord.target.parentNode.children[0].checked === true) {
+      //       clickedChord.target.parentNode.classList.add("selected");
+      //       console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
+      //     } else if (clickedChord.target.parentNode.children[0].checked === true) {
+      //       clickedChord.target.parentNode.classList.remove("selected");
+      //       console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
+      //     }
+      //   }
+      // },
+
+
+
     });
 
     //Save chords selected in settings
@@ -110,6 +156,7 @@ const App = (function (DataCtrl, UICtrl) {
 
   //Play a chord on demand
   const playChordOnDemand = function (chordName) {
+    console.log(chordName);
     DataCtrl.getSoundSelectors().chordOnDemand.src = `/dist/sounds/chords/${DataCtrl.getChordSoundFileName(chordName)}`;
     DataCtrl.getSoundSelectors().chordOnDemand.play();
   };
@@ -204,11 +251,11 @@ const App = (function (DataCtrl, UICtrl) {
     let appData = DataCtrl.getAppData();
     if (appData.currentlyNumberChordsForTraining >= appData.minChordsForTraining && appData.currentlyNumberChordsForTraining <= appData.maxChordsForTraining) {
       UICtrl.getSelectors().hideSettingsBtn.classList.add('enabled');
-      UICtrl.getSelectors().hideSettingsBtn.classList.remove('disable');
+      UICtrl.getSelectors().hideSettingsBtn.classList.remove('disabled');
       UICtrl.getSelectors().hideSettingsBtn.disabled = false;
     } else {
       UICtrl.getSelectors().hideSettingsBtn.classList.remove('enabled');
-      UICtrl.getSelectors().hideSettingsBtn.classList.add('disable');
+      UICtrl.getSelectors().hideSettingsBtn.classList.add('disabled');
       UICtrl.getSelectors().hideSettingsBtn.disabled = true;
     }
   };

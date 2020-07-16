@@ -180,8 +180,8 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
       color: #023147;
       background: orange; }
     #custom-chord-selection .individual-chord input {
-      visibility: hidden;
-      opacity: 0;
+      visibility: visible;
+      opacity: 0.5;
       position: absolute;
       cursor: pointer;
       z-index: 2;

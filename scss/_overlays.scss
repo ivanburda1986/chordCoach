@@ -99,8 +99,8 @@
     }
 
     input {
-      visibility: hidden;
-      opacity: 0;
+      visibility: visible;
+      opacity: 0.5;
       position: absolute;
       cursor: pointer;
       z-index: 2;

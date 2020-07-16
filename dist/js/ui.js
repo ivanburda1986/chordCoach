@@ -14,6 +14,7 @@ const UICtrl = (function () {
     hideSettingsBtn: document.getElementById("settings-hide-btn"),
     settingsOverlay: document.getElementById("settings-overlay"),
     answerSetContainer: document.getElementById('chord-options'),
+    allSettingsChords: document.getElementsByClassName('individual-chords'),
   };
 
   //Public methods
@@ -141,17 +142,6 @@ const UICtrl = (function () {
       Array.from(document.getElementsByClassName('individual-chord')).forEach((chord) => {
         chord.children[0].style.visibility = "hidden";
       });
-    },
-    highlightChordSetup: function (clickedChord) {
-      if (clickedChord.target.parentNode.classList.contains("individual-chord")) {
-        if (clickedChord.target.parentNode.children[0].checked) {
-          clickedChord.target.parentNode.classList.add("selected");
-          DataCtrl.getAppData().currentlyNumberChordsForTraining += 1;
-        } else {
-          clickedChord.target.parentNode.classList.remove("selected");
-          DataCtrl.getAppData().currentlyNumberChordsForTraining -= 1;
-        }
-      }
     },
     displayAnswerSet: function () {
       UISelectors.answerSetContainer.innerHTML = '';

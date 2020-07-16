@@ -10,7 +10,7 @@ const DataCtrl = (function () {
     appState: null,
     minChordsForTraining: 3,
     maxChordsForTraining: 10,
-    currentlyNumberChordsForTraining: null
+    currentlyNumberChordsForTraining: 0,
   };
 
   const allChords = {

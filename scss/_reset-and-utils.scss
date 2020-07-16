@@ -156,3 +156,14 @@ label {
   height: 2.2rem;
   padding: 5px;
 }
+
+//ANIMATIONS
+.animationEnabled {
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
+
+.anim-pop-in-out {
+  transform: scale(1.5);
+}

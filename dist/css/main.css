@@ -117,6 +117,14 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   height: 2.2rem;
   padding: 5px; }
 
+.animationEnabled {
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out; }
+
+.anim-pop-in-out {
+  transform: scale(1.5); }
+
 #settings-header {
   flex: 1;
   padding-top: 1rem; }
@@ -296,9 +304,12 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   color: #D0E1F9;
   background: #4D648D; }
   .chord-option input {
-    visibility: hidden;
-    opacity: 1;
-    position: absolute; }
+    visibility: visible;
+    opacity: 0;
+    position: absolute;
+    border: 0px;
+    width: 5rem;
+    height: 5rem; }
   .chord-option.selected {
     color: #023147;
     background: orange; }

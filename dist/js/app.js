@@ -10,13 +10,13 @@ const App = (function (DataCtrl, UICtrl) {
 
     //Save answer and play a chord on demand
     document.getElementById('chord-options').addEventListener('click', (e) => {
-      if (e.target.classList.contains("chord-option") && e.target.parentNode.children[0].disabled != true) {
+      if (e.target.disabled != true) {
         //Request saving the answer
-        saveAnswer(e.target.children[0].value);
+        saveAnswer(e.target.value);
         //Request playing the chord
-        playChordOnDemand(e.target.children[0].value);
+        playChordOnDemand(e.target.value);
         //Hihglight the selected answer
-        UICtrl.highlightSelectedAnswer(e.target);
+        UICtrl.highlightSelectedAnswer(e.target.parentNode);
         //Request management of the UI elements
         UICtrl.makeAnswerOptionsInactive();
         UICtrl.makeConfirmBtnInactive();
@@ -45,7 +45,6 @@ const App = (function (DataCtrl, UICtrl) {
 
     //Hihglighting chords + trigger "save settings" validation when selecting chords in settings
     document.getElementById('individual-chords').addEventListener('click', (e) => {
-
       if (DataCtrl.getAppData().currentlyNumberChordsForTraining < DataCtrl.getAppData().maxChordsForTraining) {
         if (e.target.checked === true) {
           DataCtrl.getAppData().currentlyNumberChordsForTraining += 1;
@@ -172,6 +171,7 @@ const App = (function (DataCtrl, UICtrl) {
     if (DataCtrl.getAppData().selectedAnswer === DataCtrl.getAppData().currentChord) {
       DataCtrl.getAppData().correctTotal += 1;
       UICtrl.updateCorrectDisplayTotal();
+      UICtrl.triggerAnimation("#correct-display", 'anim-pop-in-out');
       DataCtrl.getAppData().remainingTotal -= 1;
       UICtrl.updateRemainingDisplayTotal();
       UICtrl.makeAnswerOptionsInactive();
@@ -182,6 +182,7 @@ const App = (function (DataCtrl, UICtrl) {
     } else {
       DataCtrl.getAppData().wrongTotal += 1;
       UICtrl.updateWrongDisplayTotal();
+      UICtrl.triggerAnimation("#wrong-display", 'anim-pop-in-out');
       DataCtrl.getAppData().remainingTotal -= 1;
       UICtrl.updateRemainingDisplayTotal();
       UICtrl.makeAnswerOptionsInactive();
@@ -272,6 +273,7 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.makeConfirmBtnInactive();
       UICtrl.makeRestartBtnInactive();
       UICtrl.makeAnswerOptionsInactive();
+      UICtrl.hideSettings();
       loadEventListeners();
     },
     restart: function () {

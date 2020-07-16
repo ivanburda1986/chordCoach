@@ -14,7 +14,7 @@ const UICtrl = (function () {
     hideSettingsBtn: document.getElementById("settings-hide-btn"),
     settingsOverlay: document.getElementById("settings-overlay"),
     answerSetContainer: document.getElementById('chord-options'),
-    allSettingsChords: document.getElementsByClassName('individual-chords'),
+    allSettingsChords: document.getElementById('individual-chords'),
   };
 
   //Public methods
@@ -153,5 +153,11 @@ const UICtrl = (function () {
         document.getElementById("chord-options").appendChild(div);
       });
     },
+    triggerAnimation: function (target, animationName) {
+      document.querySelector(target).classList.add(`${animationName}`);
+      setTimeout(() => {
+        document.querySelector(target).classList.remove(`${animationName}`);
+      }, 500);
+    }
   };
 })();

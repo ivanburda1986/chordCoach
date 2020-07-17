@@ -125,6 +125,9 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
 .anim-pop-in-out {
   transform: scale(1.5); }
 
+.rotate {
+  transform: rotate(360deg); }
+
 #settings-header {
   flex: 1;
   padding-top: 1rem; }
@@ -189,7 +192,7 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
       background: orange; }
     #custom-chord-selection .individual-chord input {
       visibility: visible;
-      opacity: 0.5;
+      opacity: 0;
       position: absolute;
       cursor: pointer;
       z-index: 2;
@@ -309,7 +312,8 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
     position: absolute;
     border: 0px;
     width: 5rem;
-    height: 5rem; }
+    height: 5rem;
+    cursor: pointer; }
   .chord-option.selected {
     color: #023147;
     background: orange; }

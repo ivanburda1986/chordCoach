@@ -27,7 +27,7 @@ const App = (function (DataCtrl, UICtrl) {
           UICtrl.makeConfirmBtnActive();
           UICtrl.makeRestartBtnActive();
           UICtrl.makeMainBtnActive();
-        }, 4000);
+        }, 2000);
       }
     });
 
@@ -74,24 +74,6 @@ const App = (function (DataCtrl, UICtrl) {
           });
         }
       }
-
-      // DataCtrl.getAppData().currentlyNumberChordsForTraining += 1;
-      // UICtrl.highlightChordSetup(e);
-      // 
-      // highlightChordSetup: function (clickedChord) {
-      //   if (clickedChord.target.parentNode.classList.contains("individual-chord")) {
-      //     if (clickedChord.target.parentNode.children[0].checked === true) {
-      //       clickedChord.target.parentNode.classList.add("selected");
-      //       console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
-      //     } else if (clickedChord.target.parentNode.children[0].checked === true) {
-      //       clickedChord.target.parentNode.classList.remove("selected");
-      //       console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
-      //     }
-      //   }
-      // },
-
-
-
     });
 
     //Save chords selected in settings
@@ -123,8 +105,9 @@ const App = (function (DataCtrl, UICtrl) {
           DataCtrl.getAppData().appState = "repeat";
           UICtrl.setMainBtnState();
           UICtrl.makeRestartBtnActive();
+          UICtrl.triggerAnimation(".primary-action-button", 'rotate');
           UICtrl.makeAnswerOptionsActive();
-        }, 4000);
+        }, 2000);
         break;
       case "repeat":
         DataCtrl.getAppData().appState = "playing";
@@ -155,7 +138,6 @@ const App = (function (DataCtrl, UICtrl) {
 
   //Play a chord on demand
   const playChordOnDemand = function (chordName) {
-    console.log(chordName);
     DataCtrl.getSoundSelectors().chordOnDemand.src = `/dist/sounds/chords/${DataCtrl.getChordSoundFileName(chordName)}`;
     DataCtrl.getSoundSelectors().chordOnDemand.play();
   };

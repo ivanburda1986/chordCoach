@@ -8,7 +8,7 @@ body {
   justify-content: center;
   align-items: center;
   background: #023147;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   overflow-x: hidden; }
 
 a {
@@ -26,7 +26,7 @@ label {
   width: 0%;
   margin: 50%; }
 
-label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-hide-btn, .custom-chord-selection-headline, #custom-chord-selection, #custom-chord-selection .individual-chord, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #copyright {
+label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-hide-btn, .custom-chord-selection-headline, #custom-chord-selection, #custom-chord-selection .individual-chord, #settings-difficulty-buttons, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #copyright {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -37,17 +37,23 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   width: 100vw;
   max-width: 1024px;
   min-height: 100vh;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  margin-top: 10px;
+  margin-bottom: 10px; }
 
 .container {
   flex: 1;
   flex-direction: row; }
 
+.app-container, #custom-chord-selection #individual-chords {
+  border: 5px solid #054766;
+  border-radius: 10px; }
+
 #show-feedback-btn, #show-settings-btn {
   background: none;
   border: none;
   height: 100%;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   padding: 0.5rem;
   color: #D0E1F9;
   outline: none;
@@ -75,6 +81,12 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   .controlsBtn.restart {
     background: tomato;
     color: #023147; }
+  .controlsBtn.hardcore-on {
+    color: #023147;
+    background: tomato; }
+  .controlsBtn.hardcore-off {
+    color: #D0E1F9;
+    background: #4D648D; }
 
 #settings-overlay {
   display: flex;
@@ -125,8 +137,10 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
 .anim-pop-in-out {
   transform: scale(1.5); }
 
-.rotate {
-  transform: rotate(360deg); }
+.playing {
+  -webkit-box-shadow: 0px 0px 50px 20px #257499;
+  -moz-box-shadow: 0px 0px 50px 20px #257499;
+  box-shadow: 0px 0px 50px 20px #257499; }
 
 #settings-header {
   flex: 1;
@@ -169,8 +183,6 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   width: 100%; }
   #custom-chord-selection #individual-chords {
     padding: 2rem 1rem;
-    border: 5px solid #054766;
-    border-radius: 10px;
     color: #023147;
     position: relative; }
   #custom-chord-selection .individual-chord {
@@ -201,14 +213,24 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
       height: 85%;
       width: 85%; }
 
-#settings-buttons-container {
+#settings-difficulty {
   display: flex;
   flex: 2;
-  justify-content: space-around;
-  align-items: flex-start;
+  flex-direction: column;
+  margin: 0 auto;
+  height: auto;
+  width: 90%; }
+
+#settings-difficulty-buttons {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   width: 100%;
-  padding-top: 1rem;
-  padding-bottom: 2rem; }
+  padding: 2rem 1rem;
+  border: 5px solid #054766;
+  border-radius: 10px; }
+  #settings-difficulty-buttons p {
+    padding: 1rem; }
 
 .top-padding {
   min-height: 7.5vh;
@@ -263,9 +285,9 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
 #progress-container {
   flex-direction: row;
   justify-content: space-between;
-  width: 90%;
-  margin: 0 auto;
-  padding-bottom: 3rem; }
+  width: 100%;
+  padding-bottom: 3rem;
+  padding: 2rem 1rem; }
 
 .training-status-icon {
   width: 5rem;

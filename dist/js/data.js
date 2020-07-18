@@ -11,6 +11,8 @@ const DataCtrl = (function () {
     minChordsForTraining: 3,
     maxChordsForTraining: 10,
     currentlyNumberChordsForTraining: 0,
+    hardcore: false,
+    defaultTotal : 10,
   };
 
   const allChords = {
@@ -46,6 +48,8 @@ const DataCtrl = (function () {
   const soundSelectors = {
     currentChord: document.getElementById('currentChord'),
     chordOnDemand: document.getElementById('chordOnDemand'),
+    evaluation: document.getElementById('evaluation'),
+    trainingEnd: document.getElementById('trainingEnd'),
   }
 
   return {
@@ -54,10 +58,11 @@ const DataCtrl = (function () {
     },
     setDefaultAppData: function () {
       appData.correctTotal = 0;
-      appData.remainingTotal = 3;
+      appData.remainingTotal = appData.defaultTotal;
       appData.wrongTotal = 0;
       appData.loadedChords = ["A", "C", "D", "E", "G"];
       appData.currentChord = appData.loadedChords[Math.floor(Math.random() * appData.loadedChords.length)];
+      appData.currentlyNumberChordsForTraining = appData.loadedChords.length;
       appData.appState = "readyToStart";
     },
     getAllChordNames: function () {

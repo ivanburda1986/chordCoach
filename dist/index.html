@@ -29,7 +29,12 @@
   <audio id="chordOnDemand">
     <source src="sounds/nobeep.mp3" type="audio/mpeg" />
   </audio>
-
+  <audio id="evaluation">
+    <source src="sounds/nobeep.mp3" type="audio/mpeg" />
+  </audio>
+  <audio id="trainingEnd">
+    <source src="sounds/nobeep.mp3" type="audio/mpeg" />
+  </audio>
   <div id="settings-overlay" class="hide">
     <!-- Top padding -->
     <div class="top-padding"></div>
@@ -46,69 +51,78 @@
       <!-- Individuals -->
       <div id="custom-chord-selection">
         <div class="custom-chord-selection-headline setup-btn-label">
-          <p>Pick from 3 to 10 chords to practice</p>
+          <p id="settings-headline-text">Pick from 3 to 10 chords to practice</p>
         </div>
         <div id="individual-chords">
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="A" id="a" /><label for="a"
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="A" id="A" /><label for="A"
               class="individual-chord-label">A</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="C" id="c" /><label for="c"
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="C" id="C" /><label for="C"
               class="individual-chord-label">C</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="D" id="d" /><label for="d"
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="D" id="D" /><label for="D"
               class="individual-chord-label">D</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="E" id="e" /><label for="e"
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="E" id="E" /><label for="E"
               class="individual-chord-label">E</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="G" id="g" /><label for="g"
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="G" id="G" /><label for="G"
               class="individual-chord-label">G</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Amin" id="amin" /><label
-              for="amin" class="individual-chord-label">Amin</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Dmin" id="dmin" /><label
-              for="dmin" class="individual-chord-label">Dmin</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Emin" id="emin" /><label
-              for="emin" class="individual-chord-label">Emin</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="A7" id="a7" /><label
-              for="a7" class="individual-chord-label">A7</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="B7" id="b7" /><label
-              for="b7" class="individual-chord-label">B7</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="C7" id="c7" /><label
-              for="c7" class="individual-chord-label">C7</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="D7" id="d7" /><label
-              for="d7" class="individual-chord-label">D7</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="E7" id="e7" /><label
-              for="e7" class="individual-chord-label">E7</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="G7" id="g7" /><label
-              for="g7" class="individual-chord-label">G7</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Asus4" id="asus4" /><label
-              for="asus4" class="individual-chord-label">Asus4</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Asus2" id="asus2" /><label
-              for="asus2" class="individual-chord-label">Asus2</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Dsus4" id="dsus4" /><label
-              for="dsus4" class="individual-chord-label">Dsus4</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Dsus2" id="dsus2" /><label
-              for="dsus2" class="individual-chord-label">Dsus2</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Esus4" id="esus4" /><label
-              for="esus4" class="individual-chord-label">Esus4</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="F" id="f" /><label for="f"
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Amin" id="Amin" /><label
+              for="Amin" class="individual-chord-label">Amin</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Dmin" id="Dmin" /><label
+              for="Dmin" class="individual-chord-label">Dmin</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Emin" id="Emin" /><label
+              for="Emin" class="individual-chord-label">Emin</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="A7" id="A7" /><label
+              for="A7" class="individual-chord-label">A7</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="B7" id="B7" /><label
+              for="B7" class="individual-chord-label">B7</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="C7" id="C7" /><label
+              for="C7" class="individual-chord-label">C7</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="D7" id="D7" /><label
+              for="D7" class="individual-chord-label">D7</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="E7" id="E7" /><label
+              for="E7" class="individual-chord-label">E7</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="G7" id="G7" /><label
+              for="G7" class="individual-chord-label">G7</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Asus4" id="Asus4" /><label
+              for="Asus4" class="individual-chord-label">Asus4</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Asus2" id="Asus2" /><label
+              for="Asus2" class="individual-chord-label">Asus2</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Dsus4" id="Dsus4" /><label
+              for="Dsus4" class="individual-chord-label">Dsus4</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Dsus2" id="Dsus2" /><label
+              for="Dsus2" class="individual-chord-label">Dsus2</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Esus4" id="Esus4" /><label
+              for="Esus4" class="individual-chord-label">Esus4</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="F" id="F" /><label for="F"
               class="individual-chord-label">F</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="FMaj7" id="fmaj7" /><label
-              for="fmaj7" class="individual-chord-label">FMaj7</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="C/G" id="cg" /><label
-              for="cg" class="individual-chord-label">C/G</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="D/F#" id="df" /><label
-              for="df" class="individual-chord-label">D/F#</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="G/B" id="gb" /><label
-              for="gb" class="individual-chord-label">G/B</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Big G" id="bigg" /><label
-              for="bigg" class="individual-chord-label">Big G</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Rock G" id="rockg" /><label
-              for="rockg" class="individual-chord-label">Rock G</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Folk G" id="folkg" /><label
-              for="folkg" class="individual-chord-label">Folk G</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="FMaj7" id="FMaj7" /><label
+              for="FMaj7" class="individual-chord-label">FMaj7</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="C/G" id="C/G" /><label
+              for="C/G" class="individual-chord-label">C/G</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="D/F#" id="D/F#" /><label
+              for="D/F#" class="individual-chord-label">D/F#</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="G/B" id="G/B" /><label
+              for="G/B" class="individual-chord-label">G/B</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Big G" id="Big G" /><label
+              for="Big G" class="individual-chord-label">Big G</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Rock G" id="Rock G" /><label
+              for="Rock G" class="individual-chord-label">Rock G</label></div>
+          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Folk G" id="Folk G" /><label
+              for="Folk G" class="individual-chord-label">Folk G</label></div>
         </div>
       </div>
     </div>
     <!-- Settings: Difficulty -->
-    <div id="settings-buttons-container" class="container">
-      <p>difficulty will be setup here</p>
+    <div id="settings-difficulty">
+      <div class="custom-chord-selection-headline setup-btn-label">
+        <p>Difficulty</p>
+      </div>
+      <div id="settings-difficulty-buttons">
+        <button id="hardcore-btn" class="controlsBtn hardcore-off">
+          <i class="fas fa-bolt"></i>
+          Hardcore
+        </button>
+<p>Sounds will not be played when selecting an answer. You need to know what various chords sound like and select the correct one.</p>
+      </div>
     </div>
     <!-- Bottom padding -->
     <div class="bottom-padding"></div>
@@ -145,9 +159,11 @@
           </div>
         </div>
         <div id="primary-action">
-          <button class="primary-action-button">
-            <i id="primary-action-graphics" class="fas fa-music"></i>
-            <p id="primary-action-text">Start</p>
+          <button class="primary-action-button animationEnabled">
+            <div class="primary-button-content animationEnabled">
+              <i id="primary-action-graphics" class="fas fa-music"></i>
+              <p id="primary-action-text">Start</p>
+            </div>
           </button>
         </div>
       </div>

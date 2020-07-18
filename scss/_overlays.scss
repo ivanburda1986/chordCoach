@@ -70,12 +70,10 @@
   #individual-chords {
     //background: $inactiveBackground;
     padding: 2rem 1rem;
-    border: 5px solid $inactiveBackground;
-    border-radius: 10px;
+    @extend %border;
     color: $dark;
     position: relative;
   }
-
 
   .individual-chord {
     display: inline-block;
@@ -109,19 +107,31 @@
       height: 85%;
       width: 85%;
     }
-
-
   }
-
 }
 
-//Settings: Interval, Countdown setup
-#settings-buttons-container {
+//Settings:
+#settings-difficulty {
   display: flex;
   flex: 2;
-  justify-content: space-around;
-  align-items: flex-start;
+  flex-direction: column;
+
+  margin: 0 auto;
+  height: auto;
+  width: 90%;
+}
+
+#settings-difficulty-buttons {
+  @extend %flex-justify-align-center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   width: 100%;
-  padding-top: 1rem;
-  padding-bottom: 2rem;
+  padding: 2rem 1rem;
+  border: 5px solid $inactiveBackground;
+  border-radius: 10px;
+
+  p {
+    padding: 1rem;
+  }
 }

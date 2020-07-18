@@ -4,84 +4,113 @@ const App = (function (DataCtrl, UICtrl) {
     //Use the public method of UICtrl to get available UI selectors for further re-use in the APP controller here
     const UISelectors = UICtrl.getSelectors();
 
-
     //Execute the primary action
-    UISelectors.primaryActionBtn.addEventListener('click', executePrimaryAction);
+    UISelectors.primaryActionBtn.addEventListener(
+      "click",
+      executePrimaryAction
+    );
 
     //Save answer and play a chord on demand
-    document.getElementById('chord-options').addEventListener('click', (e) => {
+    document.getElementById("chord-options").addEventListener("click", (e) => {
       if (e.target.disabled != true) {
         //Request saving the answer
         saveAnswer(e.target.value);
-        //Request playing the chord
-        playChordOnDemand(e.target.value);
         //Hihglight the selected answer
         UICtrl.highlightSelectedAnswer(e.target.parentNode);
-        //Request management of the UI elements
-        UICtrl.makeAnswerOptionsInactive();
-        UICtrl.makeConfirmBtnInactive();
-        UICtrl.makeRestartBtnInactive();
-        UICtrl.makeMainBtnInactive();
-        setTimeout(function () {
-          UICtrl.makeAnswerOptionsActive();
-          UICtrl.makeConfirmBtnActive();
-          UICtrl.makeRestartBtnActive();
-          UICtrl.makeMainBtnActive();
-        }, 2000);
+
+        if (DataCtrl.getAppData().hardcore === false) {
+          //Request playing the chord
+          playChordOnDemand(e.target.value);
+          //Request management of the UI elements
+          UICtrl.makeAnswerOptionsInactive();
+          UICtrl.makeConfirmBtnInactive();
+          UICtrl.makeRestartBtnInactive();
+          UICtrl.makeMainBtnInactive();
+          setTimeout(function () {
+            UICtrl.makeAnswerOptionsActive();
+            UICtrl.makeConfirmBtnActive();
+            UICtrl.makeRestartBtnActive();
+            UICtrl.makeMainBtnActive();
+          }, 2000);
+        }
       }
     });
 
     //Evaluate (Confirm) the answer
-    UISelectors.confirmBtn.addEventListener('click', evaluateAnswer);
+    UISelectors.confirmBtn.addEventListener("click", evaluateAnswer);
 
     //Restart the training
-    UISelectors.restartBtn.addEventListener('click', restartTraining);
+    UISelectors.restartBtn.addEventListener("click", restartTraining);
 
     //Show settings
-    UISelectors.showSettingsBtn.addEventListener('click', UICtrl.showSettings);
+    UISelectors.showSettingsBtn.addEventListener("click", UICtrl.showSettings);
 
     //Hide settings
-    UISelectors.hideSettingsBtn.addEventListener('click', UICtrl.hideSettings);
+    UISelectors.hideSettingsBtn.addEventListener("click", UICtrl.hideSettings);
 
     //Hihglighting chords + trigger "save settings" validation when selecting chords in settings
-    document.getElementById('individual-chords').addEventListener('click', (e) => {
-      if (DataCtrl.getAppData().currentlyNumberChordsForTraining < DataCtrl.getAppData().maxChordsForTraining) {
-        if (e.target.checked === true) {
-          DataCtrl.getAppData().currentlyNumberChordsForTraining += 1;
-          validateChordSettings();
-          e.target.parentNode.classList.add("selected");
-          console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
-        } else if (e.target.checked === false) {
-          DataCtrl.getAppData().currentlyNumberChordsForTraining -= 1;
-          validateChordSettings();
-          e.target.parentNode.classList.remove("selected");
-          console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
-        }
-      }
-      if (DataCtrl.getAppData().currentlyNumberChordsForTraining === DataCtrl.getAppData().maxChordsForTraining) {
-        console.log('max num of chords reached');
-        Array.from(document.getElementsByClassName('individual-chord')).forEach((item) => {
-          if (item.children[0].checked === false) {
-            item.children[0].disabled = true;
+    document
+      .getElementById("individual-chords")
+      .addEventListener("click", (e) => {
+        if (
+          DataCtrl.getAppData().currentlyNumberChordsForTraining <
+          DataCtrl.getAppData().maxChordsForTraining
+        ) {
+          if (e.target.checked === true) {
+            DataCtrl.getAppData().currentlyNumberChordsForTraining += 1;
+            validateChordSettings();
+            e.target.parentNode.classList.add("selected");
+            console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
+          } else if (e.target.checked === false) {
+            DataCtrl.getAppData().currentlyNumberChordsForTraining -= 1;
+            validateChordSettings();
+            e.target.parentNode.classList.remove("selected");
+            console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
           }
-        });
-        if (e.target.checked === false) {
-          DataCtrl.getAppData().currentlyNumberChordsForTraining -= 1;
-          e.target.parentNode.classList.remove("selected");
-          console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
-          Array.from(document.getElementsByClassName('individual-chord')).forEach((item) => {
-            item.children[0].disabled = false;
-          });
         }
-      }
-    });
+        if (
+          DataCtrl.getAppData().currentlyNumberChordsForTraining ===
+          DataCtrl.getAppData().maxChordsForTraining
+        ) {
+          console.log("max num of chords reached");
+          Array.from(
+            document.getElementsByClassName("individual-chord")
+          ).forEach((item) => {
+            if (item.children[0].checked === false) {
+              item.children[0].disabled = true;
+            }
+          });
+          if (e.target.checked === false) {
+            DataCtrl.getAppData().currentlyNumberChordsForTraining -= 1;
+            e.target.parentNode.classList.remove("selected");
+            console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
+            Array.from(
+              document.getElementsByClassName("individual-chord")
+            ).forEach((item) => {
+              item.children[0].disabled = false;
+            });
+          }
+        }
+      });
 
     //Save chords selected in settings
-    UISelectors.hideSettingsBtn.addEventListener('click', (e) => {
+    UISelectors.hideSettingsBtn.addEventListener("click", (e) => {
       saveChordSetup();
       restartTraining();
     });
 
+    //Turn on/off the hardcore mode
+    UISelectors.hardcoreBtn.addEventListener("click", (e) => {
+      if (DataCtrl.getAppData().hardcore === false) {
+        DataCtrl.getAppData().hardcore = true;
+        UISelectors.hardcoreBtn.classList.remove("hardcore-off");
+        UISelectors.hardcoreBtn.classList.add("hardcore-on");
+      } else {
+        DataCtrl.getAppData().hardcore = false;
+        UISelectors.hardcoreBtn.classList.remove("hardcore-on");
+        UISelectors.hardcoreBtn.classList.add("hardcore-off");
+      }
+    });
   };
 
   //Execute the primary action
@@ -104,8 +133,8 @@ const App = (function (DataCtrl, UICtrl) {
         setTimeout(function () {
           DataCtrl.getAppData().appState = "repeat";
           UICtrl.setMainBtnState();
+          UICtrl.makeConfirmBtnActive();
           UICtrl.makeRestartBtnActive();
-          UICtrl.triggerAnimation(".primary-action-button", 'rotate');
           UICtrl.makeAnswerOptionsActive();
         }, 2000);
         break;
@@ -118,27 +147,38 @@ const App = (function (DataCtrl, UICtrl) {
         UICtrl.makeAnswerOptionsInactive();
         break;
       case "finished-victory":
+        setTimeout(function () {
+          DataCtrl.getSoundSelectors().evaluation.src = `/dist/sounds/victory.mp3`;
+          DataCtrl.getSoundSelectors().evaluation.play();
+        }, 1100);
         UICtrl.setMainBtnState();
         break;
       case "finished-standard":
+        setTimeout(function () {
+          DataCtrl.getSoundSelectors().evaluation.src = `/dist/sounds/lost.mp3`;
+          DataCtrl.getSoundSelectors().evaluation.play();
+        }, 1100);
         UICtrl.setMainBtnState();
         break;
     }
-  }
-
-
+  };
 
   //Play the current chord
   const playCurrentChord = function (e) {
-    DataCtrl.getSoundSelectors().currentChord.src = `/dist/sounds/chords/${DataCtrl.getChordSoundFileName(DataCtrl.getAppData().currentChord)}`;
+    DataCtrl.getSoundSelectors().currentChord.src = `/dist/sounds/chords/${DataCtrl.getChordSoundFileName(
+      DataCtrl.getAppData().currentChord
+    )}`;
     DataCtrl.getSoundSelectors().currentChord.play();
+    UICtrl.triggerAnimation(".primary-action-button", "playing");
     executePrimaryAction();
     //e.preventDefault();
   };
 
   //Play a chord on demand
   const playChordOnDemand = function (chordName) {
-    DataCtrl.getSoundSelectors().chordOnDemand.src = `/dist/sounds/chords/${DataCtrl.getChordSoundFileName(chordName)}`;
+    DataCtrl.getSoundSelectors().chordOnDemand.src = `/dist/sounds/chords/${DataCtrl.getChordSoundFileName(
+      chordName
+    )}`;
     DataCtrl.getSoundSelectors().chordOnDemand.play();
   };
 
@@ -149,22 +189,29 @@ const App = (function (DataCtrl, UICtrl) {
 
   //Evaluate the answer
   const evaluateAnswer = function () {
-    //If answer correct: 
-    if (DataCtrl.getAppData().selectedAnswer === DataCtrl.getAppData().currentChord) {
+    //If answer correct:
+    if (
+      DataCtrl.getAppData().selectedAnswer ===
+      DataCtrl.getAppData().currentChord
+    ) {
       DataCtrl.getAppData().correctTotal += 1;
+      DataCtrl.getSoundSelectors().evaluation.src = `/dist/sounds/correct.mp3`;
+      DataCtrl.getSoundSelectors().evaluation.play();
       UICtrl.updateCorrectDisplayTotal();
-      UICtrl.triggerAnimation("#correct-display", 'anim-pop-in-out');
+      UICtrl.triggerAnimation("#correct-display", "anim-pop-in-out");
       DataCtrl.getAppData().remainingTotal -= 1;
       UICtrl.updateRemainingDisplayTotal();
       UICtrl.makeAnswerOptionsInactive();
       UICtrl.makeConfirmBtnInactive();
       UICtrl.highlightCorrectAnswer();
       decideNextStep();
-      //If answer incorrect: 
+      //If answer incorrect:
     } else {
       DataCtrl.getAppData().wrongTotal += 1;
+      DataCtrl.getSoundSelectors().evaluation.src = `/dist/sounds/wrong.mp3`;
+      DataCtrl.getSoundSelectors().evaluation.play();
       UICtrl.updateWrongDisplayTotal();
-      UICtrl.triggerAnimation("#wrong-display", 'anim-pop-in-out');
+      UICtrl.triggerAnimation("#wrong-display", "anim-pop-in-out");
       DataCtrl.getAppData().remainingTotal -= 1;
       UICtrl.updateRemainingDisplayTotal();
       UICtrl.makeAnswerOptionsInactive();
@@ -201,9 +248,11 @@ const App = (function (DataCtrl, UICtrl) {
   //Restart the training
   const restartTraining = function () {
     DataCtrl.getAppData().correctTotal = 0;
-    DataCtrl.getAppData().remainingTotal = 3;
+    DataCtrl.getAppData().remainingTotal = DataCtrl.getAppData().defaultTotal;
     DataCtrl.getAppData().wrongTotal = 0;
-    DataCtrl.getAppData().currentChord = DataCtrl.getAppData().loadedChords[Math.floor(Math.random() * DataCtrl.getAppData().loadedChords.length)];
+    DataCtrl.getAppData().currentChord = DataCtrl.getAppData().loadedChords[
+      Math.floor(Math.random() * DataCtrl.getAppData().loadedChords.length)
+    ];
     DataCtrl.getAppData().selectedAnswer = null;
     DataCtrl.getAppData().appState = "readyToStart";
     UICtrl.updateWrongDisplayTotal();
@@ -222,23 +271,27 @@ const App = (function (DataCtrl, UICtrl) {
   //Save chord setup
   const saveChordSetup = function () {
     DataCtrl.getAppData().loadedChords = [];
-    document.getElementsByName('individualChord').forEach((chord) => {
+    document.getElementsByName("individualChord").forEach((chord) => {
       if (chord.checked) {
         DataCtrl.getAppData().loadedChords.push(chord.value);
       }
-    })
+    });
   };
 
   //Settings - min/max chords validation
   const validateChordSettings = function () {
     let appData = DataCtrl.getAppData();
-    if (appData.currentlyNumberChordsForTraining >= appData.minChordsForTraining && appData.currentlyNumberChordsForTraining <= appData.maxChordsForTraining) {
-      UICtrl.getSelectors().hideSettingsBtn.classList.add('enabled');
-      UICtrl.getSelectors().hideSettingsBtn.classList.remove('disabled');
+    if (
+      appData.currentlyNumberChordsForTraining >=
+        appData.minChordsForTraining &&
+      appData.currentlyNumberChordsForTraining <= appData.maxChordsForTraining
+    ) {
+      UICtrl.getSelectors().hideSettingsBtn.classList.add("enabled");
+      UICtrl.getSelectors().hideSettingsBtn.classList.remove("disabled");
       UICtrl.getSelectors().hideSettingsBtn.disabled = false;
     } else {
-      UICtrl.getSelectors().hideSettingsBtn.classList.remove('enabled');
-      UICtrl.getSelectors().hideSettingsBtn.classList.add('disabled');
+      UICtrl.getSelectors().hideSettingsBtn.classList.remove("enabled");
+      UICtrl.getSelectors().hideSettingsBtn.classList.add("disabled");
       UICtrl.getSelectors().hideSettingsBtn.disabled = true;
     }
   };
@@ -255,13 +308,16 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.makeConfirmBtnInactive();
       UICtrl.makeRestartBtnInactive();
       UICtrl.makeAnswerOptionsInactive();
+      UICtrl.highlightSettingsSelection();
+      validateChordSettings();
+      UICtrl.displaySettingsHeadline();
       UICtrl.hideSettings();
       loadEventListeners();
     },
     restart: function () {
       restartTraining();
-    }
-  }
+    },
+  };
 })(DataCtrl, UICtrl);
 
 //Initialize the app

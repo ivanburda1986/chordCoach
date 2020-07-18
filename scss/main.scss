@@ -77,15 +77,15 @@
   }
 }
 
-
-
 #progress-container {
   @extend %flex-justify-align-center;
+
   flex-direction: row;
   justify-content: space-between;
-  width: 90%;
-  margin: 0 auto;
+  width: 100%;
+  //margin: 0 auto;
   padding-bottom: 3rem;
+  padding: 2rem 1rem;
 }
 
 .training-status-icon {
@@ -149,7 +149,6 @@
     width: 5rem;
     height: 5rem;
     cursor: pointer;
-
   }
 
   &.selected {
@@ -193,11 +192,8 @@
   }
 }
 
-
 #confirm-btn {
   margin-right: 2rem;
 }
-
-#restart-btn {}
 
 @import "responsive";

@@ -45,7 +45,7 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   flex: 1;
   flex-direction: row; }
 
-.app-container, #custom-chord-selection #individual-chords {
+#custom-chord-selection #individual-chords, #middle-section {
   border: 5px solid #054766;
   border-radius: 10px; }
 
@@ -248,8 +248,7 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   padding-bottom: 1rem;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto;
-  border-bottom: 5px solid #054766; }
+  margin: 0 auto; }
 
 #primary-action-container {
   min-height: 27.5vh; }

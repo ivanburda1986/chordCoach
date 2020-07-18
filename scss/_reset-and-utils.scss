@@ -42,7 +42,6 @@ label {
 
 //UTILITIES
 .app-container {
-  @extend %border;
   display: flex;
   flex-direction: column;
   width: 100vw;

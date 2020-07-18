@@ -24,7 +24,6 @@
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  border-bottom: $borderBasic;
 }
 
 #show-feedback-btn {
@@ -33,6 +32,11 @@
 
 #show-settings-btn {
   @extend %defaultBtn;
+}
+
+//MIDDLE SECTION
+#middle-section {
+  @extend %border;
 }
 
 //PRIMARY ACTION

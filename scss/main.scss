@@ -17,11 +17,14 @@
 //TOP NAV
 #top-navigation {
   display: flex;
-  width: 90%;
+  width: 100%;
   min-height: 10vh;
+  padding: 0rem 5%;
+  padding-bottom: 1rem;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
+  border-bottom: $borderBasic;
 }
 
 #show-feedback-btn {

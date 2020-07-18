@@ -12,11 +12,11 @@ body {
   overflow-x: hidden; }
 
 a {
-  color: #D0E1F9;
+  color: #d0e1f9;
   text-decoration: none; }
 
 a:visited {
-  color: #D0E1F9; }
+  color: #d0e1f9; }
 
 a:active {
   color: tomato; }
@@ -55,7 +55,7 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   height: 100%;
   font-size: 2.5rem;
   padding: 0.5rem;
-  color: #D0E1F9;
+  color: #d0e1f9;
   outline: none;
   cursor: pointer; }
   #show-feedback-btn:hover i, #show-settings-btn:hover i {
@@ -69,7 +69,7 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   border-radius: 10px;
   text-transform: uppercase;
   font-weight: 700;
-  background: #D0E1F9;
+  background: #d0e1f9;
   color: #023147;
   cursor: pointer; }
   .controlsBtn.inactive {
@@ -85,8 +85,8 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
     color: #023147;
     background: tomato; }
   .controlsBtn.hardcore-off {
-    color: #D0E1F9;
-    background: #4D648D; }
+    color: #d0e1f9;
+    background: #4d648d; }
 
 #settings-overlay {
   display: flex;
@@ -99,7 +99,7 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   max-width: 1024px;
   background: #023147;
   visibility: vissible;
-  color: #D0E1F9;
+  color: #d0e1f9;
   margin: 0 auto; }
   .show#settings-overlay {
     visibility: visible; }
@@ -197,8 +197,8 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
     font-size: 1rem;
     text-align: center;
     cursor: pointer;
-    color: #D0E1F9;
-    background: #4D648D; }
+    color: #d0e1f9;
+    background: #4d648d; }
     #custom-chord-selection .individual-chord.selected {
       color: #023147;
       background: orange; }
@@ -242,11 +242,14 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
 
 #top-navigation {
   display: flex;
-  width: 90%;
+  width: 100%;
   min-height: 10vh;
+  padding: 0rem 5%;
+  padding-bottom: 1rem;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto; }
+  margin: 0 auto;
+  border-bottom: 5px solid #054766; }
 
 #primary-action-container {
   min-height: 27.5vh; }
@@ -274,10 +277,10 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   background: none;
   outline: none;
   border-radius: 100px;
-  border: 0.5rem solid #D0E1F9;
+  border: 0.5rem solid #d0e1f9;
   padding: 1rem;
   font-size: 3rem;
-  color: #D0E1F9;
+  color: #d0e1f9;
   cursor: pointer; }
   .primary-action-button p {
     font-size: 1.5rem; }
@@ -301,7 +304,7 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   color: tomato; }
 
 #remaining-display {
-  color: #D0E1F9; }
+  color: #d0e1f9; }
 
 #correct-display {
   color: lightgreen; }
@@ -326,8 +329,8 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   font-size: 1.5rem;
   text-align: center;
   cursor: pointer;
-  color: #D0E1F9;
-  background: #4D648D; }
+  color: #d0e1f9;
+  background: #4d648d; }
   .chord-option input {
     visibility: visible;
     opacity: 0;
@@ -353,7 +356,7 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
 
 #copyright {
   padding-top: 1.5rem;
-  color: #D0E1F9;
+  color: #d0e1f9;
   font-size: 0.8rem; }
 
 #controllers-buttons {

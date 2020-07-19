@@ -94,6 +94,7 @@ const App = (function (DataCtrl, UICtrl) {
     //Save chords selected in settings
     UISelectors.hideSettingsBtn.addEventListener("click", (e) => {
       saveChordSetup();
+      DataCtrl.saveSettingsToLocalStorage();
       restartTraining();
     });
 

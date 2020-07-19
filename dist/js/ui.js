@@ -183,5 +183,12 @@ const UICtrl = (function () {
           .parentNode.classList.add("selected");
       });
     },
+    highlightDifficulty: function () {
+      if (DataCtrl.getAppData().hardcore === true) {
+        UISelectors.hardcoreBtn.classList.add("hardcore-on");
+      } else {
+        UISelectors.hardcoreBtn.classList.remove("hardcore-on");
+      }
+    },
   };
 })();

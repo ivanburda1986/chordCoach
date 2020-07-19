@@ -103,7 +103,7 @@ const DataCtrl = (function () {
       let hardcore = localStorage.getItem("hardcore");
       if (hardcore === null) {
         return false;
-      } else {
+      } else if (hardcore === "true") {
         return true;
       }
     },

@@ -134,9 +134,39 @@
   width: 100%;
   padding: 2rem 1rem;
   border: 5px solid $inactiveBackground;
-  border-radius: 10px;
 
   p {
     padding: 1rem;
+  }
+}
+
+#hardcore-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  width: 8rem;
+  height: 2rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  background: $veryLight;
+  color: $dark;
+  cursor: pointer;
+
+  label {
+    width: 8rem;
+    height: 2rem;
+  }
+  input {
+    visibility: visible;
+    opacity: 0.5;
+    width: 8rem;
+    height: 2rem;
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
   }
 }

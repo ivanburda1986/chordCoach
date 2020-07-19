@@ -101,13 +101,9 @@ const App = (function (DataCtrl, UICtrl) {
     //Turn on/off the hardcore mode
     UISelectors.hardcoreBtn.addEventListener("click", (e) => {
       if (DataCtrl.getAppData().hardcore === false) {
-        DataCtrl.getAppData().hardcore = true;
-        UISelectors.hardcoreBtn.classList.remove("hardcore-off");
         UISelectors.hardcoreBtn.classList.add("hardcore-on");
       } else {
-        DataCtrl.getAppData().hardcore = false;
         UISelectors.hardcoreBtn.classList.remove("hardcore-on");
-        UISelectors.hardcoreBtn.classList.add("hardcore-off");
       }
     });
   };
@@ -308,6 +304,7 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.makeRestartBtnInactive();
       UICtrl.makeAnswerOptionsInactive();
       UICtrl.highlightSettingsSelection();
+      UICtrl.highlightDifficulty();
       validateChordSettings();
       UICtrl.displaySettingsHeadline();
       UICtrl.hideSettings();

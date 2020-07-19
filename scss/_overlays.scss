@@ -96,6 +96,11 @@
       background: $dominant3;
     }
 
+    &.inactive {
+      color: $inactiveText;
+      background: $inactiveBackground;
+    }
+
     input {
       visibility: visible;
       opacity: 0;

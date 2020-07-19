@@ -60,34 +60,32 @@ const App = (function (DataCtrl, UICtrl) {
             DataCtrl.getAppData().currentlyNumberChordsForTraining += 1;
             validateChordSettings();
             e.target.parentNode.classList.add("selected");
-            console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
           } else if (e.target.checked === false) {
             DataCtrl.getAppData().currentlyNumberChordsForTraining -= 1;
             validateChordSettings();
             e.target.parentNode.classList.remove("selected");
-            console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
           }
         }
         if (
           DataCtrl.getAppData().currentlyNumberChordsForTraining ===
           DataCtrl.getAppData().maxChordsForTraining
         ) {
-          console.log("max num of chords reached");
           Array.from(
             document.getElementsByClassName("individual-chord")
           ).forEach((item) => {
             if (item.children[0].checked === false) {
               item.children[0].disabled = true;
+              item.classList.add("inactive");
             }
           });
           if (e.target.checked === false) {
             DataCtrl.getAppData().currentlyNumberChordsForTraining -= 1;
             e.target.parentNode.classList.remove("selected");
-            console.log(DataCtrl.getAppData().currentlyNumberChordsForTraining);
             Array.from(
               document.getElementsByClassName("individual-chord")
             ).forEach((item) => {
               item.children[0].disabled = false;
+              item.classList.remove("inactive");
             });
           }
         }

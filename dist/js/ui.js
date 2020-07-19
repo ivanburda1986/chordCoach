@@ -2,6 +2,7 @@
 const UICtrl = (function () {
   //UI selectors
   const UISelectors = {
+    mainScreen: document.querySelector(".app-container"),
     wrongDisplayTotal: document.getElementById("wrong-display-total"),
     remainingDisplayTotal: document.getElementById("remaining-display-total"),
     correctDisplayTotal: document.getElementById("correct-display-total"),
@@ -13,10 +14,10 @@ const UICtrl = (function () {
     showSettingsBtn: document.getElementById("show-settings-btn"),
     hideSettingsBtn: document.getElementById("settings-hide-btn"),
     settingsOverlay: document.getElementById("settings-overlay"),
-    settingsHeadlineText: document.getElementById('settings-headline-text'),  
-    answerSetContainer: document.getElementById('chord-options'),
-    allSettingsChords: document.getElementById('individual-chords'),
-    hardcoreBtn: document.getElementById('hardcore-btn'),
+    settingsHeadlineText: document.getElementById("settings-headline-text"),
+    answerSetContainer: document.getElementById("chord-options"),
+    allSettingsChords: document.getElementById("individual-chords"),
+    hardcoreBtn: document.getElementById("hardcore-btn"),
   };
 
   //Public methods
@@ -47,7 +48,9 @@ const UICtrl = (function () {
       });
     },
     highlightCorrectAnswer: function () {
-      document.getElementById(DataCtrl.getAppData().currentChord).parentNode.classList.add("correct");
+      document
+        .getElementById(`answer-${DataCtrl.getAppData().currentChord}`)
+        .parentNode.classList.add("correct");
     },
     unHighlightCorrectAnswer: function () {
       document.querySelectorAll(".chord-option").forEach((option) => {
@@ -134,27 +137,35 @@ const UICtrl = (function () {
     showSettings: function () {
       UISelectors.settingsOverlay.classList.add("show");
       UISelectors.settingsOverlay.classList.remove("hide");
-      Array.from(document.getElementsByClassName('individual-chord')).forEach((chord) => {
-        chord.children[0].style.visibility = "visible";
-      });
+      UISelectors.mainScreen.classList.add("hide");
+      Array.from(document.getElementsByClassName("individual-chord")).forEach(
+        (chord) => {
+          chord.children[0].style.visibility = "visible";
+        }
+      );
     },
     hideSettings: function () {
       UISelectors.settingsOverlay.classList.add("hide");
       UISelectors.settingsOverlay.classList.remove("show");
-      Array.from(document.getElementsByClassName('individual-chord')).forEach((chord) => {
-        chord.children[0].style.visibility = "hidden";
-      });
+      UISelectors.mainScreen.classList.remove("hide");
+      Array.from(document.getElementsByClassName("individual-chord")).forEach(
+        (chord) => {
+          chord.children[0].style.visibility = "hidden";
+        }
+      );
     },
-    displaySettingsHeadline: function (){
-      UISelectors.settingsHeadlineText.innerText = `Pick from ${DataCtrl.getAppData().minChordsForTraining} to ${DataCtrl.getAppData().maxChordsForTraining} chords to practice`;
+    displaySettingsHeadline: function () {
+      UISelectors.settingsHeadlineText.innerText = `Pick from ${
+        DataCtrl.getAppData().minChordsForTraining
+      } to ${DataCtrl.getAppData().maxChordsForTraining} chords to practice`;
     },
     displayAnswerSet: function () {
-      UISelectors.answerSetContainer.innerHTML = '';
+      UISelectors.answerSetContainer.innerHTML = "";
       DataCtrl.getAppData().loadedChords.forEach((chord) => {
         const div = document.createElement("div");
         div.className = "chord-option";
-        div.innerHTML = `<input type="radio" name="chordOption" value="${chord}" id="${chord}"/><label
-        class="chord-option-label" for="${chord}">${chord}</label>`;
+        div.innerHTML = `<input type="radio" name="chordOption" value="${chord}" id="answer-${chord}"/><label
+        class="chord-option-label" for="answer-${chord}">${chord}</label>`;
         document.getElementById("chord-options").appendChild(div);
       });
     },
@@ -164,12 +175,13 @@ const UICtrl = (function () {
         document.querySelector(target).classList.remove(`${animationName}`);
       }, 500);
     },
-    highlightSettingsSelection: function(){
-      DataCtrl.getAppData().loadedChords.forEach((chord)=>{
+    highlightSettingsSelection: function () {
+      DataCtrl.getAppData().loadedChords.forEach((chord) => {
         document.getElementById(`${chord}`).checked = true;
-        document.getElementById(`${chord}`).parentNode.classList.add('selected');
-        console.log(document.getElementById(`${chord}`).checked);
-      })
-    }
+        document
+          .getElementById(`${chord}`)
+          .parentNode.classList.add("selected");
+      });
+    },
   };
 })();

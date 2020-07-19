@@ -50,6 +50,10 @@ label {
   overflow-x: hidden;
   margin-top: 10px;
   margin-bottom: 10px;
+
+  &.hide {
+    visibility: hidden;
+  }
 }
 
 .container {

@@ -17,7 +17,7 @@ const UICtrl = (function () {
     settingsHeadlineText: document.getElementById("settings-headline-text"),
     answerSetContainer: document.getElementById("chord-options"),
     allSettingsChords: document.getElementById("individual-chords"),
-    hardcoreBtn: document.getElementById("hardcore-btn"),
+    hardcoreBtn: document.getElementById("hardcore-btn-container"),
   };
 
   //Public methods
@@ -184,8 +184,9 @@ const UICtrl = (function () {
       });
     },
     highlightDifficulty: function () {
-      if (DataCtrl.getAppData().hardcore === true) {
+      if (DataCtrl.getAppData().hardcore === "on") {
         UISelectors.hardcoreBtn.classList.add("hardcore-on");
+        UISelectors.hardcoreBtn.children[0].checked = true;
       } else {
         UISelectors.hardcoreBtn.classList.remove("hardcore-on");
       }

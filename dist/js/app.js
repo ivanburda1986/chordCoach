@@ -18,7 +18,7 @@ const App = (function (DataCtrl, UICtrl) {
         //Hihglight the selected answer
         UICtrl.highlightSelectedAnswer(e.target.parentNode);
 
-        if (DataCtrl.getAppData().hardcore === false) {
+        if (DataCtrl.getAppData().hardcore === "off") {
           //Request playing the chord
           playChordOnDemand(e.target.value);
           //Request management of the UI elements
@@ -100,10 +100,12 @@ const App = (function (DataCtrl, UICtrl) {
 
     //Turn on/off the hardcore mode
     UISelectors.hardcoreBtn.addEventListener("click", (e) => {
-      if (DataCtrl.getAppData().hardcore === false) {
-        UISelectors.hardcoreBtn.classList.add("hardcore-on");
+      if (e.target.checked === true) {
+        e.target.parentNode.classList.add("hardcore-on");
+        DataCtrl.getAppData().hardcore = "on";
       } else {
-        UISelectors.hardcoreBtn.classList.remove("hardcore-on");
+        e.target.parentNode.classList.remove("hardcore-on");
+        DataCtrl.getAppData().hardcore = "off";
       }
     });
   };
@@ -226,7 +228,7 @@ const App = (function (DataCtrl, UICtrl) {
   //Evaluate whether this was the last chord in the training or not and trigger an appropriate following action
   const decideNextStep = function () {
     if (DataCtrl.getAppData().remainingTotal === 0) {
-      if (DataCtrl.getAppData().correctTotal >= 2) {
+      if (DataCtrl.getAppData().correctTotal >= 7) {
         DataCtrl.getAppData().appState = "finished-victory";
         executePrimaryAction();
       } else {
@@ -249,7 +251,10 @@ const App = (function (DataCtrl, UICtrl) {
       Math.floor(Math.random() * DataCtrl.getAppData().loadedChords.length)
     ];
     DataCtrl.getAppData().selectedAnswer = null;
+    DataCtrl.getSoundSelectors().restart.src = `/dist/sounds/restart.mp3`;
+    DataCtrl.getSoundSelectors().restart.play();
     DataCtrl.getAppData().appState = "readyToStart";
+    UICtrl.triggerAnimation("#remaining-display", "anim-pop-in-out");
     UICtrl.updateWrongDisplayTotal();
     UICtrl.updateRemainingDisplayTotal();
     UICtrl.updateCorrectDisplayTotal();

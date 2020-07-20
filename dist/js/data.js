@@ -11,7 +11,7 @@ const DataCtrl = (function () {
     minChordsForTraining: 3,
     maxChordsForTraining: 10,
     currentlyNumberChordsForTraining: 0,
-    hardcore: false,
+    hardcore: "off",
     defaultTotal: 10,
   };
 
@@ -50,6 +50,7 @@ const DataCtrl = (function () {
     chordOnDemand: document.getElementById("chordOnDemand"),
     evaluation: document.getElementById("evaluation"),
     trainingEnd: document.getElementById("trainingEnd"),
+    restart: document.getElementById("restart"),
   };
 
   return {
@@ -101,10 +102,14 @@ const DataCtrl = (function () {
     },
     getDifficultySettingsFromLocalStorage: function () {
       let hardcore = localStorage.getItem("hardcore");
-      if (hardcore === null) {
-        return false;
-      } else if (hardcore === "true") {
-        return true;
+      console.log(hardcore);
+      if (hardcore === "on") {
+        console.log(typeof localStorage.getItem("hardcore"));
+        console.log("returning hardcore as ON");
+        return "on";
+      } else if (hardcore === null || undefined || "off") {
+        console.log("returning hardcore as OFF");
+        return "off";
       }
     },
   };

@@ -159,14 +159,20 @@
   label {
     width: 8rem;
     height: 2rem;
+    margin: 0;
+    cursor: pointer;
   }
   input {
-    visibility: visible;
+    visibility: hidden;
     opacity: 0.5;
     width: 8rem;
     height: 2rem;
     position: absolute;
-    cursor: pointer;
+
     z-index: 2;
+  }
+  &.hardcore-on {
+    color: $dark;
+    background: $dominant1;
   }
 }

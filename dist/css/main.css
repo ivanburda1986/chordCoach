@@ -83,12 +83,6 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   .controlsBtn.restart {
     background: tomato;
     color: #023147; }
-  .controlsBtn.hardcore-on {
-    color: #023147;
-    background: tomato; }
-  .controlsBtn.hardcore-off {
-    color: #d0e1f9;
-    background: #4d648d; }
 
 #settings-overlay {
   display: flex;
@@ -253,15 +247,19 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   cursor: pointer; }
   #hardcore-btn-container label {
     width: 8rem;
-    height: 2rem; }
+    height: 2rem;
+    margin: 0;
+    cursor: pointer; }
   #hardcore-btn-container input {
-    visibility: visible;
+    visibility: hidden;
     opacity: 0.5;
     width: 8rem;
     height: 2rem;
     position: absolute;
-    cursor: pointer;
     z-index: 2; }
+  #hardcore-btn-container.hardcore-on {
+    color: #023147;
+    background: tomato; }
 
 .top-padding {
   min-height: 7.5vh;

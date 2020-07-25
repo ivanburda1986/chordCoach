@@ -422,3 +422,51 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   .setup-btn-label {
     font-size: 1.6rem;
     margin-bottom: 0.5rem; } }
+
+@media (max-width: 320px) and (max-width: 560px) {
+  #progress-container {
+    width: 100%;
+    padding: 1rem 0.5rem; }
+  .training-status-icon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem; }
+  #primary-action {
+    width: 8rem;
+    height: 8rem; }
+  .primary-action-button {
+    border: 0.25rem solid #d0e1f9;
+    padding: 0.5rem;
+    font-size: 2rem; }
+    .primary-action-button p {
+      font-size: 1rem; }
+  #chord-options {
+    width: 100%; }
+  .chord-option {
+    width: 4rem;
+    height: 4rem;
+    margin: 5px;
+    font-size: 1rem; }
+    .chord-option input {
+      width: 4rem;
+      height: 4rem; }
+    .chord-option.correct {
+      border: 5px solid lightgreen; }
+  #show-feedback-btn, #show-settings-btn {
+    font-size: 1.5rem;
+    padding: 0.5rem; }
+  .custom-chord-selection-headline {
+    padding-bottom: 0.5rem; }
+  #custom-chord-selection #individual-chords {
+    padding: 0.5rem 0.5rem; }
+  #custom-chord-selection .individual-chord {
+    padding: 2px 4px;
+    margin: 1px 1px;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 1% 1%;
+    font-size: 1rem; }
+  #settings-difficulty-buttons {
+    padding: 1rem 0.5rem; }
+    #settings-difficulty-buttons p {
+      padding: 0.5rem; } }

@@ -162,14 +162,14 @@ const App = (function (DataCtrl, UICtrl) {
         break;
       case "finished-victory":
         setTimeout(function () {
-          DataCtrl.getSoundSelectors().evaluation.src = `/dist/sounds/victory.mp3`;
+          DataCtrl.getSoundSelectors().evaluation.src = `sounds/victory.mp3`;
           DataCtrl.getSoundSelectors().evaluation.play();
         }, 1100);
         UICtrl.setMainBtnState();
         break;
       case "finished-standard":
         setTimeout(function () {
-          DataCtrl.getSoundSelectors().evaluation.src = `/dist/sounds/lost.mp3`;
+          DataCtrl.getSoundSelectors().evaluation.src = `sounds/lost.mp3`;
           DataCtrl.getSoundSelectors().evaluation.play();
         }, 1100);
         UICtrl.setMainBtnState();
@@ -179,7 +179,7 @@ const App = (function (DataCtrl, UICtrl) {
 
   //Play the current chord
   const playCurrentChord = function (e) {
-    DataCtrl.getSoundSelectors().currentChord.src = `/dist/sounds/chords/${DataCtrl.getChordSoundFileName(
+    DataCtrl.getSoundSelectors().currentChord.src = `sounds/chords/${DataCtrl.getChordSoundFileName(
       DataCtrl.getAppData().currentChord
     )}`;
     DataCtrl.getSoundSelectors().currentChord.play();
@@ -190,7 +190,7 @@ const App = (function (DataCtrl, UICtrl) {
 
   //Play a chord on demand
   const playChordOnDemand = function (chordName) {
-    DataCtrl.getSoundSelectors().chordOnDemand.src = `/dist/sounds/chords/${DataCtrl.getChordSoundFileName(
+    DataCtrl.getSoundSelectors().chordOnDemand.src = `sounds/chords/${DataCtrl.getChordSoundFileName(
       chordName
     )}`;
     DataCtrl.getSoundSelectors().chordOnDemand.play();
@@ -209,7 +209,7 @@ const App = (function (DataCtrl, UICtrl) {
       DataCtrl.getAppData().currentChord
     ) {
       DataCtrl.getAppData().correctTotal += 1;
-      DataCtrl.getSoundSelectors().evaluation.src = `/dist/sounds/correct.mp3`;
+      DataCtrl.getSoundSelectors().evaluation.src = `sounds/correct.mp3`;
       DataCtrl.getSoundSelectors().evaluation.play();
       UICtrl.updateCorrectDisplayTotal();
       UICtrl.triggerAnimation("#correct-display", "anim-pop-in-out");
@@ -222,7 +222,7 @@ const App = (function (DataCtrl, UICtrl) {
       //If answer incorrect:
     } else {
       DataCtrl.getAppData().wrongTotal += 1;
-      DataCtrl.getSoundSelectors().evaluation.src = `/dist/sounds/wrong.mp3`;
+      DataCtrl.getSoundSelectors().evaluation.src = `sounds/wrong.mp3`;
       DataCtrl.getSoundSelectors().evaluation.play();
       UICtrl.updateWrongDisplayTotal();
       UICtrl.triggerAnimation("#wrong-display", "anim-pop-in-out");
@@ -268,7 +268,7 @@ const App = (function (DataCtrl, UICtrl) {
       Math.floor(Math.random() * DataCtrl.getAppData().loadedChords.length)
     ];
     DataCtrl.getAppData().selectedAnswer = null;
-    DataCtrl.getSoundSelectors().restart.src = `/dist/sounds/restart.mp3`;
+    DataCtrl.getSoundSelectors().restart.src = `sounds/restart.mp3`;
     DataCtrl.getSoundSelectors().restart.play();
     DataCtrl.getAppData().appState = "readyToStart";
     UICtrl.triggerAnimation("#remaining-display", "anim-pop-in-out");

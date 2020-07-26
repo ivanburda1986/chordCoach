@@ -21,7 +21,7 @@
 
 //PRIMARY ACTION + TRAINING STATS
 #primary-action-container {
-  min-height: 27.5vh;
+  min-height: 30vh;
 }
 
 #primary-action-display {
@@ -101,7 +101,7 @@
 #chord-options-container {
   @extend %flex-justify-align-center;
   flex-direction: row;
-  min-height: 32.5vh;
+  //min-height: 30vh;
 }
 
 #chord-options {
@@ -109,7 +109,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   width: 80%;
-  min-height: 32.5vh;
+  min-height: 30vh;
 }
 
 .chord-option {

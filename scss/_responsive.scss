@@ -58,6 +58,82 @@
   }
 }
 
+//Small screen laptops
+@media (min-width: 1280px) and (min-height: 600px) and (max-width: 1600px) and (min-height: 900px) {
+  #primary-action-container {
+    min-height: 25vh;
+  }
+  #primary-action {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .primary-action-button {
+    padding: 0.5rem;
+    font-size: 2rem;
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  #progress-container {
+    padding: 0.5rem;
+  }
+  .training-status-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 2rem;
+  }
+  .chord-option {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 1.5rem;
+
+    input {
+      width: 4.5rem;
+      height: 4.5rem;
+    }
+  }
+
+  .overlay {
+    width: 70vw;
+  }
+}
+
+//IPad Pro and devices with high screen
+@media (max-width: 1024) and (min-height: 1300px) {
+  .chord-option {
+    width: 7rem;
+    height: 7rem;
+    font-size: 2rem;
+
+    input {
+      width: 7rem;
+      height: 7rem;
+    }
+  }
+}
+
+//IPad, Tablets
+@media (min-width: 700px) and (min-height: 1000px) {
+  .controlsBtn {
+    width: 13rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+  .overlay-title {
+    font-size: 2.5rem;
+  }
+
+  .overlay-headline {
+    font-size: 1.6rem;
+  }
+
+  #copyright {
+    font-size: 1rem;
+  }
+}
+
 //Pixel2, Pixel2XL
 @media (max-width: 450px) and (max-height: 850px) {
   //Progress container
@@ -153,5 +229,12 @@
   //Chord options
   .chord-option {
     margin: 5px;
+  }
+}
+
+//Galaxy fold
+@media (max-width: 280px) {
+  .training-status-icon {
+    font-size: 1.5rem;
   }
 }

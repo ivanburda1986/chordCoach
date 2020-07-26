@@ -313,7 +313,7 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
   margin: 0 auto; }
 
 #primary-action-container {
-  min-height: 27.5vh; }
+  min-height: 30vh; }
 
 #primary-action-display {
   flex-direction: column;
@@ -371,14 +371,13 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
   color: lightgreen; }
 
 #chord-options-container {
-  flex-direction: row;
-  min-height: 32.5vh; }
+  flex-direction: row; }
 
 #chord-options {
   flex-direction: row;
   flex-wrap: wrap;
   width: 80%;
-  min-height: 32.5vh; }
+  min-height: 30vh; }
 
 .chord-option {
   border-radius: 100px;
@@ -447,6 +446,54 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
     width: 3rem;
     height: 3rem; } }
 
+@media (min-width: 1280px) and (min-height: 600px) and (max-width: 1600px) and (min-height: 900px) {
+  #primary-action-container {
+    min-height: 25vh; }
+  #primary-action {
+    width: 8rem;
+    height: 8rem; }
+  .primary-action-button {
+    padding: 0.5rem;
+    font-size: 2rem; }
+    .primary-action-button p {
+      font-size: 1.5rem; }
+  #progress-container {
+    padding: 0.5rem; }
+  .training-status-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 2rem; }
+  .chord-option {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 1.5rem; }
+    .chord-option input {
+      width: 4.5rem;
+      height: 4.5rem; }
+  .overlay {
+    width: 70vw; } }
+
+@media (max-width: 1024) and (min-height: 1300px) {
+  .chord-option {
+    width: 7rem;
+    height: 7rem;
+    font-size: 2rem; }
+    .chord-option input {
+      width: 7rem;
+      height: 7rem; } }
+
+@media (min-width: 700px) and (min-height: 1000px) {
+  .controlsBtn {
+    width: 13rem;
+    height: 3rem;
+    font-size: 1.5rem; }
+  .overlay-title {
+    font-size: 2.5rem; }
+  .overlay-headline {
+    font-size: 1.6rem; }
+  #copyright {
+    font-size: 1rem; } }
+
 @media (max-width: 450px) and (max-height: 850px) {
   #progress-container {
     width: 100%;
@@ -499,3 +546,7 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
 @media (max-width: 350px) and (max-height: 570px) {
   .chord-option {
     margin: 5px; } }
+
+@media (max-width: 280px) {
+  .training-status-icon {
+    font-size: 1.5rem; } }

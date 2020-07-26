@@ -2,6 +2,7 @@
 const UICtrl = (function () {
   //UI selectors
   const UISelectors = {
+    //Main screen
     mainScreen: document.querySelector(".app-container"),
     wrongDisplayTotal: document.getElementById("wrong-display-total"),
     remainingDisplayTotal: document.getElementById("remaining-display-total"),
@@ -11,6 +12,7 @@ const UICtrl = (function () {
     primaryActionText: document.getElementById("primary-action-text"),
     confirmBtn: document.getElementById("confirm-btn"),
     restartBtn: document.getElementById("restart-btn"),
+    //Settings
     showSettingsBtn: document.getElementById("show-settings-btn"),
     hideSettingsBtn: document.getElementById("settings-hide-btn"),
     settingsOverlay: document.getElementById("settings-overlay"),
@@ -18,6 +20,12 @@ const UICtrl = (function () {
     answerSetContainer: document.getElementById("chord-options"),
     allSettingsChords: document.getElementById("individual-chords"),
     hardcoreBtn: document.getElementById("hardcore-btn-container"),
+    //Feedback
+    feedbackOverlay: document.getElementById("feedback-overlay"),
+    hideFeedback: document.getElementById("feedback-hide-btn"),
+    showFeedback: document.getElementById("show-feedback-btn"),
+    feedbackTextInput: document.getElementById("feedback-textarea"),
+    submitFeedback: document.getElementById("submit-btn"),
   };
 
   //Public methods
@@ -155,9 +163,9 @@ const UICtrl = (function () {
       );
     },
     displaySettingsHeadline: function () {
-      UISelectors.settingsHeadlineText.innerText = `Pick from ${
+      UISelectors.settingsHeadlineText.innerText = `Select from ${
         DataCtrl.getAppData().minChordsForTraining
-      } to ${DataCtrl.getAppData().maxChordsForTraining} chords to practice`;
+      } to ${DataCtrl.getAppData().maxChordsForTraining} chords`;
     },
     displayAnswerSet: function () {
       UISelectors.answerSetContainer.innerHTML = "";
@@ -190,6 +198,16 @@ const UICtrl = (function () {
       } else {
         UISelectors.hardcoreBtn.classList.remove("hardcore-on");
       }
+    },
+    showFeedback: function () {
+      UISelectors.feedbackOverlay.classList.add("show");
+      UISelectors.feedbackOverlay.classList.remove("hide");
+      UISelectors.mainScreen.classList.add("hide");
+    },
+    hideFeedback: function () {
+      UISelectors.feedbackOverlay.classList.add("hide");
+      UISelectors.feedbackOverlay.classList.remove("show");
+      UISelectors.mainScreen.classList.remove("hide");
     },
   };
 })();

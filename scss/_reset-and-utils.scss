@@ -9,9 +9,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
   background: $dark;
   font-family: "Roboto", sans-serif;
-  overflow-x: hidden;
 }
 
 a {
@@ -40,6 +40,16 @@ label {
   align-items: center;
 }
 
+.top-padding {
+  min-height: 7.5vh;
+  display: flex;
+}
+
+.bottom-padding {
+  min-height: 7.5vh;
+  display: flex;
+}
+
 //UTILITIES
 .app-container {
   display: flex;
@@ -57,8 +67,8 @@ label {
 }
 
 .container {
-  flex: 1;
   @extend %flex-justify-align-center;
+  flex: 1;
   flex-direction: row;
 }
 
@@ -68,7 +78,7 @@ label {
 }
 
 //BUTTONS
-%defaultBtn {
+.defaultBtn {
   background: none;
   border: none;
   height: 100%;
@@ -109,58 +119,6 @@ label {
     background: $dominant1;
     color: $dark;
   }
-}
-
-//OVERLAYS
-%overlay {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  width: 100vw;
-  min-height: 100vh;
-  max-width: 1024px;
-  background: $dark;
-  visibility: vissible;
-  color: $veryLight;
-  margin: 0 auto;
-
-  &.show {
-    visibility: visible;
-  }
-
-  &.hide {
-    visibility: hidden;
-  }
-}
-
-%overlay-header {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  position: relative;
-  height: 10%;
-  margin: 0 auto;
-}
-
-%overlay-title {
-  display: flex;
-  justify-content: space-around;
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.button-placeholder {
-  visibility: hidden;
-}
-
-.placeholder-btn {
-  @extend %flex-justify-align-center;
-  width: 2.2rem;
-  height: 2.2rem;
-  padding: 5px;
 }
 
 //ANIMATIONS

@@ -2,18 +2,6 @@
 @import "reset-and-utils";
 @import "overlays";
 
-//TOP PADDING
-.top-padding {
-  min-height: 7.5vh;
-  display: flex;
-}
-
-//BOTTOM PADDING
-.bottom-padding {
-  min-height: 7.5vh;
-  display: flex;
-}
-
 //TOP NAV
 #top-navigation {
   display: flex;
@@ -24,14 +12,6 @@
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-}
-
-#show-feedback-btn {
-  @extend %defaultBtn;
-}
-
-#show-settings-btn {
-  @extend %defaultBtn;
 }
 
 //MIDDLE SECTION
@@ -86,11 +66,9 @@
 
 #progress-container {
   @extend %flex-justify-align-center;
-
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  //margin: 0 auto;
   padding-bottom: 3rem;
   padding: 2rem 1rem;
 }

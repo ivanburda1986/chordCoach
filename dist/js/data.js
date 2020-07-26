@@ -102,13 +102,9 @@ const DataCtrl = (function () {
     },
     getDifficultySettingsFromLocalStorage: function () {
       let hardcore = localStorage.getItem("hardcore");
-      console.log(hardcore);
       if (hardcore === "on") {
-        console.log(typeof localStorage.getItem("hardcore"));
-        console.log("returning hardcore as ON");
         return "on";
       } else if (hardcore === null || undefined || "off") {
-        console.log("returning hardcore as OFF");
         return "off";
       }
     },

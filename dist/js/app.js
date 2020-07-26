@@ -108,6 +108,23 @@ const App = (function (DataCtrl, UICtrl) {
         DataCtrl.getAppData().hardcore = "off";
       }
     });
+
+    //Show settings
+    UISelectors.showFeedback.addEventListener("click", UICtrl.showFeedback);
+
+    //Hide settings
+    UISelectors.hideFeedback.addEventListener("click", UICtrl.hideFeedback);
+
+    //Evaluate state of the Submit-feedback button
+    UISelectors.feedbackTextInput.addEventListener("keyup", function () {
+      if (UISelectors.feedbackTextInput.value != "") {
+        UISelectors.submitFeedback.classList.remove("inactive");
+        UISelectors.submitFeedback.disabled = false;
+      } else {
+        UISelectors.submitFeedback.classList.add("inactive");
+        UISelectors.submitFeedback.disabled = true;
+      }
+    });
   };
 
   //Execute the primary action

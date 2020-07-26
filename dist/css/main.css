@@ -7,9 +7,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
   background: #023147;
-  font-family: "Roboto", sans-serif;
-  overflow-x: hidden; }
+  font-family: "Roboto", sans-serif; }
 
 a {
   color: #d0e1f9;
@@ -26,10 +26,18 @@ label {
   width: 0%;
   margin: 50%; }
 
-label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-hide-btn, .custom-chord-selection-headline, #custom-chord-selection, #custom-chord-selection .individual-chord, #settings-difficulty-buttons, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #copyright {
+label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay-hide-btn, #feedback-hide, #feedback-main #feedback-form, #settings-hide, #custom-chord-selection, #custom-chord-selection .individual-chord, #settings-difficulty-buttons, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #copyright {
   display: flex;
   justify-content: center;
   align-items: center; }
+
+.top-padding {
+  min-height: 7.5vh;
+  display: flex; }
+
+.bottom-padding {
+  min-height: 7.5vh;
+  display: flex; }
 
 .app-container {
   display: flex;
@@ -51,7 +59,7 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   border: 5px solid #054766;
   border-radius: 10px; }
 
-#show-feedback-btn, #show-settings-btn {
+.defaultBtn {
   background: none;
   border: none;
   height: 100%;
@@ -60,7 +68,7 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   color: #d0e1f9;
   outline: none;
   cursor: pointer; }
-  #show-feedback-btn:hover i, #show-settings-btn:hover i {
+  .defaultBtn:hover i {
     color: lightgreen; }
 
 .controlsBtn {
@@ -84,47 +92,6 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
     background: tomato;
     color: #023147; }
 
-#settings-overlay {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  width: 100vw;
-  min-height: 100vh;
-  max-width: 1024px;
-  background: #023147;
-  visibility: vissible;
-  color: #d0e1f9;
-  margin: 0 auto; }
-  .show#settings-overlay {
-    visibility: visible; }
-  .hide#settings-overlay {
-    visibility: hidden; }
-
-#settings-header {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  position: relative;
-  height: 10%;
-  margin: 0 auto; }
-
-.overlay-title {
-  display: flex;
-  justify-content: space-around;
-  font-size: 2rem;
-  font-weight: 700; }
-
-.button-placeholder {
-  visibility: hidden; }
-
-.placeholder-btn {
-  width: 2.2rem;
-  height: 2.2rem;
-  padding: 5px; }
-
 .animationEnabled {
   transition-property: all;
   transition-duration: 0.5s;
@@ -138,25 +105,98 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   -moz-box-shadow: 0px 0px 50px 20px #257499;
   box-shadow: 0px 0px 50px 20px #257499; }
 
-#settings-header {
+.overlay {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 1024px;
+  background: #023147;
+  visibility: visible;
+  color: #d0e1f9;
+  margin: 0 auto; }
+  .overlay.show {
+    visibility: visible; }
+  .overlay.hide {
+    visibility: hidden; }
+
+.overlay-header {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  height: 10%;
+  margin: 0 auto;
   flex: 1;
   padding-top: 1rem; }
 
-#settings-hide-btn {
+.overlay-title {
+  justify-content: space-around;
+  font-size: 2rem;
+  font-weight: 700; }
+
+.overlay-headline {
+  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem; }
+
+.button-placeholder-container {
+  visibility: hidden; }
+
+.placeholder-btn {
+  width: 2.2rem;
+  height: 2.2rem;
+  padding: 5px; }
+
+.overlay-hide-btn {
   border-radius: 50px;
   width: 2.2rem;
   height: 2.2rem;
   border: none;
+  background: #d0e1f9;
   font-size: 1.5rem;
   padding: 5px;
   outline: none;
   cursor: pointer; }
-  #settings-hide-btn.disabled {
+  .overlay-hide-btn.disabled {
     background: #054766;
     color: #0c6b97; }
-  #settings-hide-btn.enabled {
+  .overlay-hide-btn.enabled {
     background: lightgreen;
     color: #023147; }
+
+#feedback-main {
+  flex: auto;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  height: auto;
+  width: 90%; }
+  #feedback-main #feedback-form {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 auto;
+    width: 100%; }
+    #feedback-main #feedback-form label {
+      visibility: hidden; }
+    #feedback-main #feedback-form #feedback-textarea {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 100%;
+      font-size: 1.2rem;
+      min-height: 7rem;
+      background: #023147;
+      margin-bottom: 1rem;
+      color: #d0e1f9; }
+    #feedback-main #feedback-form #submit-btn {
+      margin: 0 auto; }
 
 #settings-main {
   display: flex;
@@ -168,19 +208,19 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   height: auto;
   width: 90%; }
 
-.custom-chord-selection-headline {
-  padding-bottom: 1rem;
-  padding-top: 0.5rem; }
-
 #custom-chord-selection {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   width: 100%; }
   #custom-chord-selection #individual-chords {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
     padding: 2rem 1rem;
-    color: #023147;
-    position: relative; }
+    color: #023147; }
   #custom-chord-selection .individual-chord {
     display: inline-block;
     position: relative;
@@ -260,14 +300,6 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   #hardcore-btn-container.hardcore-on {
     color: #023147;
     background: tomato; }
-
-.top-padding {
-  min-height: 7.5vh;
-  display: flex; }
-
-.bottom-padding {
-  min-height: 7.5vh;
-  display: flex; }
 
 #top-navigation {
   display: flex;
@@ -397,40 +429,30 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   margin-right: 2rem; }
 
 @media only screen and (min-height: 800px) {
-  #show-settings-btn,
-  #show-feedback-btn {
+  .defaultBtn {
     font-size: 2rem; }
   #feedback-hide-btn {
     font-size: 2rem; }
-  .overlay-title {
-    font-size: 3rem; }
   #settings-hide-btn {
     width: 2.5rem;
-    height: 2.5rem; }
-  .setup-btn-label {
-    font-size: 1.2rem; } }
+    height: 2.5rem; } }
 
 @media only screen and (min-height: 1000px) {
   #show-settings-btn,
   #show-feedback-btn {
     font-size: 3rem; }
-  .overlay-title {
-    font-size: 4rem; }
   #settings-hide-btn {
     width: 3rem;
-    height: 3rem; }
-  .setup-btn-label {
-    font-size: 1.6rem;
-    margin-bottom: 0.5rem; } }
+    height: 3rem; } }
 
-@media (max-width: 320px) and (max-width: 560px) {
+@media (max-width: 360px) and (max-width: 640px) {
   #progress-container {
     width: 100%;
     padding: 1rem 0.5rem; }
   .training-status-icon {
     width: 2rem;
     height: 2rem;
-    font-size: 1.5rem; }
+    font-size: 2rem; }
   #primary-action {
     width: 8rem;
     height: 8rem; }
@@ -452,11 +474,12 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
       height: 4rem; }
     .chord-option.correct {
       border: 5px solid lightgreen; }
-  #show-feedback-btn, #show-settings-btn {
-    font-size: 1.5rem;
+  .defaultBtn {
+    font-size: 2rem;
     padding: 0.5rem; }
-  .custom-chord-selection-headline {
-    padding-bottom: 0.5rem; }
+  .overlay-headline {
+    padding-bottom: 0.5rem;
+    font-size: 1rem; }
   #custom-chord-selection #individual-chords {
     padding: 0.5rem 0.5rem; }
   #custom-chord-selection .individual-chord {
@@ -469,4 +492,5 @@ label, .container, .placeholder-btn, .overlay-title, #settings-hide, #settings-h
   #settings-difficulty-buttons {
     padding: 1rem 0.5rem; }
     #settings-difficulty-buttons p {
-      padding: 0.5rem; } }
+      padding: 0.5rem;
+      font-size: 0.9rem; } }

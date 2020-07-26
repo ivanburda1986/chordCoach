@@ -7,8 +7,7 @@
   //DISPLAY
 
   //Top buttons
-  #show-settings-btn,
-  #show-feedback-btn {
+  .defaultBtn {
     font-size: 2rem;
   }
 
@@ -32,10 +31,6 @@
   #settings-hide-btn {
     width: 2.5rem;
     height: 2.5rem;
-  }
-
-  .setup-btn-label {
-    font-size: 1.2rem;
   }
 }
 
@@ -65,11 +60,6 @@
     width: 3rem;
     height: 3rem;
   }
-
-  .setup-btn-label {
-    font-size: 1.6rem;
-    margin-bottom: 0.5rem;
-  }
 }
 
 //Iphone X and Pixel2x
@@ -77,7 +67,7 @@
 }
 
 //Iphone 5SE
-@media (max-width: 320px) and (max-width: 560px) {
+@media (max-width: 360px) and (max-width: 640px) {
   //Progress container
   #progress-container {
     width: 100%;
@@ -87,7 +77,7 @@
   .training-status-icon {
     width: 2rem;
     height: 2rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   //Primary action
@@ -128,21 +118,20 @@
 
   //UTILITIES
   //Buttons
-  %defaultBtn {
-    font-size: 1.5rem;
+  .defaultBtn {
+    font-size: 2rem;
     padding: 0.5rem;
   }
 
   //OVERLAY
   //Settings: Chordselection
-  //----------->Individual chords
-  .custom-chord-selection-headline {
+  .overlay-headline {
     padding-bottom: 0.5rem;
+    font-size: 1rem;
   }
 
   #custom-chord-selection {
     #individual-chords {
-      //background: $inactiveBackground;
       padding: 0.5rem 0.5rem;
     }
 
@@ -162,6 +151,7 @@
 
     p {
       padding: 0.5rem;
+      font-size: 0.9rem;
     }
   }
 }

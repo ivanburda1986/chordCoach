@@ -22,7 +22,7 @@
   </head>
 
   <body>
-    <!-- Audio -->
+    <!-- AUDIO -->
     <audio id="currentChord">
       <source src="sounds/nobeep.mp3" type="audio/mpeg" />
     </audio>
@@ -38,17 +38,47 @@
     <audio id="restart">
       <source src="sounds/nobeep.mp3" type="audio/mpeg" />
     </audio>
-    <div id="settings-overlay" class="hide">
+    <!-- FEEDBACK OVERLAY -->
+    <!-- Feedback overlay -->
+    <div id="feedback-overlay" class="overlay hide">
+      <!-- Top padding -->
+      <div class="top-padding"></div>
+      <!-- Feedback header -->
+      <div id="feedback-header" class="overlay-header">
+        <div class="button-placeholder-container">
+          <button class="placeholder-btn"></button>
+        </div>
+        <div id="feedback-title" class="overlay-title">Feedback</div>
+        <div id="feedback-hide"><button id="feedback-hide-btn" class="overlay-hide-btn"><i class="fas fa-times"></i></button></div>
+      </div>
+      <!-- Feedback: Main -->
+      <div id="feedback-main">
+        <div class="overlay-headline">
+          <p id="feedback-headline-text">
+          </p>
+        </div>
+        <form name="feedback-form" id="feedback-form" method="POST" data-netlify="true">
+          <textarea name="feedback-textarea" id="feedback-textarea" placeholder="Type here what you think about this app and what I could make even better..."></textarea>
+          <button id="submit-btn" class="controlsBtn inactive" disabled type="submit">Send</button>
+          <label for="feedback-textarea">Type here what you think about this app and what I could improve...</label>
+        </form>
+      </div>
+      <!-- Bottom padding -->
+      <div class="bottom-padding"></div>
+    </div>
+
+    <!-- SETTINGS OVERLAY -->
+    <div id="settings-overlay" class="overlay hide">
       <!-- Top padding -->
       <div class="top-padding"></div>
       <!-- Settings header -->
-      <div id="settings-header">
-        <div class="button-placeholder">
+      <div id="settings-header" class="overlay-header">
+        <div class="button-placeholder-container">
           <button class="placeholder-btn"></button>
         </div>
         <div class="overlay-title">Settings</div>
         <div id="settings-hide">
-          <button id="settings-hide-btn" class="disabled">
+          <button id="settings-hide-btn" class="overlay-hide-btn disabled">
             <i class="fas fa-check"></i>
           </button>
         </div>
@@ -57,9 +87,9 @@
       <div id="settings-main">
         <!-- Individuals -->
         <div id="custom-chord-selection">
-          <div class="custom-chord-selection-headline setup-btn-label">
+          <div class="overlay-headline">
             <p id="settings-headline-text">
-              Pick from 3 to 10 chords to practice
+              Select from 3 to 10 chords
             </p>
           </div>
           <div id="individual-chords">
@@ -149,7 +179,7 @@
       </div>
       <!-- Settings: Difficulty -->
       <div id="settings-difficulty">
-        <div class="custom-chord-selection-headline setup-btn-label">
+        <div class="overlay-headline">
           <p>Difficulty</p>
         </div>
         <div id="settings-difficulty-buttons">
@@ -167,15 +197,16 @@
       <div class="bottom-padding"></div>
     </div>
 
+    <!-- APP MAIN SCREEN -->
     <div class="app-container">
       <!-- Top padding -->
       <div class="top-padding"></div>
       <!-- Top navigation -->
       <div id="top-navigation" class="container">
-        <button id="show-feedback-btn">
+        <button id="show-feedback-btn" class="defaultBtn">
           <i class="far fa-envelope"></i>
         </button>
-        <button id="show-settings-btn"><i class="fas fa-cog"></i></button>
+        <button id="show-settings-btn" class="defaultBtn"><i class="fas fa-cog"></i></button>
       </div>
       <!-- Chord to play -->
       <div id="middle-section">

@@ -4,6 +4,11 @@ const App = (function (DataCtrl, UICtrl) {
     //Use the public method of UICtrl to get available UI selectors for further re-use in the APP controller here
     const UISelectors = UICtrl.getSelectors();
 
+    //Switch to Chord coach
+    UISelectors.chordCoachSwitchBtn.addEventListener("click", () => {
+      window.open("chord-coach.html", "_self");
+    });
+
     //Execute the primary action
     UISelectors.primaryActionBtn.addEventListener(
       "click",
@@ -109,10 +114,10 @@ const App = (function (DataCtrl, UICtrl) {
       }
     });
 
-    //Show settings
+    //Show feedback form
     UISelectors.showFeedback.addEventListener("click", UICtrl.showFeedback);
 
-    //Hide settings
+    //Hide feedback form
     UISelectors.hideFeedback.addEventListener("click", UICtrl.hideFeedback);
 
     //Evaluate state of the Submit-feedback button

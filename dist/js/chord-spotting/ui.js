@@ -12,6 +12,8 @@ const UICtrl = (function () {
     primaryActionText: document.getElementById("primary-action-text"),
     confirmBtn: document.getElementById("confirm-btn"),
     restartBtn: document.getElementById("restart-btn"),
+    //Switch to Chord coach
+    chordCoachSwitchBtn: document.getElementById("chord-coach-btn"),
     //Settings
     showSettingsBtn: document.getElementById("show-settings-btn"),
     hideSettingsBtn: document.getElementById("settings-hide-btn"),

@@ -26,7 +26,7 @@ label {
   width: 0%;
   margin: 50%; }
 
-label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay-hide-btn, #feedback-hide, #feedback-main #feedback-form, #settings-hide, #custom-chord-selection, #custom-chord-selection .individual-chord, #settings-difficulty-buttons, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #copyright {
+label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay-hide-btn, #feedback-hide, #feedback-main #feedback-form, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #settings-hide, #custom-chord-selection, #custom-chord-selection .individual-chord, #settings-difficulty-buttons, #copyright {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -55,7 +55,7 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
   flex: 1;
   flex-direction: row; }
 
-#custom-chord-selection #individual-chords, #middle-section {
+#middle-section, #custom-chord-selection #individual-chords {
   border: 5px solid #054766;
   border-radius: 10px; }
 
@@ -199,6 +199,118 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
     #feedback-main #feedback-form #submit-btn {
       margin: 0 auto; }
 
+#primary-action-container {
+  min-height: 30vh; }
+
+#primary-action-display {
+  flex-direction: column;
+  padding: 0.5rem;
+  width: 90%;
+  height: 100%;
+  margin: 0 auto; }
+
+#primary-action {
+  position: relative;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 100px;
+  margin: 0 auto; }
+  #primary-action .inactive {
+    color: #0c6b97;
+    border: 0.5rem solid #054766; }
+
+.primary-action-button {
+  height: 100%;
+  width: 100%;
+  background: none;
+  outline: none;
+  border-radius: 100px;
+  border: 0.5rem solid #d0e1f9;
+  padding: 1rem;
+  font-size: 3rem;
+  color: #d0e1f9;
+  cursor: pointer; }
+  .primary-action-button p {
+    font-size: 1.5rem; }
+
+#progress-container {
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 3rem;
+  padding: 2rem 1rem; }
+
+.training-status-icon {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50px;
+  font-size: 3rem; }
+  .training-status-icon i {
+    padding: 0.5rem; }
+
+#wrong-display {
+  color: tomato; }
+
+#remaining-display {
+  color: #d0e1f9; }
+
+#correct-display {
+  color: lightgreen; }
+
+#chord-options-container {
+  flex-direction: row; }
+
+#chord-options {
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  min-height: 30vh; }
+
+.chord-option {
+  border-radius: 100px;
+  width: 6rem;
+  height: 6rem;
+  margin: 10px;
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  color: #d0e1f9;
+  background: #4d648d; }
+  .chord-option input {
+    visibility: visible;
+    opacity: 0;
+    position: absolute;
+    border: 0px;
+    width: 6rem;
+    height: 6rem;
+    cursor: pointer; }
+  .chord-option.selected {
+    color: #023147;
+    background: orange; }
+  .chord-option.inactive {
+    color: #0c6b97;
+    background: #054766; }
+  .chord-option.correct {
+    border: 10px solid lightgreen; }
+
+#controllers-container {
+  display: flex;
+  flex-direction: column;
+  align-items: initial !important;
+  min-height: 15vh;
+  margin-top: 1rem; }
+
+#controllers-buttons {
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center; }
+  #controllers-buttons i {
+    margin-right: 5px; }
+
+#confirm-btn {
+  margin-right: 2rem; }
+
 #settings-main {
   display: flex;
   flex: auto;
@@ -311,118 +423,6 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
   align-items: center;
   justify-content: space-between;
   margin: 0 auto; }
-
-#primary-action-container {
-  min-height: 30vh; }
-
-#primary-action-display {
-  flex-direction: column;
-  padding: 0.5rem;
-  width: 90%;
-  height: 100%;
-  margin: 0 auto; }
-
-#primary-action {
-  position: relative;
-  width: 12rem;
-  height: 12rem;
-  border-radius: 100px;
-  margin: 0 auto; }
-  #primary-action .inactive {
-    color: #0c6b97;
-    border: 0.5rem solid #054766; }
-
-.primary-action-button {
-  height: 100%;
-  width: 100%;
-  background: none;
-  outline: none;
-  border-radius: 100px;
-  border: 0.5rem solid #d0e1f9;
-  padding: 1rem;
-  font-size: 3rem;
-  color: #d0e1f9;
-  cursor: pointer; }
-  .primary-action-button p {
-    font-size: 1.5rem; }
-
-#progress-container {
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  padding-bottom: 3rem;
-  padding: 2rem 1rem; }
-
-.training-status-icon {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50px;
-  font-size: 3rem; }
-  .training-status-icon i {
-    padding: 0.5rem; }
-
-#wrong-display {
-  color: tomato; }
-
-#remaining-display {
-  color: #d0e1f9; }
-
-#correct-display {
-  color: lightgreen; }
-
-#chord-options-container {
-  flex-direction: row; }
-
-#chord-options {
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 80%;
-  min-height: 30vh; }
-
-.chord-option {
-  border-radius: 100px;
-  width: 6rem;
-  height: 6rem;
-  margin: 10px;
-  font-size: 1.5rem;
-  text-align: center;
-  cursor: pointer;
-  color: #d0e1f9;
-  background: #4d648d; }
-  .chord-option input {
-    visibility: visible;
-    opacity: 0;
-    position: absolute;
-    border: 0px;
-    width: 6rem;
-    height: 6rem;
-    cursor: pointer; }
-  .chord-option.selected {
-    color: #023147;
-    background: orange; }
-  .chord-option.inactive {
-    color: #0c6b97;
-    background: #054766; }
-  .chord-option.correct {
-    border: 10px solid lightgreen; }
-
-#controllers-container {
-  display: flex;
-  flex-direction: column;
-  align-items: initial !important;
-  min-height: 15vh;
-  margin-top: 1rem; }
-
-#controllers-buttons {
-  width: 90%;
-  display: flex;
-  margin: 0 auto;
-  justify-content: center; }
-  #controllers-buttons i {
-    margin-right: 5px; }
-
-#confirm-btn {
-  margin-right: 2rem; }
 
 #copyright {
   padding-top: 1.5rem;

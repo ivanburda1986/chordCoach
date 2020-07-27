@@ -115,6 +115,16 @@ label {
     color: $dark;
   }
 
+  &.play {
+    background: $dominant2;
+    color: $dark;
+  }
+
+  &.pause {
+    background: $dominant3;
+    color: $dark;
+  }
+
   &.restart {
     background: $dominant1;
     color: $dark;

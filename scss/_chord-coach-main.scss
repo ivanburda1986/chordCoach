@@ -1,0 +1,250 @@
+//CHORD SPOTTING - MAIN SCREEN
+
+//MIDDLE SECTION
+#middle-section-chord-coach {
+  @extend %border;
+  display: flex;
+  flex-direction: column;
+}
+
+//Training current setup
+#interval-countdown-container {
+  @extend %flex-justify-align-center;
+  justify-content: space-around;
+  background: $inactiveBackground;
+}
+
+#interval-display {
+  color: $veryLight;
+}
+
+#countdown-display {
+  color: $veryLight;
+}
+
+//Chord to play and chord grip shared container
+#chord-and-grip-container {
+  @extend %flex-justify-align-center;
+  justify-content: space-around;
+  padding-top: 2rem;
+}
+
+//Chord to play
+#chord-to-play-container {
+  @extend %flex-justify-align-center;
+}
+
+#chord-to-play-display {
+  @extend %flex-justify-align-center;
+  flex-direction: column;
+
+  margin: 0 auto;
+}
+
+#chord-to-play {
+  @extend %flex-justify-align-center;
+  position: relative;
+  font-size: 7rem;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+  color: $veryLight;
+}
+
+//Chord grip
+#chord-grip-container {
+  @extend %flex-justify-align-center;
+  flex-direction: row;
+}
+
+#chord-grip-frame {
+  @extend %flex-justify-align-center;
+
+  width: 90%;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+//Chord grip - neck
+#chord-grip-display {
+  position: relative;
+  width: 8rem;
+  height: 10rem;
+  margin-top: 1rem;
+}
+
+#nut {
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  top: -2%;
+  background: $veryLight;
+}
+
+.fret {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: $veryLight;
+}
+
+#fret1 {
+  top: 20%;
+}
+
+#fret2 {
+  top: 40%;
+}
+
+#fret3 {
+  top: 60%;
+}
+
+#fret4 {
+  top: 80%;
+}
+
+#fret5 {
+  top: 100%;
+}
+
+.string {
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  background: $veryLight;
+  top: 0;
+}
+
+#string1 {
+  left: 0;
+  width: 3.5px;
+}
+
+#string2 {
+  left: 20%;
+  width: 3px;
+}
+
+#string3 {
+  left: 40%;
+  width: 2.25px;
+}
+
+#string4 {
+  left: 60%;
+  width: 2px;
+}
+
+#string5 {
+  left: 80%;
+  width: 1.5px;
+}
+
+#string6 {
+  left: 99%;
+  width: 1px;
+}
+
+.finger {
+  @extend %flex-justify-align-center;
+  position: absolute;
+  background: $dominant1;
+  height: 12%;
+  width: 15%;
+  border-radius: 100%;
+
+  p {
+    color: white;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+}
+
+.fingerbar {
+  position: absolute;
+  background: $dominant1;
+  height: 13%;
+  width: 110%;
+  border-radius: 30px 0 0 30px;
+
+  .barlift {
+    @extend %flex-justify-align-center;
+    background: rgba(255, 255, 255, 0.8);
+    height: 100%;
+    width: 60%;
+    margin-left: 10%;
+
+    .bar-finger-number {
+      height: 100%;
+      width: 25%;
+      border-radius: 100%;
+      color: $dominant1;
+      font-weight: 800;
+      text-align: center;
+      font-size: 1rem;
+      padding-top: 2px;
+    }
+  }
+}
+
+#finger1 {
+  top: 25%;
+  left: 15%;
+}
+
+#finger1bar {
+  top: 25%;
+  left: 15%;
+}
+
+#finger2 {
+  top: 45%;
+  left: -5%;
+}
+
+#finger3 {
+  top: 45%;
+  left: 75%;
+}
+
+#finger4 {
+  top: 45%;
+  left: 95%;
+}
+
+#thumb {
+  top: -25%;
+  left: -25%;
+}
+
+.sounding {
+  position: absolute;
+  font-size: 1.2rem;
+  top: -15%;
+  color: $veryLight;
+}
+
+#sounding-string1 {
+  left: -2.5%;
+}
+
+#sounding-string2 {
+  left: 17.5%;
+}
+
+#sounding-string3 {
+  left: 37.5%;
+}
+
+#sounding-string4 {
+  left: 57.5%;
+}
+
+#sounding-string5 {
+  left: 77.5%;
+}
+
+#sounding-string6 {
+  left: 97.5%;
+}

@@ -13,8 +13,8 @@
 #primary-action-display {
   @extend %flex-justify-align-center;
   flex-direction: column;
-  padding: 0.5rem;
-  width: 90%;
+  padding-bottom: 0.5rem;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
 }
@@ -55,8 +55,9 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  padding-bottom: 3rem;
-  padding: 2rem 1rem;
+  padding: 2rem 2rem;
+  margin-bottom: 1.5rem;
+  background: $inactiveBackground;
 }
 
 .training-status-icon {
@@ -155,6 +156,6 @@
   }
 }
 
-#confirm-btn {
-  margin-right: 2rem;
+#restart-btn {
+  margin-left: 2rem;
 }

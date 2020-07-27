@@ -5,6 +5,7 @@
   @extend %border;
   display: flex;
   flex-direction: column;
+  min-height: 60vh;
 }
 
 //Training current setup
@@ -27,26 +28,27 @@
   @extend %flex-justify-align-center;
   justify-content: space-around;
   padding-top: 2rem;
+  width: 100%;
+  min-height: 40vh;
 }
 
 //Chord to play
 #chord-to-play-container {
   @extend %flex-justify-align-center;
+  padding: 1.5rem;
 }
 
 #chord-to-play-display {
   @extend %flex-justify-align-center;
   flex-direction: column;
-
   margin: 0 auto;
 }
 
 #chord-to-play {
   @extend %flex-justify-align-center;
   position: relative;
-  font-size: 7rem;
+  font-size: 9rem;
   margin: 0 auto;
-  padding-bottom: 1rem;
   color: $veryLight;
 }
 
@@ -54,21 +56,21 @@
 #chord-grip-container {
   @extend %flex-justify-align-center;
   flex-direction: row;
+  padding: 1.5rem;
+  @extend %border;
 }
 
 #chord-grip-frame {
   @extend %flex-justify-align-center;
-
   width: 90%;
   height: 100%;
-  padding: 0.5rem;
 }
 
 //Chord grip - neck
 #chord-grip-display {
   position: relative;
-  width: 8rem;
-  height: 10rem;
+  width: 10rem;
+  height: 12.5rem;
   margin-top: 1rem;
 }
 

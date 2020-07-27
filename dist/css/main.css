@@ -55,7 +55,7 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
   flex: 1;
   flex-direction: row; }
 
-#middle-section, #middle-section-chord-coach, #custom-chord-selection #individual-chords {
+#middle-section, #middle-section-chord-coach, #chord-grip-container, #custom-chord-selection #individual-chords {
   border: 5px solid #054766;
   border-radius: 10px; }
 
@@ -320,7 +320,8 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
 
 #middle-section-chord-coach {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  min-height: 60vh; }
 
 #interval-countdown-container {
   justify-content: space-around;
@@ -334,7 +335,12 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
 
 #chord-and-grip-container {
   justify-content: space-around;
-  padding-top: 2rem; }
+  padding-top: 2rem;
+  width: 100%;
+  min-height: 40vh; }
+
+#chord-to-play-container {
+  padding: 1.5rem; }
 
 #chord-to-play-display {
   flex-direction: column;
@@ -342,23 +348,22 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
 
 #chord-to-play {
   position: relative;
-  font-size: 7rem;
+  font-size: 9rem;
   margin: 0 auto;
-  padding-bottom: 1rem;
   color: #d0e1f9; }
 
 #chord-grip-container {
-  flex-direction: row; }
+  flex-direction: row;
+  padding: 1.5rem; }
 
 #chord-grip-frame {
   width: 90%;
-  height: 100%;
-  padding: 0.5rem; }
+  height: 100%; }
 
 #chord-grip-display {
   position: relative;
-  width: 8rem;
-  height: 10rem;
+  width: 10rem;
+  height: 12.5rem;
   margin-top: 1rem; }
 
 #nut {

@@ -17,13 +17,46 @@
   </head>
 
   <body>
+    <!-- FEEDBACK OVERLAY -->
+    <!-- Feedback overlay -->
+    <div id="feedback-overlay" class="overlay hide">
+      <!-- Top padding -->
+      <div class="top-padding"></div>
+      <!-- Feedback header -->
+      <div id="feedback-header" class="overlay-header">
+        <div class="button-placeholder-container">
+          <button class="placeholder-btn"></button>
+        </div>
+        <div id="feedback-title" class="overlay-title">Feedback</div>
+        <div id="feedback-hide"><button id="feedback-hide-btn" class="overlay-hide-btn"><i class="fas fa-times"></i></button></div>
+      </div>
+      <!-- Feedback: Main -->
+      <div id="feedback-main">
+        <div class="overlay-headline">
+          <p id="feedback-headline-text">
+          </p>
+        </div>
+        <form name="feedback-form" id="feedback-form" method="POST" data-netlify="true">
+          <textarea name="feedback-textarea" id="feedback-textarea" placeholder="Type here what you think about this app and what I could make even better..."></textarea>
+          <button id="submit-btn" class="controlsBtn inactive" disabled type="submit">Send</button>
+          <label for="feedback-textarea">Type here what you think about this app and what I could improve...</label>
+        </form>
+      </div>
+      <!-- Bottom padding -->
+      <div class="bottom-padding"></div>
+    </div>
+
+
+
+
+
     <!-- APP MAIN SCREEN -->
     <div class="app-container">
       <!-- Top padding -->
       <div class="top-padding"></div>
       <!-- Top navigation -->
       <div id="top-navigation" class="container">
-        <button id="chord-coach-btn" class="defaultBtn">
+        <button id="chord-spotting-btn" class="defaultBtn">
           <i class="fas fa-headphones"></i>
         </button>
         <button id="show-feedback-btn" class="defaultBtn">

@@ -355,7 +355,7 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
 
 #chord-grip-container {
   flex-direction: row;
-  padding: 1.5rem; }
+  padding: 2rem; }
 
 #chord-grip-frame {
   width: 90%;

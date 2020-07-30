@@ -1,5 +1,5 @@
 //App controller
-const App = (function (UICtrl) {
+const App = (function (DataCtrl, UICtrl) {
   const loadEventListeners = function () {
     //Use the public method of UICtrl to get available UI selectors for further re-use in the APP controller here
     const UISelectors = UICtrl.getSelectors();
@@ -25,15 +25,18 @@ const App = (function (UICtrl) {
         UISelectors.submitFeedback.disabled = true;
       }
     });
+    //Start the training
+
   };
 
   //Public methods
   return {
     init: function () {
       loadEventListeners();
+      //DataCtrl.setDefaultData();
     },
   };
-})(UICtrl);
+})(DataCtrl, UICtrl);
 
 //Initialize the app
 App.init();

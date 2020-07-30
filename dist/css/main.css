@@ -690,7 +690,14 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
   #copyright {
     font-size: 1rem; } }
 
+@media (max-width: 750px) {
+  #chord-and-grip-container {
+    flex-direction: column;
+    padding-bottom: 2rem; } }
+
 @media (max-width: 450px) and (max-height: 850px) {
+  #chord-to-play {
+    font-size: 6rem; }
   #progress-container {
     width: 100%;
     padding: 1.5rem 0.75rem; }

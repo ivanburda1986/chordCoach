@@ -63,6 +63,7 @@
   #primary-action-container {
     min-height: 25vh;
   }
+
   #primary-action {
     width: 8rem;
     height: 8rem;
@@ -71,6 +72,7 @@
   .primary-action-button {
     padding: 0.5rem;
     font-size: 2rem;
+
     p {
       font-size: 1.5rem;
     }
@@ -79,11 +81,13 @@
   #progress-container {
     padding: 0.5rem;
   }
+
   .training-status-icon {
     width: 4.5rem;
     height: 4.5rem;
     font-size: 2rem;
   }
+
   .chord-option {
     width: 4.5rem;
     height: 4.5rem;
@@ -121,6 +125,7 @@
     height: 3rem;
     font-size: 1.5rem;
   }
+
   .overlay-title {
     font-size: 2.5rem;
   }
@@ -132,10 +137,30 @@
   #copyright {
     font-size: 1rem;
   }
+
+
+}
+
+//Any narrow screen
+@media (max-width: 750px) {
+
+  #chord-and-grip-container {
+    flex-direction: column;
+    padding-bottom: 2rem;
+  }
 }
 
 //Pixel2, Pixel2XL
 @media (max-width: 450px) and (max-height: 850px) {
+
+  //CHORD COACH
+  #chord-to-play {
+    font-size: 6rem;
+  }
+
+
+
+  //CHORD SPOTTING
   //Progress container
   #progress-container {
     width: 100%;
@@ -158,6 +183,7 @@
     border: 0.25rem solid $veryLight;
     padding: 0.5rem;
     font-size: 2rem;
+
     p {
       font-size: 1rem;
     }
@@ -226,6 +252,7 @@
 
 //Iphone 5SE, Motog G4, Galaxy S5
 @media (max-width: 350px) and (max-height: 570px) {
+
   //Chord options
   .chord-option {
     margin: 5px;

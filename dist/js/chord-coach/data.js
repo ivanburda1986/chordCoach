@@ -2,22 +2,24 @@
 const DataCtrl = (function () {
   const appData = {
     applicationState: null,
-    playPauseBtnState: null,
+    playBtnState: null,
     loadedChords: null,
     interval: null,
     setupMinutes: null,
     displayMinutes: null,
     displaySeconds: null,
+    zerosPrecedingMinutes: '',
+    zerosPrecedingSeconds: '',
     defaultValues: {
       chordGroup: ["A", "D", "E", "G", "C", "Amin", "Emin", "Dmin"],
       chordGroupName: "basicEightShapes",
-      interval: 5,
-      defaultMinutes: 5
+      interval: 3,
+      defaultMinutes: 1
     },
   };
 
   const soundSelectors = {
-
+    alarmAudio: document.getElementById("alarmAudio"),
   };
 
   const allChords = {
@@ -325,11 +327,11 @@ const DataCtrl = (function () {
     },
     setDefaultData: function () {
       appData.applicationState = 0,
-        appData.playPauseBtnState = 'STOPPED',
+        appData.playBtnState = 'STOPPED',
         appData.loadedChords = appData.defaultValues.chordGroup,
         appData.interval = appData.defaultValues.interval,
-        appData.setupMinutes = 3,
-        appData.displayMinutes = 3,
+        appData.setupMinutes = appData.defaultValues.defaultMinutes,
+        appData.displayMinutes = appData.defaultValues.defaultMinutes,
         appData.displaySeconds = 0
     },
 

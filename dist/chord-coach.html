@@ -17,6 +17,10 @@
 </head>
 
 <body>
+  <!-- Audio -->
+  <audio id="alarmAudio">
+    <source src="sounds/nobeep.mp3" type="audio/mpeg">
+  </audio>
   <!-- FEEDBACK OVERLAY -->
   <!-- Feedback overlay -->
   <div id="feedback-overlay" class="overlay hide">
@@ -165,6 +169,10 @@
         <button id="play-btn" class="controlsBtn play">
           <i class="fas fa-check-circle"></i>
           Play
+        </button>
+        <button id="pause-btn" class="controlsBtn pause">
+          <i class="fas fa-pause"></i>
+          Pause
         </button>
         <button id="restart-btn" class="controlsBtn restart">
           <i class="fas fa-history"></i>Restart

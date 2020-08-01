@@ -340,7 +340,8 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
   min-height: 40vh; }
 
 #chord-to-play-container {
-  padding: 1.5rem; }
+  padding: 1.5rem;
+  width: 25%; }
 
 #chord-to-play-display {
   flex-direction: column;
@@ -354,7 +355,9 @@ label, .container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay
 
 #chord-grip-container {
   flex-direction: row;
-  padding: 2rem; }
+  padding: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem; }
 
 #chord-grip-frame {
   width: 90%;

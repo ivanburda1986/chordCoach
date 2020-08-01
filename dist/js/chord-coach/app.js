@@ -49,10 +49,15 @@ const App = (function (DataCtrl, UICtrl) {
       console.log("--stopped--");
       e.preventDefault();
     });
+    //Restart the training
+    UISelectors.restartBtn.addEventListener("click", (e) => {
+      resetCountdown();
+      UICtrl.showPlayBtn("dontPrevent");
+      UICtrl.hidePauseBtn();
+      UICtrl.preventMultipleBtnClick(UISelectors.restartBtn);
+    });
   };
 
-  //Restart the training
-  const restartTraining = function () {};
 
   //Countdown the time
   const deductTime = function () {
@@ -95,7 +100,8 @@ const App = (function (DataCtrl, UICtrl) {
       SoundSelectors.alarmAudio.play();
       //visualAlarm(3);
       resetCountdown();
-      //stopBtn.classList.remove('restart');
+      UICtrl.showPlayBtn("dontPrevent");
+      UICtrl.hidePauseBtn();
     }
   };
 

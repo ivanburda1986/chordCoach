@@ -13,7 +13,7 @@ const DataCtrl = (function () {
     defaultValues: {
       chordGroup: ["A", "D", "E", "G", "C", "Amin", "Emin", "Dmin"],
       chordGroupName: "basicEightShapes",
-      interval: 3,
+      interval: 2,
       defaultMinutes: 1
     },
   };

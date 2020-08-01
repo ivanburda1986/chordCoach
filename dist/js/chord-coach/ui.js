@@ -22,6 +22,22 @@ const UICtrl = (function () {
     //Switch to Chord coach
     chordSpottingSwitchBtn: document.getElementById("chord-spotting-btn"),
 
+    //Fingers
+    finger1: document.getElementById('finger1'),
+    finger1bar: document.getElementById('finger1bar'),
+    finger2: document.getElementById('finger2'),
+    finger3: document.getElementById('finger3'),
+    finger4: document.getElementById('finger4'),
+    thumb: document.getElementById('thumb'),
+
+    //String soundings
+    sounding1: document.getElementById('sounding-string1'),
+    sounding2: document.getElementById('sounding-string2'),
+    sounding3: document.getElementById('sounding-string3'),
+    sounding4: document.getElementById('sounding-string4'),
+    sounding5: document.getElementById('sounding-string5'),
+    sounding6: document.getElementById('sounding-string6'),
+
     //Feedback
     feedbackOverlay: document.getElementById("feedback-overlay"),
     hideFeedback: document.getElementById("feedback-hide-btn"),
@@ -57,8 +73,9 @@ const UICtrl = (function () {
             return;
           } else {
             UICtrl.flashChordToPlay();
+            UICtrl.flashChordGrip();
             UISelectors.chordToPlay.innerText = AppData.loadedChords[random];
-            //displayChordGrip(loadedChords[random]);
+            UICtrl.displayChordGrip(AppData.loadedChords[random]);
             UICtrl.displayChordsToPlay();
           }
         }, AppData.interval * 1000);
@@ -68,6 +85,22 @@ const UICtrl = (function () {
       UISelectors.chordToPlay.style.opacity = 0;
       setTimeout(function () {
         UISelectors.chordToPlay.style.opacity = 1;
+      }, 200);
+    },
+    flashChordGrip: function () {
+      UISelectors.finger1.style.opacity = 0;
+      UISelectors.finger1bar.style.opacity = 0;
+      UISelectors.finger2.style.opacity = 0;
+      UISelectors.finger3.style.opacity = 0;
+      UISelectors.finger4.style.opacity = 0;
+      UISelectors.thumb.style.opacity = 0;
+      setTimeout(function () {
+        UISelectors.finger1.style.opacity = 1;
+        UISelectors.finger1bar.style.opacity = 1;
+        UISelectors.finger2.style.opacity = 1;
+        UISelectors.finger3.style.opacity = 1;
+        UISelectors.finger4.style.opacity = 1;
+        UISelectors.thumb.style.opacity = 1;
       }, 200);
     },
     displayIntervalValue: function (intervalLength) {
@@ -92,8 +125,10 @@ const UICtrl = (function () {
     hidePlayBtn: function () {
       UISelectors.playBtn.style.display = "none";
     },
-    showPlayBtn: function () {
-      UICtrl.preventMultipleBtnClick(UISelectors.playBtn);
+    showPlayBtn: function (prevent = "prevent") {
+      if (prevent === "prevent") {
+        UICtrl.preventMultipleBtnClick(UISelectors.playBtn);
+      }
       UISelectors.playBtn.style.display = "block";
     },
     hidePauseBtn: function () {
@@ -102,6 +137,39 @@ const UICtrl = (function () {
     showPauseBtn: function () {
       UICtrl.preventMultipleBtnClick(UISelectors.pauseBtn);
       UISelectors.pauseBtn.style.display = "block";
+    },
+    displayChordGrip: function (chordName) {
+      let fingerLayout = DataCtrl.getChordGrip(chordName);
+      UISelectors.finger1.style.top = `${fingerLayout["1"][0]}%`;
+      UISelectors.finger1.style.left = `${fingerLayout["1"][1]}%`;
+      UISelectors.finger1.style.visibility = `${fingerLayout["1"][2]}`;
+
+      UISelectors.finger1bar.style.top = `${fingerLayout["1BAR"][0]}%`;
+      UISelectors.finger1bar.style.left = `${fingerLayout["1BAR"][1]}%`;
+      UISelectors.finger1bar.style.visibility = `${fingerLayout["1BAR"][2]}`;
+
+      UISelectors.finger2.style.top = `${fingerLayout["2"][0]}%`;
+      UISelectors.finger2.style.left = `${fingerLayout["2"][1]}%`;
+      UISelectors.finger2.style.visibility = `${fingerLayout["2"][2]}`;
+
+      UISelectors.finger3.style.top = `${fingerLayout["3"][0]}%`;
+      UISelectors.finger3.style.left = `${fingerLayout["3"][1]}%`;
+      UISelectors.finger3.style.visibility = `${fingerLayout["3"][2]}`;
+
+      UISelectors.finger4.style.top = `${fingerLayout["4"][0]}%`;
+      UISelectors.finger4.style.left = `${fingerLayout["4"][1]}%`;
+      UISelectors.finger4.style.visibility = `${fingerLayout["4"][2]}`;
+
+      UISelectors.thumb.style.top = `${fingerLayout["T"][0]}%`;
+      UISelectors.thumb.style.left = `${fingerLayout["T"][1]}%`;
+      UISelectors.thumb.style.visibility = `${fingerLayout["T"][2]}`;
+
+      UISelectors.sounding1.children[0].innerText = `${fingerLayout["sounding"][0]}`;
+      UISelectors.sounding2.children[0].innerText = `${fingerLayout["sounding"][1]}`;
+      UISelectors.sounding3.children[0].innerText = `${fingerLayout["sounding"][2]}`;
+      UISelectors.sounding4.children[0].innerText = `${fingerLayout["sounding"][3]}`;
+      UISelectors.sounding5.children[0].innerText = `${fingerLayout["sounding"][4]}`;
+      UISelectors.sounding6.children[0].innerText = `${fingerLayout["sounding"][5]}`;
     },
   };
 })();

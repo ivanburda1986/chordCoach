@@ -27,6 +27,13 @@ const App = (function (DataCtrl, UICtrl) {
         UISelectors.submitFeedback.disabled = true;
       }
     });
+    //Show settings
+    UISelectors.showSettings.addEventListener("click", UICtrl.showSettings);
+
+    //Hide settings
+    UISelectors.hideSettings.addEventListener("click", UICtrl.hideSettings);
+
+
     //Start the training
     UISelectors.playBtn.addEventListener("click", (e) => {
       SoundSelectors.alarmAudio.src = "sounds/nobeep.mp3"; //Replacing the silent sound with a real beep before playing it.

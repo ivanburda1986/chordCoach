@@ -19,7 +19,7 @@
 <body>
   <!-- Audio -->
   <audio id="alarmAudio">
-    <source src="sounds/nobeep.mp3" type="audio/mpeg">
+    <source src="sounds/nobeep.mp3" type="audio/mpeg" />
   </audio>
   <!-- FEEDBACK OVERLAY -->
   <!-- Feedback overlay -->
@@ -32,14 +32,14 @@
         <button class="placeholder-btn"></button>
       </div>
       <div id="feedback-title" class="overlay-title">Feedback</div>
-      <div id="feedback-hide"><button id="feedback-hide-btn" class="overlay-hide-btn"><i
-            class="fas fa-times"></i></button></div>
+      <div id="feedback-hide">
+        <button id="feedback-hide-btn" class="overlay-hide-btn"><i class="fas fa-times"></i></button>
+      </div>
     </div>
     <!-- Feedback: Main -->
     <div id="feedback-main">
       <div class="overlay-headline">
-        <p id="feedback-headline-text">
-        </p>
+        <p id="feedback-headline-text"></p>
       </div>
       <form name="feedback-form" id="feedback-form" method="POST" data-netlify="true">
         <textarea name="feedback-textarea" id="feedback-textarea"
@@ -52,10 +52,122 @@
     <div class="bottom-padding"></div>
   </div>
 
+  <!-- SETTINGS OVERLAY -->
+  <!-- Settings overlay -->
+  <div id="settings-overlay" class="overlay hide">
+    <!-- Top padding -->
+    <div class="top-padding"></div>
+    <!-- Settings header -->
+    <div id="settings-header" class="overlay-header">
+      <div class="button-placeholder-container">
+        <button class="placeholder-btn"></button>
+      </div>
+      <div class="overlay-title">Settings</div>
+      <div id="settings-hide">
+        <button id="settings-hide-btn" class="overlay-hide-btn disabled">
+          <i class="fas fa-check"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Settings: Chord groups -->
+    <div id="settings-chord-groups">
+      <div class="overlay-headline">
+        <p>Select at least one chord set</p>
+      </div>
+      <div id="settings-chord-groups-buttons">
+        <div class="chord-group">
+          <input type="checkbox" name="chordGroup" value="basicEightShapes" id="basicEightShapes" /><label
+            for="basicEightShapes">
+            <p class="label-text">Basic</p>
+            <p class="chord">A</p>
+            <p class="chord">C</p>
+            <p class="chord">D</p>
+            <p class="chord">E</p>
+            <p class="chord">G</p>
+            <p class="chord">Amin</p>
+            <p class="chord">Dmin</p>
+            <p class="chord">Emin</p>
+          </label>
+        </div>
+        <div class="chord-group">
+          <input type="checkbox" name="chordGroup" value="dominantShapes" id="dominantShapes" /><label
+            for="dominantShapes">
+            <p class="label-text">Dominant</p>
+            <p class="chord">A7</p>
+            <p class="chord">B7</p>
+            <p class="chord">C7</p>
+            <p class="chord">D7</p>
+            <p class="chord">E7</p>
+            <p class="chord">G7</p>
+          </label>
+        </div>
+        <div class="chord-group">
+          <input type="checkbox" name="chordGroup" value="susShapes" id="susShapes" /><label for="susShapes">
+            <p class="label-text">Sus</p>
+            <p class="chord">Asus4</p>
+            <p class="chord">Asus2</p>
+            <p class="chord">Dsus4</p>
+            <p class="chord">Dsus2</p>
+            <p class="chord">Esus4</p>
+          </label>
+        </div>
+        <div class="chord-group">
+          <input type="checkbox" name="chordGroup" value="fChords" id="fChords" /><label for="fChords">
+            <p class="label-text">F's</p>
+            <p class="chord">F</p>
+            <p class="chord">FMaj7</p>
+          </label>
+        </div>
+        <div class="chord-group">
+          <input type="checkbox" name="chordGroup" value="basicSlashChords" id="basicSlashChords" /><label
+            for="basicSlashChords">
+            <p class="label-text">Basic slash</p>
+            <p class="chord">C/G</p>
+            <p class="chord">D/F#</p>
+            <p class="chord">G/B</p>
+          </label>
+        </div>
+        <div class="chord-group">
+          <input type="checkbox" name="chordGroup" value="gVariations" id="gVariations" /><label for="gVariations">
+            <p class="label-text">G variations</p>
+            <p class="chord">G</p>
+            <p class="chord">Big G</p>
+            <p class="chord">Rock G</p>
+            <p class="chord">Folk G</p>
+            <p class="chord">G7</p>
+          </label>
+        </div>
+      </div>
+    </div>
+    <!-- Settings: Chord individuals -->
+    <div id="settings-chord-individuals">
+      <div class="overlay-headline">
+        <p>Or pick at least 3 chords</p>
+      </div>
+      <div id="settings-chord-indviduals-buttons">
+        <div class="individual-chord chord"><input type="checkbox" name="individualChord" value="A" id="a" /><label
+            for="a">A</label></div>
+        <div class="individual-chord chord"><input type="checkbox" name="individualChord" value="C" id="c" /><label
+            for="c">C</label></div>
+        <div class="individual-chord chord"><input type="checkbox" name="individualChord" value="D" id="d" /><label
+            for="d">D</label></div>
+      </div>
+    </div>
+    <!-- Settings: More -->
+    <div id="settings-more">
+      <div class="overlay-headline">
+        <p>More</p>
+      </div>
+      <div id="settings-more-buttons">
+      </div>
+    </div>
 
+    <!-- Bottom padding -->
+    <div class="bottom-padding"></div>
 
+  </div>
 
-
+  </div>
   <!-- APP MAIN SCREEN -->
   <div class="app-container">
     <!-- Top padding -->
@@ -160,7 +272,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <!-- Controllers -->
@@ -174,9 +285,7 @@
           <i class="fas fa-pause"></i>
           Pause
         </button>
-        <button id="restart-btn" class="controlsBtn restart">
-          <i class="fas fa-history"></i>Restart
-        </button>
+        <button id="restart-btn" class="controlsBtn restart"><i class="fas fa-history"></i>Restart</button>
       </div>
       <div id="copyright">
         <p>

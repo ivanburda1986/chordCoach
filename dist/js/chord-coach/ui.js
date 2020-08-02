@@ -46,6 +46,9 @@ const UICtrl = (function () {
     submitFeedback: document.getElementById("submit-btn"),
 
     //Settings
+    settingsOverlay: document.getElementById("settings-overlay"),
+    hideSettings: document.getElementById("settings-hide-btn"),
+    showSettings: document.getElementById("show-settings-btn"),
     intervalSetupValue: document.getElementById('interval-setup-value'),
     countdownSetupValue: document.getElementById('countdown-setup-value'),
   };
@@ -63,6 +66,16 @@ const UICtrl = (function () {
     hideFeedback: function () {
       UISelectors.feedbackOverlay.classList.add("hide");
       UISelectors.feedbackOverlay.classList.remove("show");
+      UISelectors.mainScreen.classList.remove("hide");
+    },
+    showSettings: function () {
+      UISelectors.settingsOverlay.classList.add("show");
+      UISelectors.settingsOverlay.classList.remove("hide");
+      UISelectors.mainScreen.classList.add("hide");
+    },
+    hideSettings: function () {
+      UISelectors.settingsOverlay.classList.add("hide");
+      UISelectors.settingsOverlay.classList.remove("show");
       UISelectors.mainScreen.classList.remove("hide");
     },
     displayChordsToPlay: function () {

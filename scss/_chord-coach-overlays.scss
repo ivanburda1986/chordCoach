@@ -1,0 +1,101 @@
+//--------->Predefined chord groups
+#settings-chord-groups {}
+
+#settings-chord-groups-buttons {
+  @extend %flex-justify-align-center;
+  @extend %border;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+.chord-group {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: $lightUI;
+  border-radius: 5px;
+  margin-bottom: 5px;
+
+  label {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .label-text {
+      font-size: 1.2rem;
+      margin-right: 1rem;
+    }
+  }
+
+  input {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+
+
+  &.selected {
+    background: $dominant1;
+  }
+
+  .chord {
+    color: $veryLight;
+    background: $dark;
+
+    padding: 2px 4px;
+    margin-bottom: 2px;
+    margin-left: 3px;
+
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+
+  }
+}
+
+
+
+//--
+
+#settings-chord-individuals {}
+
+#settings-chord-indviduals-buttons {
+  @extend %border;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  padding: 2rem 1rem;
+
+  .individual-chord {
+    color: $veryLight;
+    background: $lightUI;
+    padding: 2px 4px;
+    margin-bottom: 2px;
+    margin-left: 3px;
+
+  }
+
+}
+
+
+
+#settings-more {}
+
+#settings-more-buttons {
+  @extend %border;
+  @extend %flex-justify-align-center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  padding: 2rem 1rem;
+  border: 5px solid $inactiveBackground;
+}

@@ -5,6 +5,7 @@ const App = (function (DataCtrl, UICtrl) {
   const SoundSelectors = DataCtrl.getSoundSelectors();
   const UISelectors = UICtrl.getSelectors();
 
+  //EVENT LISTENERS
   const loadEventListeners = function () {
     //Switch to Chord coach
     UISelectors.chordSpottingSwitchBtn.addEventListener("click", () => {
@@ -33,7 +34,6 @@ const App = (function (DataCtrl, UICtrl) {
     //Hide settings
     UISelectors.hideSettings.addEventListener("click", UICtrl.hideSettings);
 
-
     //Start the training
     UISelectors.playBtn.addEventListener("click", (e) => {
       SoundSelectors.alarmAudio.src = "sounds/nobeep.mp3"; //Replacing the silent sound with a real beep before playing it.
@@ -43,7 +43,6 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.showPauseBtn();
       UICtrl.hidePlayBtn();
       countdownTheTime();
-      console.log("playing...");
       e.preventDefault();
     });
     //Pause the training
@@ -53,7 +52,6 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.showPlayBtn();
       UICtrl.hidePauseBtn();
       countdownTheTime();
-      console.log("--stopped--");
       e.preventDefault();
     });
     //Restart the training
@@ -63,9 +61,30 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.hidePauseBtn();
       UICtrl.preventMultipleBtnClick(UISelectors.restartBtn);
     });
+    //Select chord groups x individual chords
+    UISelectors.chordGroups.forEach((group) => {
+      group.addEventListener('click', (e) => {
+        if (group.children[0].checked === true) {
+          group.classList.add('selected');
+        } else if (group.children[0].checked === false) {
+          group.classList.remove('selected');
+        }
+        //checkApplySettingsButtonState();
+      })
+    });
+    UISelectors.individualChords.forEach((chord) => {
+      chord.addEventListener('click', (e) => {
+        if (chord.children[0].checked === true) {
+          chord.classList.add('selected');
+        } else if (chord.children[0].checked === false) {
+          chord.classList.remove('selected');
+        }
+        //checkApplySettingsButtonState();
+      })
+    })
   };
 
-
+  //PRIVATE METHODS
   //Countdown the time
   const deductTime = function () {
     if (AppData.displaySeconds === 0) {
@@ -133,7 +152,7 @@ const App = (function (DataCtrl, UICtrl) {
     }
   };
 
-  //Public methods
+  //PUBLIC METHODS
   return {
     init: function () {
       loadEventListeners();

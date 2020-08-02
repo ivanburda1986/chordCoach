@@ -49,8 +49,15 @@ const UICtrl = (function () {
     settingsOverlay: document.getElementById("settings-overlay"),
     hideSettings: document.getElementById("settings-hide-btn"),
     showSettings: document.getElementById("show-settings-btn"),
+    chordGroups: document.querySelectorAll('.chord-group'),
+    individualChords: document.querySelectorAll('.individual-chord'),
     intervalSetupValue: document.getElementById('interval-setup-value'),
     countdownSetupValue: document.getElementById('countdown-setup-value'),
+    countdownIncreaseBtn: document.getElementById('countdown-increase-btn'),
+    countdownDecreaseBtn: document.getElementById('countdown-decrease-btn'),
+    intervalIncreaseBtn: document.getElementById('interval-increase-btn'),
+    intervalDecreaseBtn: document.getElementById('interval-decrease-btn'),
+
   };
 
   //Public methods
@@ -58,6 +65,7 @@ const UICtrl = (function () {
     getSelectors: function () {
       return UISelectors;
     },
+    //Feedback
     showFeedback: function () {
       UISelectors.feedbackOverlay.classList.add("show");
       UISelectors.feedbackOverlay.classList.remove("hide");
@@ -68,6 +76,7 @@ const UICtrl = (function () {
       UISelectors.feedbackOverlay.classList.remove("show");
       UISelectors.mainScreen.classList.remove("hide");
     },
+    //Settings
     showSettings: function () {
       UISelectors.settingsOverlay.classList.add("show");
       UISelectors.settingsOverlay.classList.remove("hide");
@@ -78,6 +87,8 @@ const UICtrl = (function () {
       UISelectors.settingsOverlay.classList.remove("show");
       UISelectors.mainScreen.classList.remove("hide");
     },
+
+    //Main screen
     displayChordsToPlay: function () {
       let random = Math.floor(Math.random() * AppData.loadedChords.length);
       if (AppData.applicationState === 1) {
@@ -184,5 +195,6 @@ const UICtrl = (function () {
       UISelectors.sounding5.children[0].innerText = `${fingerLayout["sounding"][4]}`;
       UISelectors.sounding6.children[0].innerText = `${fingerLayout["sounding"][5]}`;
     },
+
   };
 })();

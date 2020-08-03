@@ -51,6 +51,8 @@ const UICtrl = (function () {
     showSettings: document.getElementById("show-settings-btn"),
     chordGroups: document.querySelectorAll('.chord-group'),
     individualChords: document.querySelectorAll('.individual-chord'),
+    chordGroupCheckboxes: document.getElementsByName('chordGroup'),
+    individualChordCheckboxes: document.getElementsByName('individualChord'),
     intervalSetupValue: document.getElementById('interval-setup-value'),
     countdownSetupValue: document.getElementById('countdown-setup-value'),
     countdownIncreaseBtn: document.getElementById('countdown-increase-btn'),
@@ -87,7 +89,52 @@ const UICtrl = (function () {
       UISelectors.settingsOverlay.classList.remove("show");
       UISelectors.mainScreen.classList.remove("hide");
     },
+    //Settings
+    clearGroups: function () {
+      UISelectors.chordGroupCheckboxes.forEach((group) => {
+        group.checked = false;
+      });
+      UISelectors.chordGroups.forEach((group) => {
+        group.classList.remove('selected');
+      });
+    },
+    clearIndividuals: function () {
+      UISelectors.individualChordCheckboxes.forEach((individual) => {
+        individual.checked = false;
+      })
+      UISelectors.individualChords.forEach((chord) => {
+        chord.classList.remove('selected');
+      });
+    },
+    checkApplySettingsButtonState: function () {
+      //Allow applying settings only after making sure that:
+      //--Either at least 1 group of chords is selected
+      let selectedGroups = [];
+      UISelectors.chordGroupCheckboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          selectedGroups.push(checkbox.value);
+        }
+      });
 
+      //--Or at least 3 individual chords are selected
+      let selectedIndividualChords = [];
+      UISelectors.individualChordCheckboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          selectedIndividualChords.push(checkbox.value);
+        }
+      });
+
+      //Enable the button to apply settings
+      if (selectedGroups.length > 0 || selectedIndividualChords.length >= 3) {
+        UISelectors.hideSettings.disabled = false;
+        UISelectors.hideSettings.classList.add('enabled');
+        UISelectors.hideSettings.classList.remove('disabled');
+      } else {
+        UISelectors.hideSettings.disabled = true;
+        UISelectors.hideSettings.classList.remove('enabled');
+        UISelectors.hideSettings.classList.add('disabled');
+      }
+    },
     //Main screen
     displayChordsToPlay: function () {
       let random = Math.floor(Math.random() * AppData.loadedChords.length);

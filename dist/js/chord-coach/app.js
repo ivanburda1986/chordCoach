@@ -69,7 +69,8 @@ const App = (function (DataCtrl, UICtrl) {
         } else if (group.children[0].checked === false) {
           group.classList.remove('selected');
         }
-        //checkApplySettingsButtonState();
+        UICtrl.clearIndividuals();
+        UICtrl.checkApplySettingsButtonState();
       })
     });
     UISelectors.individualChords.forEach((chord) => {
@@ -79,7 +80,8 @@ const App = (function (DataCtrl, UICtrl) {
         } else if (chord.children[0].checked === false) {
           chord.classList.remove('selected');
         }
-        //checkApplySettingsButtonState();
+        UICtrl.clearGroups();
+        UICtrl.checkApplySettingsButtonState();
       })
     })
   };

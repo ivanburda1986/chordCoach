@@ -62,6 +62,35 @@ const UICtrl = (function () {
 
   };
 
+  //Private methods
+  const confirmSelectedChords = function () {
+    AppData.loadedChords = [];
+    //Get individual chords which are selected
+    let selectedIndividualChords = [];
+    UISelectors.individualChordCheckboxes.forEach((checkbox) => {
+      if (checkbox.checked) {
+        selectedIndividualChords.push(checkbox.value);
+      }
+    });
+    //Get chord groups which are selected
+    let detailsFromCheckedGroups = [];
+    let checkedGroups = [];
+    let chordsFromCheckedGroupsTogether = [];
+    UISelectors.chordGroupCheckboxes.forEach((checkbox) => {
+      if (checkbox.checked) {
+        checkedGroups.push(checkbox.value);
+      }
+    })
+    checkedGroups.forEach((group) => {
+      detailsFromCheckedGroups.push(DataCtrl.getAllChords()[group])
+    })
+    detailsFromCheckedGroups.forEach((item) => {
+      chordsFromCheckedGroupsTogether = chordsFromCheckedGroupsTogether.concat(item);
+    })
+    //Apply the selection of individual chords / chords groups
+    AppData.loadedChords = selectedIndividualChords.concat(chordsFromCheckedGroupsTogether);
+  };
+
   //Public methods
   return {
     getSelectors: function () {
@@ -88,8 +117,9 @@ const UICtrl = (function () {
       UISelectors.settingsOverlay.classList.add("hide");
       UISelectors.settingsOverlay.classList.remove("show");
       UISelectors.mainScreen.classList.remove("hide");
+      confirmSelectedChords();
+      UICtrl.manageChordAndGripDisplay();
     },
-    //Settings
     clearGroups: function () {
       UISelectors.chordGroupCheckboxes.forEach((group) => {
         group.checked = false;
@@ -135,6 +165,7 @@ const UICtrl = (function () {
         UISelectors.hideSettings.classList.add('disabled');
       }
     },
+
     //Main screen
     displayChordsToPlay: function () {
       let random = Math.floor(Math.random() * AppData.loadedChords.length);
@@ -242,6 +273,12 @@ const UICtrl = (function () {
       UISelectors.sounding5.children[0].innerText = `${fingerLayout["sounding"][4]}`;
       UISelectors.sounding6.children[0].innerText = `${fingerLayout["sounding"][5]}`;
     },
+    manageChordAndGripDisplay: function () {
+      //--> Display the correct chord name on the overview
+      UISelectors.chordToPlay.innerText = AppData.loadedChords[0];
+      //--> Display the correct chord grip on the overview
+      UICtrl.displayChordGrip(AppData.loadedChords[0]);
+    }
 
   };
 })();

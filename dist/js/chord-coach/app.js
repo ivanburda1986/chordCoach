@@ -154,6 +154,10 @@ const App = (function (DataCtrl, UICtrl) {
     }
   };
 
+
+
+
+
   //PUBLIC METHODS
   return {
     init: function () {
@@ -163,6 +167,7 @@ const App = (function (DataCtrl, UICtrl) {
       resetCountdown();
       UICtrl.displayCountdown();
       UICtrl.hidePauseBtn();
+      UICtrl.manageChordAndGripDisplay();
     },
     restart: function () {
       countdownTheTime();

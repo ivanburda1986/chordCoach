@@ -165,6 +165,21 @@ const UICtrl = (function () {
         UISelectors.hideSettings.classList.add('disabled');
       }
     },
+    //Manage countdown button states
+    checkIncreaseDecreaseCountdownButtonState: function () {
+      if (AppData.setupMinutes === 10) {
+        UISelectors.countdownIncreaseBtn.disabled = true;
+      }
+      if (AppData.setupMinutes === 9) {
+        UISelectors.countdownIncreaseBtn.disabled = false;
+      }
+      if (AppData.setupMinutes === 1) {
+        UISelectors.countdownDecreaseBtn.disabled = true;
+      }
+      if (AppData.setupMinutes === 2) {
+        UISelectors.countdownDecreaseBtn.disabled = false;
+      }
+    },
 
     //Main screen
     displayChordsToPlay: function () {
@@ -211,7 +226,7 @@ const UICtrl = (function () {
     },
     displayCountdown: function () {
       UISelectors.countdownDisplayValue.innerText = `${AppData.zerosPrecedingMinutes}${AppData.displayMinutes}:${AppData.zerosPrecedingSeconds}${AppData.displaySeconds}`;
-      //UISelectors.countdownSetupValue.innerText = `${AppData.setupMinutes} m`;
+      UISelectors.countdownSetupValue.innerText = `${AppData.setupMinutes} m`;
     },
     preventMultipleBtnClick: function (clickedButtonId) {
       let target = clickedButtonId;

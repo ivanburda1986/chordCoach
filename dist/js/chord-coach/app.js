@@ -83,6 +83,26 @@ const App = (function (DataCtrl, UICtrl) {
         UICtrl.clearGroups();
         UICtrl.checkApplySettingsButtonState();
       })
+    });
+    //Increase countdown
+    UISelectors.countdownIncreaseBtn.addEventListener('click', (e) => {
+      AppData.displayMinutes += 1;
+      AppData.setupMinutes = AppData.displayMinutes;
+      AppData.displaySeconds = 0;
+      precedingSeconds();
+      precedingMinutes();
+      UICtrl.displayCountdown();
+      UICtrl.checkIncreaseDecreaseCountdownButtonState();
+    });
+    //Decrease countdown
+    UISelectors.countdownDecreaseBtn.addEventListener('click', (e) => {
+      AppData.displayMinutes -= 1;
+      AppData.setupMinutes = AppData.displayMinutes;
+      AppData.displaySeconds = 0;
+      precedingMinutes();
+      precedingSeconds();
+      UICtrl.displayCountdown();
+      UICtrl.checkIncreaseDecreaseCountdownButtonState();
     })
   };
 

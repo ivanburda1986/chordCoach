@@ -180,7 +180,26 @@ const UICtrl = (function () {
         UISelectors.countdownDecreaseBtn.disabled = false;
       }
     },
-
+    //Manage interval button states
+    checkIncreaseDecreaseIntervalButtonsState: function () {
+      if (AppData.interval === 10) {
+        UISelectors.intervalIncreaseBtn.disabled = true;
+      }
+      if (AppData.interval === 9) {
+        UISelectors.intervalIncreaseBtn.disabled = false;
+      }
+      if (AppData.interval === 1) {
+        UISelectors.intervalDecreaseBtn.disabled = true;
+      }
+      if (AppData.interval === 2) {
+        UISelectors.intervalDecreaseBtn.disabled = false;
+      }
+    },
+    //Display as selected the groups/individual/default chords based on the initialised set
+    highlightOnLoadSelectedChords: function () {
+      document.getElementById(AppData.defaultValues.chordGroupName).checked = true;
+      document.getElementById(AppData.defaultValues.chordGroupName).parentElement.classList.add('selected');
+    },
     //Main screen
     displayChordsToPlay: function () {
       let random = Math.floor(Math.random() * AppData.loadedChords.length);
@@ -222,7 +241,7 @@ const UICtrl = (function () {
     },
     displayIntervalValue: function (intervalLength) {
       UISelectors.intervalDisplayValue.textContent = `${intervalLength}s`;
-      //UISelectors.intervalSetupValue.textContent = `${intervalLength}s`;
+      UISelectors.intervalSetupValue.textContent = `${intervalLength}s`;
     },
     displayCountdown: function () {
       UISelectors.countdownDisplayValue.innerText = `${AppData.zerosPrecedingMinutes}${AppData.displayMinutes}:${AppData.zerosPrecedingSeconds}${AppData.displaySeconds}`;

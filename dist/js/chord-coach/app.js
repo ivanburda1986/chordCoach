@@ -103,6 +103,18 @@ const App = (function (DataCtrl, UICtrl) {
       precedingSeconds();
       UICtrl.displayCountdown();
       UICtrl.checkIncreaseDecreaseCountdownButtonState();
+    });
+    //Increase interval
+    UISelectors.intervalIncreaseBtn.addEventListener('click', (e) => {
+      AppData.interval += 1;
+      UICtrl.displayIntervalValue(AppData.interval);
+      UICtrl.checkIncreaseDecreaseIntervalButtonsState();
+    });
+    //Decrease interval
+    UISelectors.intervalDecreaseBtn.addEventListener('click', (e) => {
+      AppData.interval -= 1;
+      UICtrl.displayIntervalValue(AppData.interval);
+      UICtrl.checkIncreaseDecreaseIntervalButtonsState();
     })
   };
 
@@ -182,12 +194,20 @@ const App = (function (DataCtrl, UICtrl) {
   return {
     init: function () {
       loadEventListeners();
+      resetCountdown();
       DataCtrl.setDefaultData();
       UICtrl.displayIntervalValue(DataCtrl.getAppData().interval);
-      resetCountdown();
       UICtrl.displayCountdown();
       UICtrl.hidePauseBtn();
       UICtrl.manageChordAndGripDisplay();
+
+      //Settings overlay: Set as selected the groups/individual chords based on the initialised set
+      UICtrl.highlightOnLoadSelectedChords();
+
+      //Manage initial button states
+      UICtrl.checkApplySettingsButtonState();
+      UICtrl.checkIncreaseDecreaseCountdownButtonState();
+      UICtrl.checkIncreaseDecreaseIntervalButtonsState();
     },
     restart: function () {
       countdownTheTime();

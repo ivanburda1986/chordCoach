@@ -14,6 +14,7 @@ const UICtrl = (function () {
     restartBtn: document.getElementById("restart-btn"),
 
     //Display values
+    countdownDisplay: document.getElementById('countdown-display'),
     countdownDisplayValue: document.getElementById('countdown-display-value'),
     chordToPlay: document.getElementById('chord-to-play'),
     intervalDisplayValue: document.getElementById('interval-display-value'),
@@ -110,6 +111,7 @@ const UICtrl = (function () {
       UISelectors.feedbackOverlay.classList.add("show");
       UISelectors.feedbackOverlay.classList.remove("hide");
       UISelectors.mainScreen.classList.add("hide");
+      App.pause();
     },
     hideFeedback: function () {
       UISelectors.feedbackOverlay.classList.add("hide");
@@ -121,6 +123,7 @@ const UICtrl = (function () {
       UISelectors.settingsOverlay.classList.add("show");
       UISelectors.settingsOverlay.classList.remove("hide");
       UISelectors.mainScreen.classList.add("hide");
+      App.pause();
     },
     hideSettings: function () {
       UISelectors.settingsOverlay.classList.add("hide");
@@ -131,6 +134,7 @@ const UICtrl = (function () {
       DataCtrl.saveIntervalToLocalStorage(AppData.interval);
       DataCtrl.saveSetupMinutesToLocalStorage(AppData.setupMinutes);
       DataCtrl.saveSelectedChordsToLocalStorage(AppData.loadedChords);
+      App.restart();
     },
     clearGroups: function () {
       UISelectors.chordGroupCheckboxes.forEach((group) => {
@@ -265,6 +269,25 @@ const UICtrl = (function () {
         UISelectors.thumb.style.opacity = 1;
       }, 200);
     },
+    triggerAnimation: function (target, animationName) {
+      document.querySelector(target).classList.add(`${animationName}`);
+      setTimeout(() => {
+        document.querySelector(target).classList.remove(`${animationName}`);
+      }, 500);
+    },
+    visualAlarm: function (timesToFlash) {
+      if (timesToFlash > 0) {
+        setTimeout(function () {
+          UISelectors.countdownDisplay.style.color = '#D0E1F9';
+          setTimeout(function () {
+            UISelectors.countdownDisplay.style.color = 'red';
+            UICtrl.visualAlarm(timesToFlash - 1);
+          }, 300)
+        }, 300);
+      } else {
+        UISelectors.countdownDisplay.style.color = '#D0E1F9';
+      }
+    },
     displayIntervalValue: function (intervalLength) {
       UISelectors.intervalDisplayValue.textContent = `${intervalLength}s`;
       UISelectors.intervalSetupValue.textContent = `${intervalLength}s`;
@@ -275,13 +298,11 @@ const UICtrl = (function () {
     },
     preventMultipleBtnClick: function (clickedButtonId) {
       let target = clickedButtonId;
+      target.classList.add('disabled');
       target.disabled = true;
-      target.style.color = 'grey';
-      console.log('disabled');
       setTimeout(function () {
-        target.style.color = '#023147';
+        target.classList.remove('disabled');
         target.disabled = false;
-        console.log('enabled');
       }, 2000);
     },
     hidePlayBtn: function () {
@@ -301,24 +322,24 @@ const UICtrl = (function () {
       UISelectors.pauseBtn.style.display = "block";
     },
     makePlayBtnInactive: function () {
-      UISelectors.playBtn.disabled = true;
       UISelectors.playBtn.classList.remove("play");
       UISelectors.playBtn.classList.add("inactive");
+      UISelectors.playBtn.disabled = true;
     },
     makePlayBtnActive: function () {
-      UISelectors.playBtn.disabled = false;
       UISelectors.playBtn.classList.remove("inactive");
       UISelectors.playBtn.classList.add("play");
+      UISelectors.playBtn.disabled = false;
     },
     makeRestartBtnInactive: function () {
-      UISelectors.restartBtn.disabled = true;
       UISelectors.restartBtn.classList.remove("restart");
       UISelectors.restartBtn.classList.add("inactive");
+      UISelectors.restartBtn.disabled = true;
     },
     makeRestartBtnActive: function () {
-      UISelectors.restartBtn.disabled = false;
       UISelectors.restartBtn.classList.remove("inactive");
       UISelectors.restartBtn.classList.add("restart");
+      UISelectors.restartBtn.disabled = false;
     },
     displayChordGrip: function (chordName) {
       let fingerLayout = DataCtrl.getChordGrip(chordName);

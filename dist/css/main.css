@@ -79,7 +79,8 @@ a:active {
   cursor: pointer; }
   .controlsBtn.inactive {
     color: #0c6b97;
-    background: #054766; }
+    background: #054766;
+    cursor: auto; }
   .controlsBtn.confirm {
     background: lightgreen;
     color: #023147; }
@@ -92,6 +93,9 @@ a:active {
   .controlsBtn.restart {
     background: tomato;
     color: #023147; }
+  .controlsBtn.disabled {
+    opacity: 0.5;
+    cursor: auto; }
 
 .animationEnabled {
   transition-property: all;
@@ -624,7 +628,9 @@ a:active {
   width: 100%;
   background: #4d648d;
   border-radius: 5px;
-  margin-bottom: 5px; }
+  margin-bottom: 5px;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem; }
   .chord-group label {
     display: flex;
     flex-direction: row;

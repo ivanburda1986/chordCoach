@@ -19,7 +19,7 @@ const DataCtrl = (function () {
   };
 
   const soundSelectors = {
-    alarmAudio: document.getElementById("alarmAudio"),
+    audio: document.getElementById("audioContainer"),
   };
 
   const allChords = {

@@ -101,6 +101,7 @@ a:active {
   &.inactive {
     color: $inactiveText;
     background: $inactiveBackground;
+    cursor: auto;
   }
 
   &.confirm {
@@ -121,6 +122,11 @@ a:active {
   &.restart {
     background: $dominant1;
     color: $dark;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: auto;
   }
 }
 

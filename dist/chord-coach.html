@@ -18,8 +18,8 @@
 
 <body>
   <!-- Audio -->
-  <audio id="alarmAudio">
-    <source src="sounds/nobeep.mp3" type="audio/mpeg" />
+  <audio id="audioContainer">
+    <source src="sounds/silence.mp3" type="audio/mpeg" />
   </audio>
   <!-- FEEDBACK OVERLAY -->
   <!-- Feedback overlay -->
@@ -271,12 +271,12 @@
         <!-- interval -->
         <div id="interval-display" class="training-status-icon animationEnabled">
           <i class="fas fa-exchange-alt"></i>
-          <p id="interval-display-value">3s</p>
+          <p id="interval-display-value"></p>
         </div>
         <!-- Countdown -->
         <div id="countdown-display" class="training-status-icon animationEnabled">
           <i class="fas fa-hourglass-start"></i>
-          <p id="countdown-display-value">1:59</p>
+          <p id="countdown-display-value"></p>
         </div>
       </div>
       <!-- Chord to play and chord grip shared container -->

@@ -305,7 +305,7 @@ const App = (function (DataCtrl, UICtrl) {
     let appData = DataCtrl.getAppData();
     if (
       appData.currentlyNumberChordsForTraining >=
-        appData.minChordsForTraining &&
+      appData.minChordsForTraining &&
       appData.currentlyNumberChordsForTraining <= appData.maxChordsForTraining
     ) {
       UICtrl.getSelectors().hideSettingsBtn.classList.add("enabled");

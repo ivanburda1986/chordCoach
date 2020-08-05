@@ -28,6 +28,7 @@ const App = (function (DataCtrl, UICtrl) {
         UISelectors.submitFeedback.disabled = true;
       }
     });
+
     //Show settings
     UISelectors.showSettings.addEventListener("click", UICtrl.showSettings);
 
@@ -36,28 +37,17 @@ const App = (function (DataCtrl, UICtrl) {
 
     //Start the training
     UISelectors.playBtn.addEventListener("click", (e) => {
-      SoundSelectors.alarmAudio.src = "sounds/nobeep.mp3"; //Replacing the silent sound with a real beep before playing it.
-      SoundSelectors.alarmAudio.play(); //This plays an empty sound file. On iOs devices all sounds need to be triggered by a user. Later it is possible without a further user-action to play the same file again. This will happen for sounding the alarm when the countdown hits zero - however, the silent source file will be replace for one with a loud beep.
-      AppData.applicationState = 1;
-      UICtrl.displayChordsToPlay();
-      UICtrl.showPauseBtn();
-      UICtrl.hidePlayBtn();
-      countdownTheTime();
+      App.start();
       e.preventDefault();
     });
     //Pause the training
     UISelectors.pauseBtn.addEventListener("click", (e) => {
-      AppData.applicationState = 0;
-      UICtrl.displayChordsToPlay();
-      UICtrl.showPlayBtn();
-      UICtrl.hidePauseBtn();
-      countdownTheTime();
+      App.pause();
       e.preventDefault();
     });
     //Restart the training
     UISelectors.restartBtn.addEventListener("click", (e) => {
       App.restart();
-      UICtrl.preventMultipleBtnClick(UISelectors.restartBtn);
     });
     //Select chord groups x individual chords
     UISelectors.chordGroups.forEach((group) => {
@@ -82,7 +72,7 @@ const App = (function (DataCtrl, UICtrl) {
         UICtrl.checkApplySettingsButtonState();
       })
     });
-    //Increase countdown
+    //Increase countdown setup
     UISelectors.countdownIncreaseBtn.addEventListener('click', (e) => {
       AppData.displayMinutes += 1;
       AppData.setupMinutes = AppData.displayMinutes;
@@ -92,7 +82,7 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.displayCountdown();
       UICtrl.checkIncreaseDecreaseCountdownButtonState();
     });
-    //Decrease countdown
+    //Decrease countdown setup
     UISelectors.countdownDecreaseBtn.addEventListener('click', (e) => {
       AppData.displayMinutes -= 1;
       AppData.setupMinutes = AppData.displayMinutes;
@@ -102,13 +92,13 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.displayCountdown();
       UICtrl.checkIncreaseDecreaseCountdownButtonState();
     });
-    //Increase interval
+    //Increase interval setup
     UISelectors.intervalIncreaseBtn.addEventListener('click', (e) => {
       AppData.interval += 1;
       UICtrl.displayIntervalValue(AppData.interval);
       UICtrl.checkIncreaseDecreaseIntervalButtonsState();
     });
-    //Decrease interval
+    //Decrease interval setup
     UISelectors.intervalDecreaseBtn.addEventListener('click', (e) => {
       AppData.interval -= 1;
       UICtrl.displayIntervalValue(AppData.interval);
@@ -154,12 +144,13 @@ const App = (function (DataCtrl, UICtrl) {
   const alarm = function () {
     if (AppData.displayMinutes === 0 && AppData.displaySeconds === 0) {
       AppData.applicationState = 0;
-      SoundSelectors.alarmAudio.src = "sounds/beep1long.mp3"; //Replacing the silent sound with a real beep before playing it.
-      SoundSelectors.alarmAudio.play();
-      //visualAlarm(3);
+      SoundSelectors.audio.src = "sounds/alarm.mp3";
+      SoundSelectors.audio.play();
+      UICtrl.visualAlarm(4);
       resetCountdown();
       UICtrl.showPlayBtn("dontPrevent");
       UICtrl.hidePauseBtn();
+      UICtrl.makeRestartBtnInactive();
     }
   };
 
@@ -177,7 +168,6 @@ const App = (function (DataCtrl, UICtrl) {
           UICtrl.displayCountdown(); //to refresh the display
           countdownTheTime(); //recursive calling
           UICtrl.checkIncreaseDecreaseCountdownButtonState();
-
           alarm();
         }
       }, 1000);
@@ -190,11 +180,6 @@ const App = (function (DataCtrl, UICtrl) {
   }
 
 
-
-
-
-
-
   //PUBLIC METHODS
   return {
     init: function () {
@@ -204,6 +189,7 @@ const App = (function (DataCtrl, UICtrl) {
 
       //Manage buttons
       UICtrl.hidePauseBtn();
+      UICtrl.makeRestartBtnInactive();
 
       //Set the year in the footer
       displayFullYear();
@@ -229,11 +215,34 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.checkIncreaseDecreaseCountdownButtonState();
       UICtrl.checkIncreaseDecreaseIntervalButtonsState();
     },
+    start: function () {
+      AppData.applicationState = 1;
+      SoundSelectors.audio.src = `sounds/click.mp3`;
+      SoundSelectors.audio.play();
+      UICtrl.displayChordsToPlay();
+      UICtrl.showPauseBtn();
+      UICtrl.hidePlayBtn();
+      UICtrl.makeRestartBtnActive();
+      countdownTheTime();
+    },
+    pause: function () {
+      AppData.applicationState = 0;
+      SoundSelectors.audio.src = `sounds/click.mp3`;
+      SoundSelectors.audio.play();
+      UICtrl.displayChordsToPlay();
+      UICtrl.showPlayBtn();
+      UICtrl.hidePauseBtn();
+      countdownTheTime();
+    },
     restart: function () {
+      SoundSelectors.audio.src = `sounds/start.mp3`;
+      SoundSelectors.audio.play();
       resetCountdown();
       UICtrl.showPlayBtn("dontPrevent");
       UICtrl.hidePauseBtn();
+      UICtrl.makeRestartBtnInactive();
       UICtrl.manageChordAndGripDisplay();
+      UICtrl.triggerAnimation("#countdown-display", "anim-pop-in-out");
     },
   };
 })(DataCtrl, UICtrl);

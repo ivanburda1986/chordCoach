@@ -14,7 +14,7 @@ const DataCtrl = (function () {
       chordGroup: ["A", "D", "E", "G", "C", "Amin", "Emin", "Dmin"],
       chordGroupName: "basicEightShapes",
       interval: 2,
-      defaultMinutes: 1
+      minutes: 1
     },
   };
 
@@ -330,11 +330,49 @@ const DataCtrl = (function () {
         appData.playBtnState = 'STOPPED',
         appData.loadedChords = appData.defaultValues.chordGroup,
         appData.interval = appData.defaultValues.interval,
-        appData.setupMinutes = appData.defaultValues.defaultMinutes,
-        appData.displayMinutes = appData.defaultValues.defaultMinutes,
+        appData.setupMinutes = appData.defaultValues.minutes,
+        appData.displayMinutes = appData.defaultValues.minutes,
         appData.displaySeconds = 0
     },
-
+    saveIntervalToLocalStorage: function (interval) {
+      localStorage.setItem('interval', interval);
+    },
+    saveSetupMinutesToLocalStorage: function (setupMinutes) {
+      localStorage.setItem('setupMinutes', setupMinutes);
+    },
+    saveSelectedChordsToLocalStorage: function (selectedChords) {
+      localStorage.setItem('selectedChords', JSON.stringify(selectedChords));
+    },
+    saveSelectionTypeToLocalStorage: function (selectionType) {
+      localStorage.setItem('selectionType', selectionType);
+    },
+    getIntervalFromLocalStorage: function () {
+      let interval = localStorage.getItem('interval');
+      if (interval === null) {
+        return appData.defaultValues.interval;
+      } else {
+        return parseInt(interval);
+      }
+    },
+    getSetupMinutesFromLocalStorage: function () {
+      let setupMinutes = localStorage.getItem('setupMinutes');
+      if (setupMinutes === null) {
+        return appData.defaultValues.minutes;
+      } else {
+        return parseInt(setupMinutes);
+      }
+    },
+    getSelectedChordsFromLocalStorage: function () {
+      let selectedChords = JSON.parse(localStorage.getItem('selectedChords'));
+      if (selectedChords === null) {
+        return allChords.basicEightShapes;
+      } else {
+        return selectedChords;
+      }
+    },
+    getSelectionTypeFromLocalStorage: function () {
+      return localStorage.getItem('selectionType');
+    }
 
   }
 })();

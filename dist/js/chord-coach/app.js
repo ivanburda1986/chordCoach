@@ -56,9 +56,7 @@ const App = (function (DataCtrl, UICtrl) {
     });
     //Restart the training
     UISelectors.restartBtn.addEventListener("click", (e) => {
-      resetCountdown();
-      UICtrl.showPlayBtn("dontPrevent");
-      UICtrl.hidePauseBtn();
+      App.restart();
       UICtrl.preventMultipleBtnClick(UISelectors.restartBtn);
     });
     //Select chord groups x individual chords
@@ -115,7 +113,7 @@ const App = (function (DataCtrl, UICtrl) {
       AppData.interval -= 1;
       UICtrl.displayIntervalValue(AppData.interval);
       UICtrl.checkIncreaseDecreaseIntervalButtonsState();
-    })
+    });
   };
 
   //PRIVATE METHODS
@@ -178,13 +176,20 @@ const App = (function (DataCtrl, UICtrl) {
           precedingMinutes(); //to make sure the minutes are displaying with a preceding zero when needed
           UICtrl.displayCountdown(); //to refresh the display
           countdownTheTime(); //recursive calling
-          //checkIncreaseDecreaseCountdownButtonState();
+          UICtrl.checkIncreaseDecreaseCountdownButtonState();
 
           alarm();
         }
       }, 1000);
     }
   };
+
+  const displayFullYear = function () {
+    const fullYear = new Date().getFullYear();
+    UISelectors.footerYear.textContent = fullYear;
+  }
+
+
 
 
 
@@ -194,11 +199,26 @@ const App = (function (DataCtrl, UICtrl) {
   return {
     init: function () {
       loadEventListeners();
-      resetCountdown();
+      //Set default data
       DataCtrl.setDefaultData();
-      UICtrl.displayIntervalValue(DataCtrl.getAppData().interval);
-      UICtrl.displayCountdown();
+
+      //Manage buttons
       UICtrl.hidePauseBtn();
+
+      //Set the year in the footer
+      displayFullYear();
+
+      //Set the interval
+      AppData.interval = DataCtrl.getIntervalFromLocalStorage();
+      UICtrl.displayIntervalValue(DataCtrl.getAppData().interval);
+
+      //Reset the countdown
+      AppData.displayMinutes = DataCtrl.getSetupMinutesFromLocalStorage();
+      AppData.setupMinutes = DataCtrl.getSetupMinutesFromLocalStorage();
+      resetCountdown();
+
+      //Display on the overview correct chord and grip based on the current chord selection
+      AppData.loadedChords = DataCtrl.getSelectedChordsFromLocalStorage();
       UICtrl.manageChordAndGripDisplay();
 
       //Settings overlay: Set as selected the groups/individual chords based on the initialised set
@@ -210,7 +230,10 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.checkIncreaseDecreaseIntervalButtonsState();
     },
     restart: function () {
-      countdownTheTime();
+      resetCountdown();
+      UICtrl.showPlayBtn("dontPrevent");
+      UICtrl.hidePauseBtn();
+      UICtrl.manageChordAndGripDisplay();
     },
   };
 })(DataCtrl, UICtrl);

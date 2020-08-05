@@ -38,6 +38,9 @@ const UICtrl = (function () {
     sounding5: document.getElementById('sounding-string5'),
     sounding6: document.getElementById('sounding-string6'),
 
+    //Footer
+    footerYear: document.getElementById('footer-year'),
+
     //Feedback
     feedbackOverlay: document.getElementById("feedback-overlay"),
     hideFeedback: document.getElementById("feedback-hide-btn"),
@@ -89,6 +92,12 @@ const UICtrl = (function () {
     })
     //Apply the selection of individual chords / chords groups
     AppData.loadedChords = selectedIndividualChords.concat(chordsFromCheckedGroupsTogether);
+    //Save what type of selection was made (chord groups vs. individual chords)
+    if (selectedIndividualChords <= 0) {
+      DataCtrl.saveSelectionTypeToLocalStorage("groups");
+    } else {
+      DataCtrl.saveSelectionTypeToLocalStorage("individualChords");
+    }
   };
 
   //Public methods
@@ -119,6 +128,9 @@ const UICtrl = (function () {
       UISelectors.mainScreen.classList.remove("hide");
       confirmSelectedChords();
       UICtrl.manageChordAndGripDisplay();
+      DataCtrl.saveIntervalToLocalStorage(AppData.interval);
+      DataCtrl.saveSetupMinutesToLocalStorage(AppData.setupMinutes);
+      DataCtrl.saveSelectedChordsToLocalStorage(AppData.loadedChords);
     },
     clearGroups: function () {
       UISelectors.chordGroupCheckboxes.forEach((group) => {
@@ -197,8 +209,22 @@ const UICtrl = (function () {
     },
     //Display as selected the groups/individual/default chords based on the initialised set
     highlightOnLoadSelectedChords: function () {
-      document.getElementById(AppData.defaultValues.chordGroupName).checked = true;
-      document.getElementById(AppData.defaultValues.chordGroupName).parentElement.classList.add('selected');
+      if (DataCtrl.getSelectionTypeFromLocalStorage() === "individualChords") {
+        DataCtrl.getSelectedChordsFromLocalStorage().forEach((chord) => {
+          document.getElementById(`${chord.toLowerCase().replace(" ", "").replace("/", "").replace("#", "")}`).checked = true;
+          document.getElementById(`${chord.toLowerCase().replace(" ", "").replace("/", "").replace("#", "")}`).parentNode.classList.add('selected');
+        });
+      } else if (DataCtrl.getSelectionTypeFromLocalStorage() === "groups") {
+        Object.entries(DataCtrl.getAllChords()).forEach((group) => {
+          if (group[1].every(chord => AppData.loadedChords.includes(chord))) {
+            document.getElementById(group[0]).checked = true;
+            document.getElementById(group[0]).parentElement.classList.add('selected');
+          }
+        })
+      } else {
+        document.getElementById(AppData.defaultValues.chordGroupName).checked = true;
+        document.getElementById(AppData.defaultValues.chordGroupName).parentElement.classList.add('selected');
+      }
     },
     //Main screen
     displayChordsToPlay: function () {
@@ -273,6 +299,26 @@ const UICtrl = (function () {
     showPauseBtn: function () {
       UICtrl.preventMultipleBtnClick(UISelectors.pauseBtn);
       UISelectors.pauseBtn.style.display = "block";
+    },
+    makePlayBtnInactive: function () {
+      UISelectors.playBtn.disabled = true;
+      UISelectors.playBtn.classList.remove("play");
+      UISelectors.playBtn.classList.add("inactive");
+    },
+    makePlayBtnActive: function () {
+      UISelectors.playBtn.disabled = false;
+      UISelectors.playBtn.classList.remove("inactive");
+      UISelectors.playBtn.classList.add("play");
+    },
+    makeRestartBtnInactive: function () {
+      UISelectors.restartBtn.disabled = true;
+      UISelectors.restartBtn.classList.remove("restart");
+      UISelectors.restartBtn.classList.add("inactive");
+    },
+    makeRestartBtnActive: function () {
+      UISelectors.restartBtn.disabled = false;
+      UISelectors.restartBtn.classList.remove("inactive");
+      UISelectors.restartBtn.classList.add("restart");
     },
     displayChordGrip: function (chordName) {
       let fingerLayout = DataCtrl.getChordGrip(chordName);

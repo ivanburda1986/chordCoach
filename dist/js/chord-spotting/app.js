@@ -273,7 +273,7 @@ const App = (function (DataCtrl, UICtrl) {
       Math.floor(Math.random() * DataCtrl.getAppData().loadedChords.length)
     ];
     DataCtrl.getAppData().selectedAnswer = null;
-    DataCtrl.getSoundSelectors().restart.src = `sounds/restart.mp3`;
+    DataCtrl.getSoundSelectors().restart.src = `sounds/start.mp3`;
     DataCtrl.getSoundSelectors().restart.play();
     DataCtrl.getAppData().appState = "readyToStart";
     UICtrl.triggerAnimation("#remaining-display", "anim-pop-in-out");

@@ -122,8 +122,6 @@
   }
 
   //Settings: Chord groups
-  #settings-chord-groups-buttons {}
-
   .chord-group {
 
     label {
@@ -396,32 +394,34 @@
 }
 
 //Iphone 5SE, Motog G4, Galaxy S5
-@media (max-width: 350px) and (max-height: 570px) {
+@media (max-width: 350px) and (max-height: 580px) {
 
   //CHORD COACH
   #chord-to-play-container {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   #chord-to-play {
     font-size: 5rem;
   }
 
-  #chord-grip-display {
-    width: 8rem;
-    height: 10rem;
+  #chord-grip-container {
+    padding: 1rem;
   }
+
+  #chord-grip-display {
+    width: 7.2rem;
+    height: 9rem;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
 
   //Chord options
   .chord-option {
     margin: 5px;
   }
 }
-
-//Chord spotting
-// #custom-chord-selection #individual-chords label {
-//   font-size: 0.9rem;
-// }
 
 //Galaxy fold
 @media (max-width: 280px) {

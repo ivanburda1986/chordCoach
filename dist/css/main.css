@@ -136,7 +136,8 @@ a:active {
   flex-direction: row;
   justify-content: space-between;
   position: relative;
-  height: 10%;
+  height: 10vh;
+  max-height: 10vh;
   margin: 0 auto;
   flex: 1;
   padding-top: 1rem; }
@@ -831,12 +832,43 @@ a:active {
   .overlay {
     width: 70vw; } }
 
-@media (width: 1024px) and (height: 1366px) {
+@media (min-width: 900px) and (max-width: 1024px) and (min-height: 1200px) and (max-height: 1400px) {
   #chord-to-play {
     font-size: 12rem; }
   #chord-grip-display {
     width: 12rem;
     height: 15rem; }
+  .chord-group label {
+    height: 2rem;
+    padding: 1rem 1.5rem; }
+    .chord-group label .label-text {
+      font-size: 1.3rem; }
+  .chord-group .chord {
+    padding: 4px 8px;
+    margin-left: 5px;
+    font-size: 1rem; }
+  #settings-chord-indviduals-buttons {
+    justify-content: center; }
+    #settings-chord-indviduals-buttons .individual-chord {
+      margin: 4px;
+      font-size: 1.2rem;
+      text-align: center;
+      min-width: 70px; }
+    #settings-chord-indviduals-buttons label {
+      height: auto;
+      padding: 0.75rem 1rem; }
+  .setup-btn {
+    width: 10rem;
+    height: 2.5rem;
+    border-radius: 10px; }
+  .setup-incr-decr-btn {
+    font-size: 1.2rem; }
+  .setup-btn-value {
+    width: 3.5rem;
+    font-size: 1.2rem; }
+  .setup-btn-label {
+    font-size: 1.2rem;
+    padding: 0.5rem; }
   .chord-option {
     width: 7rem;
     height: 7rem;
@@ -887,6 +919,18 @@ a:active {
       margin-right: 0.5rem; }
   .chord-group .chord {
     font-size: 0.8rem; }
+  #settings-chord-indviduals-buttons {
+    justify-content: center;
+    padding: 0.5rem; }
+    #settings-chord-indviduals-buttons .individual-chord {
+      margin: 3px;
+      font-size: 0.9rem;
+      text-align: center; }
+    #settings-chord-indviduals-buttons label {
+      height: auto;
+      padding: 0.5rem 0.75rem; }
+  #settings-more-buttons {
+    padding: 0.5rem; }
   #progress-container {
     width: 100%;
     padding: 1rem 2.5rem; }
@@ -918,7 +962,7 @@ a:active {
     font-size: 2rem;
     padding: 0.5rem; }
   .overlay-headline {
-    padding-bottom: 0.5rem;
+    padding-bottom: 0rem;
     font-size: 1rem; }
   #custom-chord-selection #individual-chords {
     padding: 0.5rem 0.5rem; }

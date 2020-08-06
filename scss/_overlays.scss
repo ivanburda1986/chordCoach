@@ -30,7 +30,8 @@
   flex-direction: row;
   justify-content: space-between;
   position: relative;
-  height: 10%;
+  height: 10vh;
+  max-height: 10vh;
   margin: 0 auto;
   flex: 1;
   padding-top: 1rem;

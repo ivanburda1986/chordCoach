@@ -985,7 +985,9 @@ a:active {
   #chord-to-play {
     font-size: 5rem; }
   #chord-grip-container {
-    padding: 1rem; }
+    padding: 1rem;
+    margin-top: 0;
+    margin-bottom: 0; }
   #chord-grip-display {
     width: 7.2rem;
     height: 9rem;

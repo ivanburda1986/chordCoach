@@ -1,8 +1,8 @@
 //App controller
 const App = (function (DataCtrl, UICtrl) {
+  //Use the public method of UICtrl to get available UI selectors for further re-use in the APP controller here
+  const UISelectors = UICtrl.getSelectors();
   const loadEventListeners = function () {
-    //Use the public method of UICtrl to get available UI selectors for further re-use in the APP controller here
-    const UISelectors = UICtrl.getSelectors();
 
     //Switch to Chord coach
     UISelectors.chordCoachSwitchBtn.addEventListener("click", () => {
@@ -322,6 +322,12 @@ const App = (function (DataCtrl, UICtrl) {
     }
   };
 
+  //Set the full year in the footer
+  const displayFullYear = function () {
+    const fullYear = new Date().getFullYear();
+    UISelectors.footerYear.textContent = fullYear;
+  }
+
   //Public methods
   return {
     init: function () {
@@ -340,6 +346,7 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.displaySettingsHeadline();
       UICtrl.hideSettings();
       loadEventListeners();
+      displayFullYear();
     },
     restart: function () {
       restartTraining();

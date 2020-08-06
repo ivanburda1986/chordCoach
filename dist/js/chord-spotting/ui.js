@@ -12,8 +12,10 @@ const UICtrl = (function () {
     primaryActionText: document.getElementById("primary-action-text"),
     confirmBtn: document.getElementById("confirm-btn"),
     restartBtn: document.getElementById("restart-btn"),
+
     //Switch to Chord coach
     chordCoachSwitchBtn: document.getElementById("chord-coach-btn"),
+
     //Settings
     showSettingsBtn: document.getElementById("show-settings-btn"),
     hideSettingsBtn: document.getElementById("settings-hide-btn"),
@@ -22,12 +24,16 @@ const UICtrl = (function () {
     answerSetContainer: document.getElementById("chord-options"),
     allSettingsChords: document.getElementById("individual-chords"),
     hardcoreBtn: document.getElementById("hardcore-btn-container"),
+
     //Feedback
     feedbackOverlay: document.getElementById("feedback-overlay"),
     hideFeedback: document.getElementById("feedback-hide-btn"),
     showFeedback: document.getElementById("show-feedback-btn"),
     feedbackTextInput: document.getElementById("feedback-textarea"),
     submitFeedback: document.getElementById("submit-btn"),
+
+    //Footer
+    footerYear: document.getElementById('footer-year'),
   };
 
   //Public methods

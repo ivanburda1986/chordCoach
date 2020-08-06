@@ -89,17 +89,17 @@ const DataCtrl = (function () {
     },
     saveSettingsToLocalStorage: function () {
       localStorage.setItem(
-        "selectedChords",
+        "selectedChordsSpotting",
         JSON.stringify(appData.loadedChords)
       );
       localStorage.setItem("hardcore", appData.hardcore);
     },
     getChordSettingsFromLocalStorage: function () {
-      let selectedChords = JSON.parse(localStorage.getItem("selectedChords"));
-      if (selectedChords === null) {
+      let selectedChordsSpotting = JSON.parse(localStorage.getItem("selectedChordsSpotting"));
+      if (selectedChordsSpotting === null) {
         return ["A", "C", "D", "E", "G"];
       } else {
-        return selectedChords;
+        return selectedChordsSpotting;
       }
     },
     getDifficultySettingsFromLocalStorage: function () {

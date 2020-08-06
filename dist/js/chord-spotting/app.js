@@ -108,9 +108,13 @@ const App = (function (DataCtrl, UICtrl) {
       if (e.target.checked === true) {
         e.target.parentNode.classList.add("hardcore-on");
         DataCtrl.getAppData().hardcore = "on";
-      } else {
+        DataCtrl.getSoundSelectors().hardcoreOn.src = `sounds/hardcore-on.mp3`;
+        DataCtrl.getSoundSelectors().hardcoreOn.play();
+      } else if (e.target.checked === false) {
         e.target.parentNode.classList.remove("hardcore-on");
         DataCtrl.getAppData().hardcore = "off";
+        DataCtrl.getSoundSelectors().hardcoreOff.src = `sounds/hardcore-off.mp3`;
+        DataCtrl.getSoundSelectors().hardcoreOff.play();
       }
     });
 

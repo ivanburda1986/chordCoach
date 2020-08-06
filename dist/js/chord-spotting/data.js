@@ -51,6 +51,8 @@ const DataCtrl = (function () {
     evaluation: document.getElementById("evaluation"),
     trainingEnd: document.getElementById("trainingEnd"),
     restart: document.getElementById("restart"),
+    hardcoreOff: document.getElementById("hardcore-off"),
+    hardcoreOn: document.getElementById("hardcore-on"),
   };
 
   return {

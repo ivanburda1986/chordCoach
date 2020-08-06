@@ -21,7 +21,7 @@ a:visited {
 a:active {
   color: tomato; }
 
-.container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay-hide-btn, #feedback-hide, #feedback-main #feedback-form, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #interval-countdown-container, #chord-and-grip-container, #chord-to-play-container, #chord-to-play-display, #chord-to-play, #chord-grip-container, #chord-grip-frame, .finger, .fingerbar .barlift, #settings-hide, #custom-chord-selection, #custom-chord-selection #individual-chords label, #custom-chord-selection .individual-chord, #settings-difficulty-buttons, #hardcore-btn-container label, #settings-chord-groups-buttons, #settings-more-buttons, .setup-btn-container, .setup-btn, .setup-btn-value, #copyright {
+.container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay-hide-btn, #feedback-hide, #feedback-main #feedback-form, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #interval-countdown-container, #chord-and-grip-container, #chord-to-play-container, #chord-to-play-display, #chord-to-play, #chord-grip-container, #chord-grip-frame, .finger, .fingerbar .barlift, #settings-hide, #custom-chord-selection, #custom-chord-selection .individual-chord, #individual-chords label, #settings-difficulty-buttons, #hardcore-btn-container label, #settings-chord-groups-buttons, #settings-more-buttons, .setup-btn-container, .setup-btn, .setup-btn-value, #copyright {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -50,7 +50,7 @@ a:active {
   flex: 1;
   flex-direction: row; }
 
-#middle-section, #middle-section-chord-coach, #chord-grip-container, #custom-chord-selection #individual-chords, #settings-difficulty-buttons, #settings-chord-groups-buttons, #settings-chord-indviduals-buttons, #settings-more-buttons {
+#middle-section, #middle-section-chord-coach, #chord-grip-container, #individual-chords, #settings-difficulty-buttons, #settings-chord-groups-buttons, #settings-chord-indviduals-buttons, #settings-more-buttons {
   border: 5px solid #054766;
   border-radius: 10px; }
 
@@ -69,8 +69,8 @@ a:active {
 .controlsBtn {
   border: none;
   outline: none;
-  width: 7rem;
-  height: 2rem;
+  width: 8rem;
+  height: 2.25rem;
   border-radius: 10px;
   text-transform: uppercase;
   font-weight: 700;
@@ -124,9 +124,11 @@ a:active {
   color: #d0e1f9;
   margin: 0 auto; }
   .overlay.show {
-    visibility: visible; }
+    visibility: visible;
+    display: flex; }
   .overlay.hide {
-    visibility: hidden; }
+    visibility: hidden;
+    display: none; }
 
 .overlay-header {
   width: 90%;
@@ -203,15 +205,24 @@ a:active {
     #feedback-main #feedback-form #submit-btn {
       margin: 0 auto; }
 
+#middle-section {
+  display: flex;
+  flex-direction: column; }
+
 #primary-action-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-height: 30vh; }
 
 #primary-action-display {
+  justify-content: space-between;
   flex-direction: column;
   padding-bottom: 0.5rem;
   width: 100%;
   height: 100%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  min-height: 30vh; }
 
 #primary-action {
   position: relative;
@@ -269,7 +280,7 @@ a:active {
   flex-direction: row;
   flex-wrap: wrap;
   width: 80%;
-  min-height: 30vh; }
+  min-height: 25vh; }
 
 .chord-option {
   border-radius: 100px;
@@ -335,11 +346,12 @@ a:active {
 #chord-and-grip-container {
   justify-content: space-around;
   width: 100%;
-  min-height: 40vh; }
+  min-height: 50vh; }
 
 #chord-to-play-container {
   padding: 1.5rem;
-  width: 25%; }
+  max-width: 60%;
+  width: 60%; }
 
 #chord-to-play-display {
   flex-direction: column;
@@ -358,7 +370,7 @@ a:active {
   margin-bottom: 1rem; }
 
 #chord-grip-frame {
-  width: 90%;
+  width: 100%;
   height: 100%; }
 
 #chord-grip-display {
@@ -521,19 +533,6 @@ a:active {
   display: flex;
   flex-direction: column;
   width: 100%; }
-  #custom-chord-selection #individual-chords {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 2rem 1rem;
-    color: #023147; }
-    #custom-chord-selection #individual-chords label {
-      margin: 50%;
-      height: 0%;
-      width: 0%; }
   #custom-chord-selection .individual-chord {
     display: inline-block;
     position: relative;
@@ -564,6 +563,20 @@ a:active {
       left: 7.5%;
       height: 85%;
       width: 85%; }
+
+#individual-chords {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 2rem 1rem;
+  color: #023147; }
+  #individual-chords label {
+    margin: 50%;
+    height: 0%;
+    width: 0%; }
 
 #settings-difficulty {
   display: flex;
@@ -672,7 +685,7 @@ a:active {
     margin: 4px;
     display: inline-block;
     border-radius: 5px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: center;
     min-width: 40px;
     cursor: pointer;
@@ -776,14 +789,16 @@ a:active {
   .defaultBtn {
     font-size: 2rem; }
   #feedback-hide-btn {
-    font-size: 2rem; }
+    font-size: 1.5rem; }
   #settings-hide-btn {
     width: 2.5rem;
     height: 2.5rem; } }
 
 @media only screen and (min-height: 1000px) {
   #show-settings-btn,
-  #show-feedback-btn {
+  #show-feedback-btn,
+  #chord-spotting-btn,
+  #chord-coach-btn {
     font-size: 3rem; }
   #settings-hide-btn {
     width: 3rem;
@@ -809,18 +824,23 @@ a:active {
   .chord-option {
     width: 4.5rem;
     height: 4.5rem;
-    font-size: 1.5rem; }
+    font-size: 1.15rem; }
     .chord-option input {
       width: 4.5rem;
       height: 4.5rem; }
   .overlay {
     width: 70vw; } }
 
-@media (max-width: 1024) and (min-height: 1300px) {
+@media (width: 1024px) and (height: 1366px) {
+  #chord-to-play {
+    font-size: 12rem; }
+  #chord-grip-display {
+    width: 12rem;
+    height: 15rem; }
   .chord-option {
     width: 7rem;
     height: 7rem;
-    font-size: 2rem; }
+    font-size: 1.75rem; }
     .chord-option input {
       width: 7rem;
       height: 7rem; } }
@@ -838,16 +858,30 @@ a:active {
     font-size: 1rem; } }
 
 @media (max-width: 750px) {
+  #chord-to-play-container {
+    max-width: 90%;
+    width: 90%; }
   #chord-and-grip-container {
     flex-direction: column;
-    padding-bottom: 2rem; } }
+    padding-bottom: 1rem; } }
 
 @media (max-width: 450px) and (max-height: 850px) {
   #chord-to-play {
     font-size: 6rem; }
+  #settings-chord-groups-buttons {
+    padding: 0.75rem;
+    text-align: left; }
+  .chord-group label {
+    height: auto;
+    padding: 0.25rem 0.5rem; }
+    .chord-group label .label-text {
+      font-size: 0.9rem;
+      margin-right: 0.5rem; }
+  .chord-group .chord {
+    font-size: 0.8rem; }
   #progress-container {
     width: 100%;
-    padding: 1.5rem 0.75rem; }
+    padding: 1rem 2.5rem; }
   .training-status-icon {
     width: 2rem;
     height: 2rem;
@@ -894,6 +928,13 @@ a:active {
       font-size: 0.9rem; } }
 
 @media (max-width: 350px) and (max-height: 570px) {
+  #chord-to-play-container {
+    padding: 1rem; }
+  #chord-to-play {
+    font-size: 5rem; }
+  #chord-grip-display {
+    width: 8rem;
+    height: 10rem; }
   .chord-option {
     margin: 5px; } }
 

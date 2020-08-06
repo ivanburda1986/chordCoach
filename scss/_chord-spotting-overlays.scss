@@ -21,24 +21,9 @@
   flex-direction: column;
   width: 100%;
 
-  #individual-chords {
-    @extend %border;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 2rem 1rem;
-    color: $dark;
 
-    label {
-      margin: 50%;
-      @extend %flex-justify-align-center;
-      height: 0%;
-      width: 0%;
-    }
-  }
+
+
 
   .individual-chord {
     display: inline-block;
@@ -77,6 +62,25 @@
       height: 85%;
       width: 85%;
     }
+  }
+}
+
+#individual-chords {
+  @extend %border;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 2rem 1rem;
+  color: $dark;
+
+  label {
+    margin: 50%;
+    @extend %flex-justify-align-center;
+    height: 0%;
+    width: 0%;
   }
 }
 

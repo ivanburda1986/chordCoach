@@ -146,6 +146,7 @@
   }
 
   #copyright {
+    padding: 0.5rem;
     font-size: 1rem;
   }
 
@@ -170,8 +171,21 @@
 @media (max-width: 450px) and (max-height: 850px) {
 
   //CHORD COACH
+  #chord-to-play-container {
+    padding: 1rem;
+  }
+
   #chord-to-play {
     font-size: 6rem;
+  }
+
+  #chord-grip-container {
+    padding: 1.25rem;
+  }
+
+  #chord-grip-display {
+    width: 8rem;
+    height: 10rem;
   }
 
   //Settings: Chord groups

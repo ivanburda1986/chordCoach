@@ -21,8 +21,8 @@
 
 //COPYRIGHT
 #copyright {
-  padding-top: 1.5rem;
   @extend %flex-justify-align-center;
+  padding-top: 1.5rem;
   color: $veryLight;
   font-size: 0.8rem;
 }

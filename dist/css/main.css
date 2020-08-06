@@ -855,6 +855,7 @@ a:active {
   .overlay-headline {
     font-size: 1.6rem; }
   #copyright {
+    padding: 0.5rem;
     font-size: 1rem; } }
 
 @media (max-width: 750px) {
@@ -866,8 +867,15 @@ a:active {
     padding-bottom: 1rem; } }
 
 @media (max-width: 450px) and (max-height: 850px) {
+  #chord-to-play-container {
+    padding: 1rem; }
   #chord-to-play {
     font-size: 6rem; }
+  #chord-grip-container {
+    padding: 1.25rem; }
+  #chord-grip-display {
+    width: 8rem;
+    height: 10rem; }
   #settings-chord-groups-buttons {
     padding: 0.75rem;
     text-align: left; }

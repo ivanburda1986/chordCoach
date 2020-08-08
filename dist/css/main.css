@@ -21,7 +21,7 @@ a:visited {
 a:active {
   color: tomato; }
 
-.container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay-hide-btn, #feedback-hide, #feedback-main #feedback-form, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #interval-countdown-container, #chord-and-grip-container, #chord-to-play-container, #chord-to-play-display, #chord-to-play, #chord-grip-container, #chord-grip-frame, .finger, .fingerbar .barlift, #settings-hide, #custom-chord-selection, #custom-chord-selection .individual-chord, #individual-chords label, #settings-difficulty-buttons, #hardcore-btn-container label, #settings-chord-groups-buttons, #settings-more-buttons, .setup-btn-container, .setup-btn, .setup-btn-value, #copyright {
+.container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay-hide-btn, #feedback-hide, #feedback-main #feedback-form, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #interval-countdown-container, #chord-and-grip-container, #chord-to-play-container, #chord-to-play-display, #chord-to-play, #chord-grip-container, #chord-grip-frame, .finger, .fingerbar .barlift, #settings-hide, #custom-chord-selection, #custom-chord-selection .individual-chord, #individual-chords label, #settings-difficulty-buttons, #hardcore-btn-container label, #settings-chord-groups-buttons, #settings-more-buttons, .setup-btn-container, .setup-btn, .setup-btn-value, #grip-setup-radio-btns-container, #copyright {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -770,6 +770,15 @@ a:active {
 
 .btn-disabled {
   background: grey; }
+
+#grip-setup-radio-btns-container {
+  height: 2rem;
+  border-radius: 10px;
+  background: #d0e1f9;
+  color: black;
+  padding: 0rem 1rem; }
+  #grip-setup-radio-btns-container label {
+    margin-right: 5px; }
 
 #top-navigation {
   display: flex;

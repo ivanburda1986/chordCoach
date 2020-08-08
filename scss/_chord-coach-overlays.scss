@@ -1,5 +1,6 @@
 //--------->Predefined chord groups
-#settings-chord-groups {}
+#settings-chord-groups {
+}
 
 #settings-chord-groups-buttons {
   @extend %flex-justify-align-center;
@@ -66,7 +67,8 @@
 
 //--
 
-#settings-chord-individuals {}
+#settings-chord-individuals {
+}
 
 #settings-chord-indviduals-buttons {
   @extend %border;
@@ -110,11 +112,10 @@
     padding: 1rem 1rem;
     cursor: pointer;
   }
-
-
 }
 
-#settings-more {}
+#settings-more {
+}
 
 #settings-more-buttons {
   @extend %border;
@@ -195,4 +196,18 @@
 
 .btn-disabled {
   background: grey;
+}
+
+#grip-setup-radio-btns-container {
+  @extend %flex-justify-align-center;
+  //width: 10rem;
+  height: 2rem;
+  border-radius: 10px;
+  background: #d0e1f9;
+  color: black;
+  padding: 0rem 1rem;
+
+  label {
+    margin-right: 5px;
+  }
 }

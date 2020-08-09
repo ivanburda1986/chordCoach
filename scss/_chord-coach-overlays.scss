@@ -1,6 +1,5 @@
 //--------->Predefined chord groups
-#settings-chord-groups {
-}
+#settings-chord-groups {}
 
 #settings-chord-groups-buttons {
   @extend %flex-justify-align-center;
@@ -67,8 +66,7 @@
 
 //--
 
-#settings-chord-individuals {
-}
+#settings-chord-individuals {}
 
 #settings-chord-indviduals-buttons {
   @extend %border;
@@ -114,8 +112,7 @@
   }
 }
 
-#settings-more {
-}
+#settings-more {}
 
 #settings-more-buttons {
   @extend %border;
@@ -158,10 +155,10 @@
 
 .setup-btn {
   @extend %flex-justify-align-center;
-  width: 8rem;
+  width: 10rem;
   height: 2rem;
-  border-radius: 10px;
-  background: $veryLight;
+  border-radius: 8px;
+  background: $lightUI;
 }
 
 .setup-incr-decr-btn {
@@ -172,11 +169,11 @@
   outline: none;
   font-size: 1.2rem;
   font-weight: 700;
-  color: $lightUI;
+  color: $dark;
   cursor: pointer;
 
   &:hover p {
-    color: $lightUI;
+    color: $veryLight;
   }
 
   &:active {
@@ -188,9 +185,9 @@
 .setup-btn-value {
   height: 100%;
   width: 3rem;
-  background: $lightUI;
-  border-top: 3px solid $veryLight;
-  border-bottom: 3px solid $veryLight;
+  background: $dark;
+  border-top: 3px solid $lightUI;
+  border-bottom: 3px solid $lightUI;
   @extend %flex-justify-align-center;
 }
 
@@ -214,8 +211,7 @@
     z-index: 2;
   }
 
-  label {
-  }
+  label {}
 }
 
 .grip-setup-btn {

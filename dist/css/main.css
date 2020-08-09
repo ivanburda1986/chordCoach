@@ -740,10 +740,10 @@ a:active {
     padding-top: 2px; }
 
 .setup-btn {
-  width: 8rem;
+  width: 10rem;
   height: 2rem;
-  border-radius: 10px;
-  background: #d0e1f9; }
+  border-radius: 8px;
+  background: #4d648d; }
 
 .setup-incr-decr-btn {
   height: 100%;
@@ -753,10 +753,10 @@ a:active {
   outline: none;
   font-size: 1.2rem;
   font-weight: 700;
-  color: #4d648d;
+  color: #023147;
   cursor: pointer; }
   .setup-incr-decr-btn:hover p {
-    color: #4d648d; }
+    color: #d0e1f9; }
   .setup-incr-decr-btn:active {
     font-size: 1.5rem;
     color: #4d648d; }
@@ -764,9 +764,9 @@ a:active {
 .setup-btn-value {
   height: 100%;
   width: 3rem;
-  background: #4d648d;
-  border-top: 3px solid #d0e1f9;
-  border-bottom: 3px solid #d0e1f9; }
+  background: #023147;
+  border-top: 3px solid #4d648d;
+  border-bottom: 3px solid #4d648d; }
 
 .btn-disabled {
   background: grey; }

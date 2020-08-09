@@ -203,11 +203,31 @@
   //width: 10rem;
   height: 2rem;
   border-radius: 10px;
-  background: #d0e1f9;
+  background: $lightUI;
   color: black;
   padding: 0rem 1rem;
 
-  label {
-    margin-right: 5px;
+  input {
+    opacity: 0.5;
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
   }
+
+  label {
+  }
+}
+
+.grip-setup-btn {
+  @extend %flex-justify-align-center;
+  height: 80%;
+  background: $dark;
+  color: $veryLight;
+  padding: 0px 5px;
+  width: 60px;
+}
+
+#grip-setup-delayed-btn {
+  margin-left: 3px;
+  margin-right: 3px;
 }

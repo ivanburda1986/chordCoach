@@ -21,7 +21,7 @@ a:visited {
 a:active {
   color: tomato; }
 
-.container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay-hide-btn, #feedback-hide, #feedback-main #feedback-form, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #interval-countdown-container, #chord-and-grip-container, #chord-to-play-container, #chord-to-play-display, #chord-to-play, #chord-grip-container, #chord-grip-frame, .finger, .fingerbar .barlift, #settings-hide, #custom-chord-selection, #custom-chord-selection .individual-chord, #individual-chords label, #settings-difficulty-buttons, #hardcore-btn-container label, #settings-chord-groups-buttons, #settings-more-buttons, .setup-btn-container, .setup-btn, .setup-btn-value, #grip-setup-radio-btns-container, #copyright {
+.container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay-hide-btn, #feedback-hide, #feedback-main #feedback-form, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #interval-countdown-container, #chord-and-grip-container, #chord-to-play-container, #chord-to-play-display, #chord-to-play, #chord-grip-container, #chord-grip-frame, .finger, .fingerbar .barlift, #settings-hide, #custom-chord-selection, #custom-chord-selection .individual-chord, #individual-chords label, #settings-difficulty-buttons, #hardcore-btn-container label, #settings-chord-groups-buttons, #settings-more-buttons, .setup-btn-container, .setup-btn, .setup-btn-value, #grip-setup-radio-btns-container, .grip-setup-btn, #copyright {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -774,11 +774,25 @@ a:active {
 #grip-setup-radio-btns-container {
   height: 2rem;
   border-radius: 10px;
-  background: #d0e1f9;
+  background: #4d648d;
   color: black;
   padding: 0rem 1rem; }
-  #grip-setup-radio-btns-container label {
-    margin-right: 5px; }
+  #grip-setup-radio-btns-container input {
+    opacity: 0.5;
+    position: absolute;
+    cursor: pointer;
+    z-index: 2; }
+
+.grip-setup-btn {
+  height: 80%;
+  background: #023147;
+  color: #d0e1f9;
+  padding: 0px 5px;
+  width: 60px; }
+
+#grip-setup-delayed-btn {
+  margin-left: 3px;
+  margin-right: 3px; }
 
 #top-navigation {
   display: flex;

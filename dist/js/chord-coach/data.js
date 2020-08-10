@@ -10,11 +10,13 @@ const DataCtrl = (function () {
     displaySeconds: null,
     zerosPrecedingMinutes: '',
     zerosPrecedingSeconds: '',
+    selectedGripMode: null,
     defaultValues: {
       chordGroup: ["A", "D", "E", "G", "C", "Amin", "Emin", "Dmin"],
       chordGroupName: "basicEightShapes",
       interval: 2,
-      minutes: 1
+      minutes: 1,
+      selectedGripMode: "ON"
     },
   };
 
@@ -333,6 +335,7 @@ const DataCtrl = (function () {
         appData.setupMinutes = appData.defaultValues.minutes,
         appData.displayMinutes = appData.defaultValues.minutes,
         appData.displaySeconds = 0
+      //appData.selectedGripMode = appData.defaultValues.selectedGripMode
     },
     saveIntervalToLocalStorage: function (interval) {
       localStorage.setItem('interval', interval);
@@ -345,6 +348,17 @@ const DataCtrl = (function () {
     },
     saveSelectionTypeToLocalStorage: function (selectionType) {
       localStorage.setItem('selectionType', selectionType);
+    },
+    saveGripModeToLocalStorage: function (selectedGripMode) {
+      localStorage.setItem('selectedGripMode', selectedGripMode);
+    },
+    getGripModeFromLocalStorage: function () {
+      let selectedGripMode = localStorage.getItem('selectedGripMode');
+      if (selectedGripMode === null) {
+        return appData.defaultValues.selectedGripMode;
+      } else {
+        return selectedGripMode;
+      }
     },
     getIntervalFromLocalStorage: function () {
       let interval = localStorage.getItem('interval');

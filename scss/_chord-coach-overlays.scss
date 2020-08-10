@@ -216,7 +216,7 @@
     opacity: 0;
     position: absolute;
     cursor: pointer;
-    z-index: 2;
+    z-index: -1;
 
   }
 
@@ -225,6 +225,7 @@
     height: 100%;
     width: 100%;
     padding: 0px 5px;
+    cursor: pointer;
   }
 }
 

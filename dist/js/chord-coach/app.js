@@ -108,9 +108,12 @@ const App = (function (DataCtrl, UICtrl) {
     //Select the grip display mode
     UISelectors.gripSetupModes.forEach((mode) => {
       mode.addEventListener('click', (e) => {
+        let clickedOption = mode.parentNode.children[0];
         UICtrl.clearGripSetupModes();
-        mode.parentNode.children[0].checked = true;
+        clickedOption.checked = true;
         mode.parentNode.classList.add('selected');
+        DataCtrl.saveGripModeToLocalStorage(clickedOption.value);
+        DataCtrl.getAppData().selectedGripMode = clickedOption.value;
         e.preventDefault();
       })
     });
@@ -210,6 +213,10 @@ const App = (function (DataCtrl, UICtrl) {
       AppData.displayMinutes = DataCtrl.getSetupMinutesFromLocalStorage();
       AppData.setupMinutes = DataCtrl.getSetupMinutesFromLocalStorage();
       resetCountdown();
+
+      //Set grip mode
+      DataCtrl.getAppData().selectedGripMode = DataCtrl.getGripModeFromLocalStorage();
+      UICtrl.highlightOnLoadSelectedGripMode();
 
       //Display on the overview correct chord and grip based on the current chord selection
       AppData.loadedChords = DataCtrl.getSelectedChordsFromLocalStorage();

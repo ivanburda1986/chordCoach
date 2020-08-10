@@ -63,7 +63,10 @@ const UICtrl = (function () {
     countdownDecreaseBtn: document.getElementById('countdown-decrease-btn'),
     intervalIncreaseBtn: document.getElementById('interval-increase-btn'),
     intervalDecreaseBtn: document.getElementById('interval-decrease-btn'),
-    gripSetupModes: document.querySelectorAll('.grip-setup-btn-label')
+    gripSetupModes: document.querySelectorAll('.grip-setup-btn-label'),
+    gripSetupOnBtn: document.getElementById('grip-setup-on-btn'),
+    gripSetupDelayedBtn: document.getElementById('grip-setup-delayed-btn'),
+    gripSetupOffBtn: document.getElementById('grip-setup-off-btn'),
   };
 
   //Private methods
@@ -234,6 +237,19 @@ const UICtrl = (function () {
       } else {
         document.getElementById(AppData.defaultValues.chordGroupName).checked = true;
         document.getElementById(AppData.defaultValues.chordGroupName).parentElement.classList.add('selected');
+      }
+    },
+    highlightOnLoadSelectedGripMode: function () {
+      //let setMode = DataCtrl.getAppData().gripMode;
+      if (DataCtrl.getGripModeFromLocalStorage() === "ON") {
+        UISelectors.gripSetupOnBtn.classList.add('selected');
+        UISelectors.gripSetupOnBtn.children[0].checked = true;
+      } else if (DataCtrl.getGripModeFromLocalStorage() === "DELAYED") {
+        UISelectors.gripSetupDelayedBtn.classList.add('selected');
+        UISelectors.gripSetupDelayedBtn.children[0].checked = true;
+      } else if (DataCtrl.getGripModeFromLocalStorage() === "OFF") {
+        UISelectors.gripSetupOffBtn.classList.add('selected');
+        UISelectors.gripSetupOffBtn.children[0].checked = true;
       }
     },
     //Main screen

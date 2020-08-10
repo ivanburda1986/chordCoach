@@ -104,6 +104,16 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.displayIntervalValue(AppData.interval);
       UICtrl.checkIncreaseDecreaseIntervalButtonsState();
     });
+
+    //Select the grip display mode
+    UISelectors.gripSetupModes.forEach((mode) => {
+      mode.addEventListener('click', (e) => {
+        UICtrl.clearGripSetupModes();
+        mode.parentNode.children[0].checked = true;
+        mode.parentNode.classList.add('selected');
+        e.preventDefault();
+      })
+    });
   };
 
   //PRIVATE METHODS
@@ -153,8 +163,6 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.makeRestartBtnInactive();
     }
   };
-
-  const visualAlarm = function () {};
 
   const countdownTheTime = function () {
     if (AppData.applicationState === 1) {

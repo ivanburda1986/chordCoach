@@ -63,7 +63,7 @@ const UICtrl = (function () {
     countdownDecreaseBtn: document.getElementById('countdown-decrease-btn'),
     intervalIncreaseBtn: document.getElementById('interval-increase-btn'),
     intervalDecreaseBtn: document.getElementById('interval-decrease-btn'),
-
+    gripSetupModes: document.querySelectorAll('.grip-setup-btn-label')
   };
 
   //Private methods
@@ -210,6 +210,12 @@ const UICtrl = (function () {
       if (AppData.interval === 2) {
         UISelectors.intervalDecreaseBtn.disabled = false;
       }
+    },
+    //Manage grip setup modes
+    clearGripSetupModes: function () {
+      UISelectors.gripSetupModes.forEach((mode) => {
+        mode.parentNode.classList.remove('selected');
+      });
     },
     //Display as selected the groups/individual/default chords based on the initialised set
     highlightOnLoadSelectedChords: function () {

@@ -21,7 +21,7 @@ a:visited {
 a:active {
   color: tomato; }
 
-.container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay-hide-btn, #feedback-hide, #feedback-main #feedback-form, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #interval-countdown-container, #chord-and-grip-container, #chord-to-play-container, #chord-to-play-display, #chord-to-play, #chord-grip-container, #chord-grip-frame, .finger, .fingerbar .barlift, #settings-hide, #custom-chord-selection, #custom-chord-selection .individual-chord, #individual-chords label, #settings-difficulty-buttons, #hardcore-btn-container label, #settings-chord-groups-buttons, #settings-more-buttons, .setup-btn-container, .setup-btn, .setup-btn-value, #grip-setup-radio-btns-container, .grip-setup-btn, #copyright {
+.container, .overlay-title, .overlay-headline, .placeholder-btn, .overlay-hide-btn, #feedback-hide, #feedback-main #feedback-form, #primary-action-display, #primary-action, #progress-container, .training-status-icon, #chord-options-container, #chord-options, .chord-option, #interval-countdown-container, #chord-and-grip-container, #chord-to-play-container, #chord-to-play-display, #chord-to-play, #chord-grip-container, #chord-grip-frame, .finger, .fingerbar .barlift, #settings-hide, #custom-chord-selection, #custom-chord-selection .individual-chord, #individual-chords label, #settings-difficulty-buttons, #hardcore-btn-container label, #settings-chord-groups-buttons, #settings-more-buttons, .setup-btn-container, .setup-btn, .setup-btn-value, #grip-setup-radio-btns-container, #grip-setup-radio-btns-container label, .grip-setup-btn, #copyright {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -650,9 +650,9 @@ a:active {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
     width: 100%;
-    height: 2rem;
-    padding: 1rem 1rem; }
+    padding: 0.2rem 1rem; }
     .chord-group label .label-text {
       font-size: 1.2rem;
       margin-right: 1rem; }
@@ -715,6 +715,7 @@ a:active {
   flex-direction: row;
   text-align: center;
   justify-content: space-around;
+  flex-wrap: wrap;
   width: 100%;
   padding: 1.5rem 1rem;
   border: 5px solid #054766; }
@@ -728,7 +729,10 @@ a:active {
   padding-bottom: 2rem; }
 
 .setup-btn-container {
-  flex-direction: column; }
+  flex-direction: column;
+  margin-bottom: 1rem;
+  margin-left: 5px;
+  margin-right: 5px; }
 
 .setup-btn-label {
   display: flex;
@@ -778,21 +782,31 @@ a:active {
   color: black;
   padding: 0rem 1rem; }
   #grip-setup-radio-btns-container input {
-    opacity: 0.5;
+    opacity: 0;
     position: absolute;
     cursor: pointer;
     z-index: 2; }
+  #grip-setup-radio-btns-container label {
+    height: 100%;
+    width: 100%;
+    padding: 0px 5px; }
 
 .grip-setup-btn {
   height: 80%;
   background: #023147;
   color: #d0e1f9;
-  padding: 0px 5px;
-  width: 60px; }
+  min-width: 60px;
+  font-weight: 700; }
+  .grip-setup-btn.selected {
+    background: orange;
+    color: #023147; }
 
 #grip-setup-delayed-btn {
-  margin-left: 3px;
-  margin-right: 3px; }
+  margin-left: 5px;
+  margin-right: 5px; }
+  #grip-setup-delayed-btn label {
+    padding-left: 10px;
+    padding-right: 10px; }
 
 #top-navigation {
   display: flex;

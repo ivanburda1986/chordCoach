@@ -27,7 +27,7 @@
 //Chord to play and chord grip shared container
 #chord-and-grip-container {
   @extend %flex-justify-align-center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   //padding-top: 2rem;
   width: 100%;
   min-height: 50vh;
@@ -37,8 +37,9 @@
 #chord-to-play-container {
   @extend %flex-justify-align-center;
   padding: 1.5rem;
-  max-width: 60%;
-  width: 60%;
+  max-width: 50%;
+  width: 50%;
+  border: 1px solid green;
 }
 
 #chord-to-play-display {
@@ -56,6 +57,12 @@
 }
 
 //Chord grip
+#chord-grip-supercontainer {
+  @extend %flex-justify-align-center;
+  width: 50%;
+  border: 1px solid pink;
+}
+
 #chord-grip-container {
   @extend %flex-justify-align-center;
   flex-direction: row;
@@ -63,7 +70,7 @@
   @extend %border;
   margin-top: 1rem;
   margin-bottom: 1rem;
-
+  width: auto;
 }
 
 #chord-grip-frame {

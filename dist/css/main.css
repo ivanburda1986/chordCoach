@@ -208,7 +208,8 @@ a:active {
 
 #middle-section {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  min-height: 60vh; }
 
 #primary-action-container {
   display: flex;

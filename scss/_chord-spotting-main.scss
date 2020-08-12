@@ -5,6 +5,7 @@
   @extend %border;
   display: flex;
   flex-direction: column;
+  min-height: 60vh;
 }
 
 //PRIMARY ACTION + TRAINING STATS

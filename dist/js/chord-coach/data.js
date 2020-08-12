@@ -335,7 +335,6 @@ const DataCtrl = (function () {
         appData.setupMinutes = appData.defaultValues.minutes,
         appData.displayMinutes = appData.defaultValues.minutes,
         appData.displaySeconds = 0
-      //appData.selectedGripMode = appData.defaultValues.selectedGripMode
     },
     saveIntervalToLocalStorage: function (interval) {
       localStorage.setItem('interval', interval);

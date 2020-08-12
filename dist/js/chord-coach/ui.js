@@ -68,7 +68,7 @@ const UICtrl = (function () {
     gripSetupOffBtn: document.getElementById("grip-setup-off-btn"),
   };
 
-  //Private methods
+  //PRIVATE METHODS
   const confirmSelectedChords = function () {
     AppData.loadedChords = [];
     //Get individual chords which are selected
@@ -103,7 +103,7 @@ const UICtrl = (function () {
     }
   };
 
-  //Public methods
+  //PUBLIC METHODS
   return {
     getSelectors: function () {
       return UISelectors;
@@ -238,7 +238,6 @@ const UICtrl = (function () {
       }
     },
     highlightOnLoadSelectedGripMode: function () {
-      //let setMode = DataCtrl.getAppData().gripMode;
       if (DataCtrl.getGripModeFromLocalStorage() === "ON") {
         UISelectors.gripSetupOnBtn.classList.add("selected");
         UISelectors.gripSetupOnBtn.children[0].checked = true;
@@ -417,6 +416,7 @@ const UICtrl = (function () {
       UISelectors.sounding6.children[0].innerText = `${fingerLayout["sounding"][5]}`;
     },
     displayChordGripInSelectedMode: function (selectedMode) {
+      //This function reactivates the grip display
       const activateGrip = function () {
         Array.from(document.getElementsByClassName("fret")).forEach(
           (fret) => {
@@ -436,13 +436,13 @@ const UICtrl = (function () {
         document.getElementById('nut').style.background = "#d0e1f9";
         document.getElementById('sounding').style.opacity = "1";
       }
+      //Logics for deactivating and reactivating the grip based on the setup grip display-mode
       if (selectedMode === "ON") {
         activateGrip();
       } else if (selectedMode === "DELAYED") {
         activateGrip();
-
-
       } else if (selectedMode === "OFF") {
+        //This deactivates the grip display
         Array.from(document.getElementsByClassName("fret")).forEach(
           (fret) => {
             fret.classList.add('fret-inactive');
@@ -462,6 +462,7 @@ const UICtrl = (function () {
         document.getElementById('sounding').style.opacity = "0";
       }
     },
+    //To display the chord and grip when the app start to reflect the data setup
     manageChordAndGripDisplay: function () {
       //--> Display the correct chord name on the overview
       UISelectors.chordToPlay.innerText = AppData.loadedChords[0];

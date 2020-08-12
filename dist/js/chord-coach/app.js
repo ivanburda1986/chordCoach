@@ -113,7 +113,7 @@ const App = (function (DataCtrl, UICtrl) {
         clickedOption.checked = true;
         mode.parentNode.classList.add('selected');
         DataCtrl.saveGripModeToLocalStorage(clickedOption.value);
-        DataCtrl.getAppData().selectedGripMode = clickedOption.value;
+        AppData.selectedGripMode = clickedOption.value;
         e.preventDefault();
       })
     });
@@ -184,7 +184,7 @@ const App = (function (DataCtrl, UICtrl) {
       }, 1000);
     }
   };
-
+  //Display year in the footer
   const displayFullYear = function () {
     const fullYear = new Date().getFullYear();
     UISelectors.footerYear.textContent = fullYear;
@@ -207,7 +207,7 @@ const App = (function (DataCtrl, UICtrl) {
 
       //Set the interval
       AppData.interval = DataCtrl.getIntervalFromLocalStorage();
-      UICtrl.displayIntervalValue(DataCtrl.getAppData().interval);
+      UICtrl.displayIntervalValue(AppData.interval);
 
       //Reset the countdown
       AppData.displayMinutes = DataCtrl.getSetupMinutesFromLocalStorage();
@@ -215,13 +215,13 @@ const App = (function (DataCtrl, UICtrl) {
       resetCountdown();
 
       //Set grip mode
-      DataCtrl.getAppData().selectedGripMode = DataCtrl.getGripModeFromLocalStorage();
+      AppData.selectedGripMode = DataCtrl.getGripModeFromLocalStorage();
       UICtrl.highlightOnLoadSelectedGripMode();
 
       //Display on the overview correct chord and grip based on the current chord selection
       AppData.loadedChords = DataCtrl.getSelectedChordsFromLocalStorage();
       UICtrl.manageChordAndGripDisplay();
-      UICtrl.displayChordGripInSelectedMode(DataCtrl.getAppData().selectedGripMode);
+      UICtrl.displayChordGripInSelectedMode(AppData.selectedGripMode);
 
       //Settings overlay: Set as selected the groups/individual chords based on the initialised set
       UICtrl.highlightOnLoadSelectedChords();
@@ -259,7 +259,7 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.makeRestartBtnInactive();
       UICtrl.manageChordAndGripDisplay();
       UICtrl.flashChordGrip();
-      UICtrl.displayChordGripInSelectedMode(DataCtrl.getAppData().selectedGripMode);
+      UICtrl.displayChordGripInSelectedMode(AppData.selectedGripMode);
       UICtrl.triggerAnimation("#countdown-display", "anim-pop-in-out");
     },
   };

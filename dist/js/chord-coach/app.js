@@ -221,6 +221,7 @@ const App = (function (DataCtrl, UICtrl) {
       //Display on the overview correct chord and grip based on the current chord selection
       AppData.loadedChords = DataCtrl.getSelectedChordsFromLocalStorage();
       UICtrl.manageChordAndGripDisplay();
+      UICtrl.displayChordGripInSelectedMode(DataCtrl.getAppData().selectedGripMode);
 
       //Settings overlay: Set as selected the groups/individual chords based on the initialised set
       UICtrl.highlightOnLoadSelectedChords();
@@ -257,6 +258,8 @@ const App = (function (DataCtrl, UICtrl) {
       UICtrl.hidePauseBtn();
       UICtrl.makeRestartBtnInactive();
       UICtrl.manageChordAndGripDisplay();
+      UICtrl.flashChordGrip();
+      UICtrl.displayChordGripInSelectedMode(DataCtrl.getAppData().selectedGripMode);
       UICtrl.triggerAnimation("#countdown-display", "anim-pop-in-out");
     },
   };

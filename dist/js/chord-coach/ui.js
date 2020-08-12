@@ -3,7 +3,6 @@ const UICtrl = (function () {
   //Use the public method of DataCtrl to get app data for further re-use in the APP controller here
   const AppData = DataCtrl.getAppData();
 
-
   //UI Selectors
   const UISelectors = {
     //Main screen
@@ -14,33 +13,33 @@ const UICtrl = (function () {
     restartBtn: document.getElementById("restart-btn"),
 
     //Display values
-    countdownDisplay: document.getElementById('countdown-display'),
-    countdownDisplayValue: document.getElementById('countdown-display-value'),
-    chordToPlay: document.getElementById('chord-to-play'),
-    intervalDisplayValue: document.getElementById('interval-display-value'),
-    countdownDisplayValue: document.getElementById('countdown-display-value'),
+    countdownDisplay: document.getElementById("countdown-display"),
+    countdownDisplayValue: document.getElementById("countdown-display-value"),
+    chordToPlay: document.getElementById("chord-to-play"),
+    intervalDisplayValue: document.getElementById("interval-display-value"),
+    countdownDisplayValue: document.getElementById("countdown-display-value"),
 
     //Switch to Chord coach
     chordSpottingSwitchBtn: document.getElementById("chord-spotting-btn"),
 
     //Fingers
-    finger1: document.getElementById('finger1'),
-    finger1bar: document.getElementById('finger1bar'),
-    finger2: document.getElementById('finger2'),
-    finger3: document.getElementById('finger3'),
-    finger4: document.getElementById('finger4'),
-    thumb: document.getElementById('thumb'),
+    finger1: document.getElementById("finger1"),
+    finger1bar: document.getElementById("finger1bar"),
+    finger2: document.getElementById("finger2"),
+    finger3: document.getElementById("finger3"),
+    finger4: document.getElementById("finger4"),
+    thumb: document.getElementById("thumb"),
 
     //String soundings
-    sounding1: document.getElementById('sounding-string1'),
-    sounding2: document.getElementById('sounding-string2'),
-    sounding3: document.getElementById('sounding-string3'),
-    sounding4: document.getElementById('sounding-string4'),
-    sounding5: document.getElementById('sounding-string5'),
-    sounding6: document.getElementById('sounding-string6'),
+    sounding1: document.getElementById("sounding-string1"),
+    sounding2: document.getElementById("sounding-string2"),
+    sounding3: document.getElementById("sounding-string3"),
+    sounding4: document.getElementById("sounding-string4"),
+    sounding5: document.getElementById("sounding-string5"),
+    sounding6: document.getElementById("sounding-string6"),
 
     //Footer
-    footerYear: document.getElementById('footer-year'),
+    footerYear: document.getElementById("footer-year"),
 
     //Feedback
     feedbackOverlay: document.getElementById("feedback-overlay"),
@@ -53,20 +52,20 @@ const UICtrl = (function () {
     settingsOverlay: document.getElementById("settings-overlay"),
     hideSettings: document.getElementById("settings-hide-btn"),
     showSettings: document.getElementById("show-settings-btn"),
-    chordGroups: document.querySelectorAll('.chord-group'),
-    individualChords: document.querySelectorAll('.individual-chord'),
-    chordGroupCheckboxes: document.getElementsByName('chordGroup'),
-    individualChordCheckboxes: document.getElementsByName('individualChord'),
-    intervalSetupValue: document.getElementById('interval-setup-value'),
-    countdownSetupValue: document.getElementById('countdown-setup-value'),
-    countdownIncreaseBtn: document.getElementById('countdown-increase-btn'),
-    countdownDecreaseBtn: document.getElementById('countdown-decrease-btn'),
-    intervalIncreaseBtn: document.getElementById('interval-increase-btn'),
-    intervalDecreaseBtn: document.getElementById('interval-decrease-btn'),
-    gripSetupModes: document.querySelectorAll('.grip-setup-btn-label'),
-    gripSetupOnBtn: document.getElementById('grip-setup-on-btn'),
-    gripSetupDelayedBtn: document.getElementById('grip-setup-delayed-btn'),
-    gripSetupOffBtn: document.getElementById('grip-setup-off-btn'),
+    chordGroups: document.querySelectorAll(".chord-group"),
+    individualChords: document.querySelectorAll(".individual-chord"),
+    chordGroupCheckboxes: document.getElementsByName("chordGroup"),
+    individualChordCheckboxes: document.getElementsByName("individualChord"),
+    intervalSetupValue: document.getElementById("interval-setup-value"),
+    countdownSetupValue: document.getElementById("countdown-setup-value"),
+    countdownIncreaseBtn: document.getElementById("countdown-increase-btn"),
+    countdownDecreaseBtn: document.getElementById("countdown-decrease-btn"),
+    intervalIncreaseBtn: document.getElementById("interval-increase-btn"),
+    intervalDecreaseBtn: document.getElementById("interval-decrease-btn"),
+    gripSetupModes: document.querySelectorAll(".grip-setup-btn-label"),
+    gripSetupOnBtn: document.getElementById("grip-setup-on-btn"),
+    gripSetupDelayedBtn: document.getElementById("grip-setup-delayed-btn"),
+    gripSetupOffBtn: document.getElementById("grip-setup-off-btn"),
   };
 
   //Private methods
@@ -87,13 +86,13 @@ const UICtrl = (function () {
       if (checkbox.checked) {
         checkedGroups.push(checkbox.value);
       }
-    })
+    });
     checkedGroups.forEach((group) => {
-      detailsFromCheckedGroups.push(DataCtrl.getAllChords()[group])
-    })
+      detailsFromCheckedGroups.push(DataCtrl.getAllChords()[group]);
+    });
     detailsFromCheckedGroups.forEach((item) => {
       chordsFromCheckedGroupsTogether = chordsFromCheckedGroupsTogether.concat(item);
-    })
+    });
     //Apply the selection of individual chords / chords groups
     AppData.loadedChords = selectedIndividualChords.concat(chordsFromCheckedGroupsTogether);
     //Save what type of selection was made (chord groups vs. individual chords)
@@ -133,7 +132,6 @@ const UICtrl = (function () {
       UISelectors.settingsOverlay.classList.remove("show");
       UISelectors.mainScreen.classList.remove("hide");
       confirmSelectedChords();
-      UICtrl.manageChordAndGripDisplay();
       DataCtrl.saveIntervalToLocalStorage(AppData.interval);
       DataCtrl.saveSetupMinutesToLocalStorage(AppData.setupMinutes);
       DataCtrl.saveSelectedChordsToLocalStorage(AppData.loadedChords);
@@ -144,15 +142,15 @@ const UICtrl = (function () {
         group.checked = false;
       });
       UISelectors.chordGroups.forEach((group) => {
-        group.classList.remove('selected');
+        group.classList.remove("selected");
       });
     },
     clearIndividuals: function () {
       UISelectors.individualChordCheckboxes.forEach((individual) => {
         individual.checked = false;
-      })
+      });
       UISelectors.individualChords.forEach((chord) => {
-        chord.classList.remove('selected');
+        chord.classList.remove("selected");
       });
     },
     checkApplySettingsButtonState: function () {
@@ -176,12 +174,12 @@ const UICtrl = (function () {
       //Enable the button to apply settings
       if (selectedGroups.length > 0 || selectedIndividualChords.length >= 3) {
         UISelectors.hideSettings.disabled = false;
-        UISelectors.hideSettings.classList.add('enabled');
-        UISelectors.hideSettings.classList.remove('disabled');
+        UISelectors.hideSettings.classList.add("enabled");
+        UISelectors.hideSettings.classList.remove("disabled");
       } else {
         UISelectors.hideSettings.disabled = true;
-        UISelectors.hideSettings.classList.remove('enabled');
-        UISelectors.hideSettings.classList.add('disabled');
+        UISelectors.hideSettings.classList.remove("enabled");
+        UISelectors.hideSettings.classList.add("disabled");
       }
     },
     //Manage countdown button states
@@ -217,7 +215,7 @@ const UICtrl = (function () {
     //Manage grip setup modes
     clearGripSetupModes: function () {
       UISelectors.gripSetupModes.forEach((mode) => {
-        mode.parentNode.classList.remove('selected');
+        mode.parentNode.classList.remove("selected");
       });
     },
     //Display as selected the groups/individual/default chords based on the initialised set
@@ -225,30 +223,30 @@ const UICtrl = (function () {
       if (DataCtrl.getSelectionTypeFromLocalStorage() === "individualChords") {
         DataCtrl.getSelectedChordsFromLocalStorage().forEach((chord) => {
           document.getElementById(`${chord.toLowerCase().replace(" ", "").replace("/", "").replace("#", "")}`).checked = true;
-          document.getElementById(`${chord.toLowerCase().replace(" ", "").replace("/", "").replace("#", "")}`).parentNode.classList.add('selected');
+          document.getElementById(`${chord.toLowerCase().replace(" ", "").replace("/", "").replace("#", "")}`).parentNode.classList.add("selected");
         });
       } else if (DataCtrl.getSelectionTypeFromLocalStorage() === "groups") {
         Object.entries(DataCtrl.getAllChords()).forEach((group) => {
-          if (group[1].every(chord => AppData.loadedChords.includes(chord))) {
+          if (group[1].every((chord) => AppData.loadedChords.includes(chord))) {
             document.getElementById(group[0]).checked = true;
-            document.getElementById(group[0]).parentElement.classList.add('selected');
+            document.getElementById(group[0]).parentElement.classList.add("selected");
           }
-        })
+        });
       } else {
         document.getElementById(AppData.defaultValues.chordGroupName).checked = true;
-        document.getElementById(AppData.defaultValues.chordGroupName).parentElement.classList.add('selected');
+        document.getElementById(AppData.defaultValues.chordGroupName).parentElement.classList.add("selected");
       }
     },
     highlightOnLoadSelectedGripMode: function () {
       //let setMode = DataCtrl.getAppData().gripMode;
       if (DataCtrl.getGripModeFromLocalStorage() === "ON") {
-        UISelectors.gripSetupOnBtn.classList.add('selected');
+        UISelectors.gripSetupOnBtn.classList.add("selected");
         UISelectors.gripSetupOnBtn.children[0].checked = true;
       } else if (DataCtrl.getGripModeFromLocalStorage() === "DELAYED") {
-        UISelectors.gripSetupDelayedBtn.classList.add('selected');
+        UISelectors.gripSetupDelayedBtn.classList.add("selected");
         UISelectors.gripSetupDelayedBtn.children[0].checked = true;
       } else if (DataCtrl.getGripModeFromLocalStorage() === "OFF") {
-        UISelectors.gripSetupOffBtn.classList.add('selected');
+        UISelectors.gripSetupOffBtn.classList.add("selected");
         UISelectors.gripSetupOffBtn.children[0].checked = true;
       }
     },
@@ -276,20 +274,42 @@ const UICtrl = (function () {
       }, 200);
     },
     flashChordGrip: function () {
-      UISelectors.finger1.style.opacity = 0;
-      UISelectors.finger1bar.style.opacity = 0;
-      UISelectors.finger2.style.opacity = 0;
-      UISelectors.finger3.style.opacity = 0;
-      UISelectors.finger4.style.opacity = 0;
-      UISelectors.thumb.style.opacity = 0;
-      setTimeout(function () {
-        UISelectors.finger1.style.opacity = 1;
-        UISelectors.finger1bar.style.opacity = 1;
-        UISelectors.finger2.style.opacity = 1;
-        UISelectors.finger3.style.opacity = 1;
-        UISelectors.finger4.style.opacity = 1;
-        UISelectors.thumb.style.opacity = 1;
-      }, 200);
+      let gripMode = AppData.selectedGripMode;
+      const refresh = function (delayInMs) {
+        UISelectors.finger1.style.opacity = 0;
+        UISelectors.finger1bar.style.opacity = 0;
+        UISelectors.finger2.style.opacity = 0;
+        UISelectors.finger3.style.opacity = 0;
+        UISelectors.finger4.style.opacity = 0;
+        UISelectors.thumb.style.opacity = 0;
+        UISelectors.sounding1.style.opacity = 0;
+        UISelectors.sounding2.style.opacity = 0;
+        UISelectors.sounding3.style.opacity = 0;
+        UISelectors.sounding4.style.opacity = 0;
+        UISelectors.sounding5.style.opacity = 0;
+        UISelectors.sounding6.style.opacity = 0;
+        setTimeout(function () {
+          UISelectors.finger1.style.opacity = 1;
+          UISelectors.finger1bar.style.opacity = 1;
+          UISelectors.finger2.style.opacity = 1;
+          UISelectors.finger3.style.opacity = 1;
+          UISelectors.finger4.style.opacity = 1;
+          UISelectors.thumb.style.opacity = 1;
+          UISelectors.sounding1.style.opacity = 1;
+          UISelectors.sounding2.style.opacity = 1;
+          UISelectors.sounding3.style.opacity = 1;
+          UISelectors.sounding4.style.opacity = 1;
+          UISelectors.sounding5.style.opacity = 1;
+          UISelectors.sounding6.style.opacity = 1;
+        }, delayInMs);
+      }
+      if (gripMode === "ON") {
+        refresh(200);
+      } else if (gripMode === "DELAYED") {
+        refresh(AppData.interval * 1000 / 2)
+      } else if (gripMode === "OFF") {
+        refresh(999999);
+      }
     },
     triggerAnimation: function (target, animationName) {
       document.querySelector(target).classList.add(`${animationName}`);
@@ -300,14 +320,14 @@ const UICtrl = (function () {
     visualAlarm: function (timesToFlash) {
       if (timesToFlash > 0) {
         setTimeout(function () {
-          UISelectors.countdownDisplay.style.color = '#D0E1F9';
+          UISelectors.countdownDisplay.style.color = "#D0E1F9";
           setTimeout(function () {
-            UISelectors.countdownDisplay.style.color = 'red';
+            UISelectors.countdownDisplay.style.color = "red";
             UICtrl.visualAlarm(timesToFlash - 1);
-          }, 300)
+          }, 300);
         }, 300);
       } else {
-        UISelectors.countdownDisplay.style.color = '#D0E1F9';
+        UISelectors.countdownDisplay.style.color = "#D0E1F9";
       }
     },
     displayIntervalValue: function (intervalLength) {
@@ -320,10 +340,10 @@ const UICtrl = (function () {
     },
     preventMultipleBtnClick: function (clickedButtonId) {
       let target = clickedButtonId;
-      target.classList.add('disabled');
+      target.classList.add("disabled");
       target.disabled = true;
       setTimeout(function () {
-        target.classList.remove('disabled');
+        target.classList.remove("disabled");
         target.disabled = false;
       }, 2000);
     },
@@ -396,12 +416,57 @@ const UICtrl = (function () {
       UISelectors.sounding5.children[0].innerText = `${fingerLayout["sounding"][4]}`;
       UISelectors.sounding6.children[0].innerText = `${fingerLayout["sounding"][5]}`;
     },
+    displayChordGripInSelectedMode: function (selectedMode) {
+      const activateGrip = function () {
+        Array.from(document.getElementsByClassName("fret")).forEach(
+          (fret) => {
+            fret.classList.remove('fret-inactive');
+          }
+        );
+        Array.from(document.getElementsByClassName("string")).forEach(
+          (string) => {
+            string.classList.remove('string-inactive');
+          }
+        );
+        Array.from(document.getElementsByClassName("finger")).forEach(
+          (finger) => {
+            finger.classList.remove('finger-inactive');
+          }
+        );
+        document.getElementById('nut').style.background = "#d0e1f9";
+        document.getElementById('sounding').style.opacity = "1";
+      }
+      if (selectedMode === "ON") {
+        activateGrip();
+      } else if (selectedMode === "DELAYED") {
+        activateGrip();
+
+
+      } else if (selectedMode === "OFF") {
+        Array.from(document.getElementsByClassName("fret")).forEach(
+          (fret) => {
+            fret.classList.add('fret-inactive');
+          }
+        );
+        Array.from(document.getElementsByClassName("string")).forEach(
+          (string) => {
+            string.classList.add('string-inactive');
+          }
+        );
+        Array.from(document.getElementsByClassName("finger")).forEach(
+          (finger) => {
+            finger.classList.add('finger-inactive');
+          }
+        );
+        document.getElementById('nut').style.background = "#054766";
+        document.getElementById('sounding').style.opacity = "0";
+      }
+    },
     manageChordAndGripDisplay: function () {
       //--> Display the correct chord name on the overview
       UISelectors.chordToPlay.innerText = AppData.loadedChords[0];
       //--> Display the correct chord grip on the overview
       UICtrl.displayChordGrip(AppData.loadedChords[0]);
-    }
-
+    },
   };
 })();

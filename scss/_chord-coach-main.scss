@@ -37,9 +37,8 @@
 #chord-to-play-container {
   @extend %flex-justify-align-center;
   padding: 1.5rem;
-  max-width: 50%;
-  width: 50%;
-  border: 1px solid green;
+  max-width: 60%;
+  width: 60%;
 }
 
 #chord-to-play-display {
@@ -51,7 +50,7 @@
 #chord-to-play {
   @extend %flex-justify-align-center;
   position: relative;
-  font-size: 9rem;
+  font-size: 8rem;
   margin: 0 auto;
   color: $veryLight;
 }
@@ -59,8 +58,8 @@
 //Chord grip
 #chord-grip-supercontainer {
   @extend %flex-justify-align-center;
-  width: 50%;
-  border: 1px solid pink;
+  max-width: 40%;
+  width: 40%;
 }
 
 #chord-grip-container {
@@ -95,11 +94,19 @@
   background: $veryLight;
 }
 
+.nut-inactive {
+  background: $inactiveBackground;
+}
+
 .fret {
   position: absolute;
   width: 100%;
   height: 3px;
   background: $veryLight;
+}
+
+.fret-inactive {
+  background: $inactiveBackground;
 }
 
 #fret1 {
@@ -128,6 +135,10 @@
   width: 2px;
   background: $veryLight;
   top: 0;
+}
+
+.string-inactive {
+  background: $inactiveBackground;
 }
 
 #string1 {
@@ -174,6 +185,10 @@
     font-size: 0.8rem;
     font-weight: 600;
   }
+}
+
+.finger-inactive {
+  opacity: 0;
 }
 
 .fingerbar {

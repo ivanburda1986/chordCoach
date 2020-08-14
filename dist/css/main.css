@@ -315,8 +315,7 @@ a:active {
   display: flex;
   flex-direction: column;
   align-items: initial !important;
-  min-height: 15vh;
-  margin-top: 1rem; }
+  min-height: 15vh; }
 
 #controllers-buttons {
   width: 90%;

@@ -1,251 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Font Awesome Kit-->
+    <script src="https://kit.fontawesome.com/4b83083c38.js" crossorigin="anonymous"></script>
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap" rel="stylesheet" />
+    <!--Styles-->
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Chord Coach</title>
+    <!--Favicon-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  </head>
 
-  <!--Font Awesome Kit-->
-  <script src="https://kit.fontawesome.com/4b83083c38.js" crossorigin="anonymous"></script>
-  <!-- Google fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap" rel="stylesheet" />
-  <!--Styles-->
-  <link rel="stylesheet" href="css/main.css" />
-  <title>Chord Coach</title>
-  <!--Favicon-->
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-</head>
-
-<body>
-  <!-- AUDIO -->
-  <audio id="currentChord">
-    <source src="sounds/silence.mp3" type="audio/mpeg" />
-  </audio>
-  <audio id="chordOnDemand">
-    <source src="sounds/silence.mp3" type="audio/mpeg" />
-  </audio>
-  <audio id="evaluation">
-    <source src="sounds/silence.mp3" type="audio/mpeg" />
-  </audio>
-  <audio id="trainingEnd">
-    <source src="sounds/silence.mp3" type="audio/mpeg" />
-  </audio>
-  <audio id="restart">
-    <source src="sounds/silence.mp3" type="audio/mpeg" />
-  </audio>
-  <audio id="hardcore-off">
-    <source src="sounds/silence.mp3" type="audio/mpeg" />
-  </audio>
-  <audio id="hardcore-on">
-    <source src="sounds/silence.mp3" type="audio/mpeg" />
-  </audio>
-  <!-- FEEDBACK OVERLAY -->
-  <!-- Feedback overlay -->
-  <div id="feedback-overlay" class="overlay hide">
-    <!-- Top padding -->
-    <div class="top-padding"></div>
-    <!-- Feedback header -->
-    <div id="feedback-header" class="overlay-header">
-      <div class="button-placeholder-container">
-        <button class="placeholder-btn"></button>
+  <body>
+    <!-- AUDIO -->
+    <audio id="currentChord">
+      <source src="sounds/silence.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="chordOnDemand">
+      <source src="sounds/silence.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="evaluation">
+      <source src="sounds/silence.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="trainingEnd">
+      <source src="sounds/silence.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="restart">
+      <source src="sounds/silence.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="hardcore-off">
+      <source src="sounds/silence.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="hardcore-on">
+      <source src="sounds/silence.mp3" type="audio/mpeg" />
+    </audio>
+    <!-- FEEDBACK OVERLAY -->
+    <!-- Feedback overlay -->
+    <div id="feedback-overlay" class="overlay hide">
+      <!-- Top padding -->
+      <div class="top-padding"></div>
+      <!-- Feedback header -->
+      <div id="feedback-header" class="overlay-header">
+        <div class="button-placeholder-container">
+          <button class="placeholder-btn"></button>
+        </div>
+        <div id="feedback-title" class="overlay-title">Feedback</div>
+        <div id="feedback-hide">
+          <button id="feedback-hide-btn" class="overlay-hide-btn"><i class="fas fa-times"></i></button>
+        </div>
       </div>
-      <div id="feedback-title" class="overlay-title">Feedback</div>
-      <div id="feedback-hide">
-        <button id="feedback-hide-btn" class="overlay-hide-btn"><i class="fas fa-times"></i></button>
-      </div>
-    </div>
-    <!-- Feedback: Main -->
-    <div id="feedback-main">
-      <div class="overlay-headline">
-        <p id="feedback-headline-text"></p>
-      </div>
-      <form name="feedback-form" id="feedback-form" method="POST" data-netlify="true">
-        <textarea name="feedback-textarea" id="feedback-textarea"
-          placeholder="Type here what you think about this app and what I could make even better..."></textarea>
-        <button id="submit-btn" class="controlsBtn inactive" disabled type="submit">Send</button>
-        <label for="feedback-textarea">Type here what you think about this app and what I could improve...</label>
-      </form>
-    </div>
-    <!-- Bottom padding -->
-    <div class="bottom-padding"></div>
-  </div>
-
-  <!-- SETTINGS OVERLAY -->
-  <div id="settings-overlay" class="overlay hide">
-    <!-- Top padding -->
-    <div class="top-padding"></div>
-    <!-- Settings header -->
-    <div id="settings-header" class="overlay-header">
-      <div class="button-placeholder-container">
-        <button class="placeholder-btn"></button>
-      </div>
-      <div class="overlay-title">Settings</div>
-      <div id="settings-hide">
-        <button id="settings-hide-btn" class="overlay-hide-btn disabled">
-          <i class="fas fa-check"></i>
-        </button>
-      </div>
-    </div>
-    <!-- Settings: Main -->
-    <div id="settings-main">
-      <!-- Individuals -->
-      <div id="custom-chord-selection">
+      <!-- Feedback: Main -->
+      <div id="feedback-main">
         <div class="overlay-headline">
-          <p id="settings-headline-text">
-            Select from 3 to 10 chords
+          <p id="feedback-headline-text"></p>
+        </div>
+        <form name="feedback-form" id="feedback-form" method="POST" data-netlify="true">
+          <textarea name="feedback-textarea" id="feedback-textarea" placeholder="Type here what you think about this app and what I could make even better..."></textarea>
+          <button id="submit-btn" class="controlsBtn inactive" disabled type="submit">Send</button>
+          <label for="feedback-textarea">Type here what you think about this app and what I could improve...</label>
+        </form>
+      </div>
+      <!-- Bottom padding -->
+      <div class="bottom-padding"></div>
+    </div>
+
+    <!-- SETTINGS OVERLAY -->
+    <div id="settings-overlay" class="overlay hide">
+      <!-- Top padding -->
+      <div class="top-padding"></div>
+      <!-- Settings header -->
+      <div id="settings-header" class="overlay-header">
+        <div class="button-placeholder-container">
+          <button class="placeholder-btn"></button>
+        </div>
+        <div class="overlay-title">Settings</div>
+        <div id="settings-hide">
+          <button id="settings-hide-btn" class="overlay-hide-btn disabled">
+            <i class="fas fa-check"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Settings: Main -->
+      <div id="settings-main">
+        <!-- Individuals -->
+        <div id="custom-chord-selection">
+          <div class="overlay-headline">
+            <p id="settings-headline-text">
+              Select from 3 to 10 chords
+            </p>
+          </div>
+          <div id="individual-chords">
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="A" id="A" /><label for="A" class="individual-chord-label">A</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="C" id="C" /><label for="C" class="individual-chord-label">C</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="D" id="D" /><label for="D" class="individual-chord-label">D</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="E" id="E" /><label for="E" class="individual-chord-label">E</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="G" id="G" /><label for="G" class="individual-chord-label">G</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="Amin" id="Amin" /><label for="Amin" class="individual-chord-label">Amin</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="Dmin" id="Dmin" /><label for="Dmin" class="individual-chord-label">Dmin</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="Emin" id="Emin" /><label for="Emin" class="individual-chord-label">Emin</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="A7" id="A7" /><label for="A7" class="individual-chord-label">A7</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="B7" id="B7" /><label for="B7" class="individual-chord-label">B7</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="C7" id="C7" /><label for="C7" class="individual-chord-label">C7</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="D7" id="D7" /><label for="D7" class="individual-chord-label">D7</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="E7" id="E7" /><label for="E7" class="individual-chord-label">E7</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="G7" id="G7" /><label for="G7" class="individual-chord-label">G7</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="Asus4" id="Asus4" /><label for="Asus4" class="individual-chord-label">Asus4</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="Asus2" id="Asus2" /><label for="Asus2" class="individual-chord-label">Asus2</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="Dsus4" id="Dsus4" /><label for="Dsus4" class="individual-chord-label">Dsus4</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="Dsus2" id="Dsus2" /><label for="Dsus2" class="individual-chord-label">Dsus2</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="Esus4" id="Esus4" /><label for="Esus4" class="individual-chord-label">Esus4</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="F" id="F" /><label for="F" class="individual-chord-label">F</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="FMaj7" id="FMaj7" /><label for="FMaj7" class="individual-chord-label">FMaj7</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="C/G" id="C/G" /><label for="C/G" class="individual-chord-label">C/G</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="D/F#" id="D/F#" /><label for="D/F#" class="individual-chord-label">D/F#</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="G/B" id="G/B" /><label for="G/B" class="individual-chord-label">G/B</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="Big G" id="Big G" /><label for="Big G" class="individual-chord-label">Big G</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="Rock G" id="Rock G" /><label for="Rock G" class="individual-chord-label">Rock G</label></div>
+            <div class="individual-chord"><input type="checkbox" name="individualChord" value="Folk G" id="Folk G" /><label for="Folk G" class="individual-chord-label">Folk G</label></div>
+          </div>
+        </div>
+      </div>
+      <!-- Settings: Difficulty -->
+      <div id="settings-difficulty">
+        <div class="overlay-headline">
+          <p>Difficulty</p>
+        </div>
+        <div id="settings-difficulty-buttons">
+          <div id="hardcore-btn-container">
+            <input type="checkbox" name="hardcore-btn" id="hardcore-btn" /><label for="hardcore-btn"><i class="fas fa-bolt"></i>Hardcore</label>
+          </div>
+          <p>
+            Chords will not be played when selecting an answer. To select the correct one, you need to know the chord sounds by heart. Get your guitar and play the chords if it gets too difficult.
           </p>
         </div>
-        <div id="individual-chords">
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="A" id="A" /><label for="A"
-              class="individual-chord-label">A</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="C" id="C" /><label for="C"
-              class="individual-chord-label">C</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="D" id="D" /><label for="D"
-              class="individual-chord-label">D</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="E" id="E" /><label for="E"
-              class="individual-chord-label">E</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="G" id="G" /><label for="G"
-              class="individual-chord-label">G</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Amin" id="Amin" /><label
-              for="Amin" class="individual-chord-label">Amin</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Dmin" id="Dmin" /><label
-              for="Dmin" class="individual-chord-label">Dmin</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Emin" id="Emin" /><label
-              for="Emin" class="individual-chord-label">Emin</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="A7" id="A7" /><label
-              for="A7" class="individual-chord-label">A7</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="B7" id="B7" /><label
-              for="B7" class="individual-chord-label">B7</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="C7" id="C7" /><label
-              for="C7" class="individual-chord-label">C7</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="D7" id="D7" /><label
-              for="D7" class="individual-chord-label">D7</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="E7" id="E7" /><label
-              for="E7" class="individual-chord-label">E7</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="G7" id="G7" /><label
-              for="G7" class="individual-chord-label">G7</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Asus4" id="Asus4" /><label
-              for="Asus4" class="individual-chord-label">Asus4</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Asus2" id="Asus2" /><label
-              for="Asus2" class="individual-chord-label">Asus2</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Dsus4" id="Dsus4" /><label
-              for="Dsus4" class="individual-chord-label">Dsus4</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Dsus2" id="Dsus2" /><label
-              for="Dsus2" class="individual-chord-label">Dsus2</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Esus4" id="Esus4" /><label
-              for="Esus4" class="individual-chord-label">Esus4</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="F" id="F" /><label for="F"
-              class="individual-chord-label">F</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="FMaj7" id="FMaj7" /><label
-              for="FMaj7" class="individual-chord-label">FMaj7</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="C/G" id="C/G" /><label
-              for="C/G" class="individual-chord-label">C/G</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="D/F#" id="D/F#" /><label
-              for="D/F#" class="individual-chord-label">D/F#</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="G/B" id="G/B" /><label
-              for="G/B" class="individual-chord-label">G/B</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Big G" id="Big G" /><label
-              for="Big G" class="individual-chord-label">Big G</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Rock G"
-              id="Rock G" /><label for="Rock G" class="individual-chord-label">Rock G</label></div>
-          <div class="individual-chord"><input type="checkbox" name="individualChord" value="Folk G"
-              id="Folk G" /><label for="Folk G" class="individual-chord-label">Folk G</label></div>
-        </div>
       </div>
-    </div>
-    <!-- Settings: Difficulty -->
-    <div id="settings-difficulty">
-      <div class="overlay-headline">
-        <p>Difficulty</p>
-      </div>
-      <div id="settings-difficulty-buttons">
-        <div id="hardcore-btn-container">
-          <input type="checkbox" name="hardcore-btn" id="hardcore-btn" /><label for="hardcore-btn"><i
-              class="fas fa-bolt"></i>Hardcore</label>
-        </div>
-        <p>
-          Chords will not be played when selecting an answer. To select the correct one, you need to know the chord
-          sounds by heart.
-          Get your guitar and play the chords if it gets too difficult.
-        </p>
-      </div>
-    </div>
-    <!-- Bottom padding -->
-    <div class="bottom-padding"></div>
-  </div>
-
-  <!-- APP MAIN SCREEN -->
-  <div class="app-container">
-    <!-- Top padding -->
-    <div class="top-padding"></div>
-    <!-- Top navigation -->
-    <div id="top-navigation" class="container">
-      <button id="chord-coach-btn" class="defaultBtn">
-        <i class="fas fa-guitar"></i>
-      </button>
-      <button id="show-feedback-btn" class="defaultBtn">
-        <i class="far fa-envelope"></i>
-      </button>
-      <button id="show-settings-btn" class="defaultBtn"><i class="fas fa-cog"></i></button>
-    </div>
-    <!-- Chord to play -->
-    <div id="middle-section">
-      <div id="primary-action-container" class="container">
-        <div id="primary-action-display">
-          <div id="progress-container">
-            <!-- Wrong -->
-            <div id="wrong-display" class="training-status-icon animationEnabled">
-              <i class="fas fa-thumbs-down"></i>
-              <p id="wrong-display-total">1</p>
-            </div>
-            <!-- Remaining -->
-            <div id="remaining-display" class="training-status-icon animationEnabled">
-              <i class="fas fa-hourglass-start"></i>
-              <p id="remaining-display-total">3</p>
-            </div>
-            <!-- Correct -->
-            <div id="correct-display" class="training-status-icon animationEnabled">
-              <p id="correct-display-total">6</p>
-              <i class="fas fa-thumbs-up"></i>
-            </div>
-          </div>
-          <div id="primary-action">
-            <button class="primary-action-button animationEnabled">
-              <div class="primary-button-content">
-                <i id="primary-action-graphics" class="fas fa-music"></i>
-                <p id="primary-action-text">Start</p>
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-      <!-- Chord options -->
-      <div id="chord-options-container" class="container">
-        <div id="chord-options"></div>
-      </div>
+      <!-- Bottom padding -->
+      <div class="bottom-padding"></div>
     </div>
 
-    <!-- Controllers -->
-    <div id="controllers-container" class="container">
-      <div id="controllers-buttons">
-        <button id="confirm-btn" class="controlsBtn confirm">
-          <i class="fas fa-check-circle"></i>
-          Confirm
+    <!-- APP MAIN SCREEN --->
+    <div class="app-container">
+      <!-- Top padding -->
+      <div class="top-padding"></div>
+      <!-- Top navigation -->
+      <div id="top-navigation" class="container">
+        <button id="chord-coach-btn" class="defaultBtn">
+          <i class="fas fa-guitar"></i>
         </button>
-        <button id="restart-btn" class="controlsBtn restart"><i class="fas fa-history"></i>Restart</button>
+        <button id="show-feedback-btn" class="defaultBtn">
+          <i class="far fa-envelope"></i>
+        </button>
+        <button id="show-settings-btn" class="defaultBtn"><i class="fas fa-cog"></i></button>
       </div>
-      <div id="copyright">
-        <p>
-          <a href="http://ivanburda.com" target="_blank">Copyright &copy; <span id="footer-year"></span> - Ivan Burda -
-            All Rights Reserved</a>
-        </p>
+      <!-- Chord to play -->
+      <div id="middle-section">
+        <div id="primary-action-container" class="container">
+          <div id="primary-action-display">
+            <div id="progress-container">
+              <!-- Wrong -->
+              <div id="wrong-display" class="training-status-icon animationEnabled">
+                <i class="fas fa-thumbs-down"></i>
+                <p id="wrong-display-total">1</p>
+              </div>
+              <!-- Remaining -->
+              <div id="remaining-display" class="training-status-icon animationEnabled">
+                <i class="fas fa-hourglass-start"></i>
+                <p id="remaining-display-total">3</p>
+              </div>
+              <!-- Correct -->
+              <div id="correct-display" class="training-status-icon animationEnabled">
+                <p id="correct-display-total">6</p>
+                <i class="fas fa-thumbs-up"></i>
+              </div>
+            </div>
+            <div id="primary-action">
+              <button class="primary-action-button animationEnabled">
+                <div class="primary-button-content">
+                  <i id="primary-action-graphics" class="fas fa-music"></i>
+                  <p id="primary-action-text">Start</p>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Chord options -->
+        <div id="chord-options-container" class="container">
+          <div id="chord-options"></div>
+        </div>
+      </div>
+
+      <!-- Controllers -->
+      <div id="controllers-container" class="container">
+        <div id="controllers-buttons">
+          <button id="confirm-btn" class="controlsBtn confirm">
+            <i class="fas fa-check-circle"></i>
+            Confirm
+          </button>
+          <button id="restart-btn" class="controlsBtn restart"><i class="fas fa-history"></i>Restart</button>
+        </div>
+        <div id="copyright">
+          <p>
+            <a href="http://ivanburda.com" target="_blank">Copyright &copy; <span id="footer-year"></span> - Ivan Burda - All Rights Reserved</a>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  <script src="js/chord-spotting/data.js"></script>
-  <script src="js/chord-spotting/ui.js"></script>
-  <script src="js/chord-spotting/app.js"></script>
-</body>
-
+    <script src="js/chord-spotting/data.js"></script>
+    <script src="js/chord-spotting/ui.js"></script>
+    <script src="js/chord-spotting/app.js"></script>
+  </body>
 </html>

@@ -391,9 +391,10 @@ a:active {
 
 #nut {
   position: absolute;
-  width: 100%;
+  width: 105%;
   height: 8px;
   top: -2%;
+  left: -2.5%;
   background: #d0e1f9; }
 
 .nut-inactive {
@@ -520,7 +521,7 @@ a:active {
 .sounding {
   position: absolute;
   font-size: 1.2rem;
-  top: -15%;
+  top: -17.5%;
   color: #d0e1f9; }
 
 #sounding-string1 {

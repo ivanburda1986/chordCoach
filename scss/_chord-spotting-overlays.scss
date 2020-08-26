@@ -49,6 +49,7 @@
     &.inactive {
       color: $inactiveText;
       background: $inactiveBackground;
+      cursor: default;
     }
 
     input {

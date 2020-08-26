@@ -234,7 +234,8 @@ a:active {
   margin: 0 auto; }
   #primary-action .inactive {
     color: #0c6b97;
-    border: 0.5rem solid #054766; }
+    border: 0.5rem solid #054766;
+    cursor: normal; }
 
 .primary-action-button {
   height: 100%;
@@ -307,7 +308,8 @@ a:active {
     background: orange; }
   .chord-option.inactive {
     color: #0c6b97;
-    background: #054766; }
+    background: #054766;
+    cursor: normal; }
   .chord-option.correct {
     border: 10px solid lightgreen; }
 
@@ -572,7 +574,8 @@ a:active {
       background: orange; }
     #custom-chord-selection .individual-chord.inactive {
       color: #0c6b97;
-      background: #054766; }
+      background: #054766;
+      cursor: default; }
     #custom-chord-selection .individual-chord input {
       visibility: visible;
       opacity: 0;
@@ -671,6 +674,7 @@ a:active {
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
+    cursor: pointer;
     padding: 0.2rem 1rem; }
     .chord-group label .label-text {
       font-size: 1.2rem;

@@ -38,6 +38,7 @@
   .inactive {
     color: $inactiveText;
     border: 0.5rem solid $inactiveBackground;
+    cursor: normal;
   }
 }
 
@@ -137,6 +138,7 @@
   &.inactive {
     color: $inactiveText;
     background: $inactiveBackground;
+    cursor: normal;
   }
 
   &.correct {

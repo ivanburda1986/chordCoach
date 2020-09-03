@@ -9,7 +9,10 @@ Controlling the app:
 -Adding keyboard support for the confirm button
 -Adding keyboard support for the next button
 
-Help
+Behaviour:
+-prevent showing the same chords twice in a row
+
+Help:
 -adding a help icon to launch a tutorial on using the app - a youtube video (hosted on my site, custom video player controls, max 90 sec)
 
 

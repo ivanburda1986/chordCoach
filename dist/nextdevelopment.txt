@@ -10,7 +10,7 @@ Controlling the app:
 -Adding keyboard support for the next button
 
 Behaviour:
--prevent showing the same chords twice in a row
+-prevent showing the same chords twice in a row! priority
 
 Help:
 -adding a help icon to launch a tutorial on using the app - a youtube video (hosted on my site, custom video player controls, max 90 sec)

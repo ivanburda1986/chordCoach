@@ -82,10 +82,12 @@ const DataCtrl = (function () {
       return soundSelectors;
     },
     getNextChord: function () {
-      appData.currentChord =
-        appData.loadedChords[
-          Math.floor(Math.random() * appData.loadedChords.length)
-        ];
+      let nextChord = appData.loadedChords[
+        Math.floor(Math.random() * appData.loadedChords.length)
+      ];
+      appData.currentChord === nextChord ? DataCtrl.getNextChord() : appData.currentChord = nextChord;
+
+      console.log(nextChord);
     },
     saveSettingsToLocalStorage: function () {
       localStorage.setItem(

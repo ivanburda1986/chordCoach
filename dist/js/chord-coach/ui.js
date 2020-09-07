@@ -251,19 +251,24 @@ const UICtrl = (function () {
     },
     //Main screen
     displayChordsToPlay: function () {
-      let random = Math.floor(Math.random() * AppData.loadedChords.length);
-      if (AppData.applicationState === 1) {
-        setTimeout(function () {
-          if (AppData.applicationState === 0) {
-            return;
-          } else {
-            UICtrl.flashChordToPlay();
-            UICtrl.flashChordGrip();
-            UISelectors.chordToPlay.innerText = AppData.loadedChords[random];
-            UICtrl.displayChordGrip(AppData.loadedChords[random]);
-            UICtrl.displayChordsToPlay();
-          }
-        }, AppData.interval * 1000);
+      let randomChordNextValue = Math.floor(Math.random() * AppData.loadedChords.length);
+      if (randomChordNextValue === AppData.randomChordCurrentValue) {
+        UICtrl.displayChordsToPlay()
+      } else {
+        AppData.randomChordCurrentValue = randomChordNextValue;
+        if (AppData.applicationState === 1) {
+          setTimeout(function () {
+            if (AppData.applicationState === 0) {
+              return;
+            } else {
+              UICtrl.flashChordToPlay();
+              UICtrl.flashChordGrip();
+              UISelectors.chordToPlay.innerText = AppData.loadedChords[randomChordNextValue];
+              UICtrl.displayChordGrip(AppData.loadedChords[randomChordNextValue]);
+              UICtrl.displayChordsToPlay();
+            }
+          }, AppData.interval * 1000);
+        }
       }
     },
     flashChordToPlay: function () {

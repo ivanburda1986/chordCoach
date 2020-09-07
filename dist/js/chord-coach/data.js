@@ -5,6 +5,7 @@ const DataCtrl = (function () {
     playBtnState: null,
     loadedChords: null,
     interval: null,
+    randomChordCurrentValue: null,
     setupMinutes: null,
     displayMinutes: null,
     displaySeconds: null,

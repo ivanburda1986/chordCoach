@@ -22,9 +22,9 @@
 //COPYRIGHT
 #copyright {
   @extend %flex-justify-align-center;
-  padding-top: 1.5rem;
   color: $veryLight;
   font-size: 0.8rem;
+  margin-top: 1rem;
 }
 
 @import "responsive";

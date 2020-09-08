@@ -2,10 +2,13 @@
 
 //MIDDLE SECTION
 #middle-section {
-  @extend %border;
+
   display: flex;
   flex-direction: column;
   min-height: 60vh;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
 }
 
 //PRIMARY ACTION + TRAINING STATS
@@ -20,20 +23,19 @@
   @extend %flex-justify-align-center;
   justify-content: space-between;
   flex-direction: column;
-  padding-bottom: 0.5rem;
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  min-height: 30vh;
+  min-height: 35vh;
 }
 
 #primary-action {
   @extend %flex-justify-align-center;
   position: relative;
-  width: 12rem;
+  width: 100%;
   height: 12rem;
-  border-radius: 100px;
-  margin: 0 auto;
+  margin: 5px auto;
+  background: $inactiveBackground;
 
   .inactive {
     color: $inactiveText;
@@ -47,8 +49,7 @@
   width: 100%;
   background: none;
   outline: none;
-  border-radius: 100px;
-  border: 0.5rem solid $veryLight;
+  border: 0;
   padding: 1rem;
   font-size: 3rem;
   color: $veryLight;
@@ -65,8 +66,9 @@
   justify-content: space-between;
   width: 100%;
   padding: 1rem 4rem;
-  margin-bottom: 1.5rem;
   background: $inactiveBackground;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .training-status-icon {
@@ -104,17 +106,20 @@
   @extend %flex-justify-align-center;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 80%;
-  min-height: 25vh;
+  width: 100%;
+  min-height: 20vh;
+  background: $inactiveBackground;
+  margin-bottom: 5px;
+
 }
 
 .chord-option {
   @extend %flex-justify-align-center;
-  border-radius: 100px;
-  width: 6rem;
-  height: 6rem;
-  margin: 10px;
-  font-size: 1.5rem;
+  border-radius: 25%;
+  width: 5rem;
+  height: 5rem;
+  margin: 7.5px;
+  font-size: 1.2rem;
   text-align: center;
   cursor: pointer;
   color: $veryLight;
@@ -142,7 +147,7 @@
   }
 
   &.correct {
-    border: 10px solid $dominant2;
+    border: 6.5px solid $dominant2;
   }
 }
 
@@ -151,9 +156,12 @@
   display: flex;
   flex-direction: column;
   align-items: initial !important;
-  min-height: 15vh;
+  min-height: 12.5vh;
   justify-content: space-around;
   //margin-top: 1rem;
+  background: $inactiveBackground;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 #controllers-buttons {
@@ -161,7 +169,6 @@
   display: flex;
   margin: 0 auto;
   justify-content: center;
-  margin-top: 1rem;
 
   i {
     margin-right: 5px;

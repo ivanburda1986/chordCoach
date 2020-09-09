@@ -79,7 +79,7 @@ a:active {
   cursor: pointer; }
   .controlsBtn.inactive {
     color: #0c6b97;
-    background: #054766;
+    background: #023147;
     cursor: auto; }
   .controlsBtn.confirm {
     background: lightgreen;
@@ -209,7 +209,9 @@ a:active {
 #middle-section {
   display: flex;
   flex-direction: column;
-  min-height: 60vh; }
+  min-height: 60vh;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px; }
 
 #primary-action-container {
   display: flex;
@@ -317,15 +319,16 @@ a:active {
   display: flex;
   flex-direction: column;
   align-items: initial !important;
-  min-height: 15vh;
-  justify-content: space-around; }
+  justify-content: space-around;
+  background: #054766;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; }
 
 #controllers-buttons {
-  width: 90%;
+  width: 100%;
   display: flex;
   margin: 0 auto;
-  justify-content: center;
-  margin-top: 1rem; }
+  justify-content: center; }
   #controllers-buttons i {
     margin-right: 5px; }
 
@@ -335,7 +338,9 @@ a:active {
 #middle-section-chord-coach {
   display: flex;
   flex-direction: column;
-  min-height: 60vh; }
+  min-height: 60vh;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px; }
 
 #interval-countdown-container {
   justify-content: space-around;
@@ -844,7 +849,7 @@ a:active {
   margin: 0 auto; }
 
 #copyright {
-  padding-top: 1.5rem;
+  padding-top: 1rem;
   color: #d0e1f9;
   font-size: 0.8rem; }
 

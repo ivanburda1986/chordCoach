@@ -328,7 +328,9 @@ a:active {
   width: 100%;
   display: flex;
   margin: 0 auto;
-  justify-content: center; }
+  justify-content: center;
+  height: auto;
+  padding: 1rem 0; }
   #controllers-buttons i {
     margin-right: 5px; }
 

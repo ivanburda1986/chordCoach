@@ -99,6 +99,7 @@
 #chord-options-container {
   @extend %flex-justify-align-center;
   flex-direction: row;
+  padding-bottom: 1rem;
   //min-height: 30vh;
 }
 

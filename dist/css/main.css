@@ -39,7 +39,6 @@ a:active {
   flex-direction: column;
   width: 100vw;
   max-width: 1024px;
-  min-height: 100vh;
   overflow-x: hidden;
   margin-top: 10px;
   margin-bottom: 10px; }
@@ -65,6 +64,8 @@ a:active {
   cursor: pointer; }
   .defaultBtn:hover i {
     color: lightgreen; }
+  .defaultBtn p {
+    font-size: 1rem; }
 
 .controlsBtn {
   border: none;
@@ -279,7 +280,8 @@ a:active {
   color: lightgreen; }
 
 #chord-options-container {
-  flex-direction: row; }
+  flex-direction: row;
+  padding-bottom: 1rem; }
 
 #chord-options {
   flex-direction: row;
@@ -843,9 +845,7 @@ a:active {
 #top-navigation {
   display: flex;
   width: 100%;
-  min-height: 10vh;
   padding: 0rem 5%;
-  padding-bottom: 1rem;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto; }

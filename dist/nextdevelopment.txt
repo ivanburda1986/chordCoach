@@ -3,7 +3,7 @@ Improving the UI:
 -showing a toggle button for switching the modes: Play/Spot
 -changing the icon for the Spot mode - something like an ear icon
 -attaching the Settings button more to the central part
--attaching the bottom button more to the central part to make it clear they are related to it
+-attaching the bottom button more to the central part to make it clear they are related to it --- DONE
 
 Controlling the app:
 -Adding keyboard support for the confirm button

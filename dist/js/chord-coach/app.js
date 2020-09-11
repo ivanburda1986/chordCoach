@@ -7,7 +7,12 @@ const App = (function (DataCtrl, UICtrl) {
 
   //EVENT LISTENERS
   const loadEventListeners = function () {
-    //Switch to Chord coach
+    //Switch to Chord coach - changing mode
+    UISelectors.chordCoachSwitchBtn.addEventListener("click", () => {
+      window.open("chord-coach.html", "_self");
+    });
+
+    //Switch to Chord spotting mode
     UISelectors.chordSpottingSwitchBtn.addEventListener("click", () => {
       window.open("index.html", "_self");
     });

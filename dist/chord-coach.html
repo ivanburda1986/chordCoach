@@ -275,13 +275,20 @@
     <div class="top-padding"></div>
     <!-- Top navigation -->
     <div id="top-navigation" class="container">
-      <button id="chord-spotting-btn" class="defaultBtn">
-        <i class="fas fa-headphones"></i>
+      <div id="mode-toggle" class="mode-toggle">
+        <button id="chord-coach-btn" class="chord-coach-btn selected">
+          <i class="fas fa-guitar"></i>
+          Changing
+        </button>
+        <button id="chord-spotting-btn" class="chord-spotting-btn">
+          <i class="fas fa-music"></i>
+          Spotting
+        </button>
+      </div>
+      <button id="show-settings-btn" class="defaultBtn">
+        <i class="fas fa-cog"></i>
+
       </button>
-      <button id="show-feedback-btn" class="defaultBtn">
-        <i class="far fa-envelope"></i>
-      </button>
-      <button id="show-settings-btn" class="defaultBtn"><i class="fas fa-cog"></i></button>
     </div>
 
     <!-- Middle section -->
@@ -393,9 +400,10 @@
     </div>
     <div id="copyright">
       <p>
-        <a href="http://ivanburda.com" target="_blank">Copyright &copy; <span id="footer-year"></span> - Ivan Burda -
-          All Rights Reserved</a>
-      </p>
+        <a href="http://ivanburda.com" target="_blank">Copyright &copy; <span id="footer-year"></span> Ivan Burda</a>
+      </p> <button id="show-feedback-btn" class="defaultBtn">
+        <i class="far fa-envelope"></i>
+      </button>
     </div>
   </div>
 

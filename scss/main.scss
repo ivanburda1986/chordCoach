@@ -11,11 +11,62 @@
 #top-navigation {
   display: flex;
   width: 100%;
-  padding: 0rem 5%;
+  padding-right: 2.5%;
 
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
+}
+
+.mode-toggle {
+  height: auto;
+  width: 250px;
+  border: 5px solid $inactiveBackground;
+  border-radius: 10px;
+  padding: 5px 10px;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.chord-coach-btn,
+.chord-spotting-btn {
+  width: 50%;
+  height: 2rem;
+  display: flex;
+  padding: 5px 10px;
+  background: $lightUI;
+  border: 0;
+  color: $veryLight;
+  font-weight: 600;
+  cursor: pointer;
+
+  i {
+    padding-right: 5px;
+  }
+
+  &.selected {
+    background: $dominant3;
+    color: $dark;
+    -webkit-box-shadow: 0px 0px 10px 2px rgba(255, 165, 0, 0.8);
+    box-shadow: 0px 0px 10px 2px rgba(255, 165, 0, 0.8);
+  }
+}
+
+.chord-coach-btn {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-right: 2px;
+}
+
+.chord-spotting-btn {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-left: 2px;
+}
+
+.chord-coach-btn,
+.chord-spotting-btn:active {
+  outline: none;
 }
 
 //COPYRIGHT
@@ -24,6 +75,14 @@
   padding-top: 1rem;
   color: $veryLight;
   font-size: 0.8rem;
+
+  .fa-envelope {
+    font-size: 1rem;
+  }
+
+  #show-feedback-btn {
+    display: flex;
+  }
 }
 
 @import "responsive";

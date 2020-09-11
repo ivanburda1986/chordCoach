@@ -20,6 +20,9 @@ const UICtrl = (function () {
     countdownDisplayValue: document.getElementById("countdown-display-value"),
 
     //Switch to Chord coach
+    chordCoachSwitchBtn: document.getElementById("chord-coach-btn"),
+
+    //Switch to Chord spotting
     chordSpottingSwitchBtn: document.getElementById("chord-spotting-btn"),
 
     //Fingers

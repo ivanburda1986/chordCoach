@@ -1,8 +1,8 @@
 Improving the UI:
--moving the feedback option to the bottom
--showing a toggle button for switching the modes: Play/Spot
--changing the icon for the Spot mode - something like an ear icon
--attaching the Settings button more to the central part
+-moving the feedback option to the bottom --- DONE
+-showing a toggle button for switching the modes: Play/Spot --- DONE
+-changing the icon for the Spot mode - something like an ear icon --- DONE
+-attaching the Settings button more to the central part -- WILL NOT DO
 -attaching the bottom button more to the central part to make it clear they are related to it --- DONE
 
 Controlling the app:
@@ -12,7 +12,5 @@ Controlling the app:
 Behaviour:
 -prevent showing the same chords twice in a row! priority --- DONE
 
-Help:
--adding a help icon to launch a tutorial on using the app - a youtube video (hosted on my site, custom video player controls, max 90 sec)
 
 

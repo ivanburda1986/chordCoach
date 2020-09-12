@@ -72,6 +72,13 @@
   outline: none;
 }
 
+#show-settings-btn {
+  border-radius: 10px;
+  border: 5px solid $inactiveBackground;
+  margin-bottom: 5px;
+  padding: 3px;
+}
+
 //COPYRIGHT
 #copyright {
   @extend %flex-justify-align-center;

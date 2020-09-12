@@ -897,6 +897,12 @@ a:active {
 .chord-spotting-btn:active {
   outline: none; }
 
+#show-settings-btn {
+  border-radius: 10px;
+  border: 5px solid #054766;
+  margin-bottom: 5px;
+  padding: 3px; }
+
 #copyright {
   padding-top: 1rem;
   color: #d0e1f9;

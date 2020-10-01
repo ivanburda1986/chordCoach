@@ -36,9 +36,9 @@ const DataCtrl = (function () {
 
   const chordgrips = new Map();
   chordgrips.set("A", {
-    1: [20, 55, "visible"],
+    1: [20, 35, "visible"],
     "1BAR": [5, -5, "hidden"],
-    2: [30, 35, "visible"],
+    2: [25, 55, "visible"],
     3: [30, 75, "visible"],
     4: [0, 0, "hidden"],
     "T": [0, 0, "hidden"],

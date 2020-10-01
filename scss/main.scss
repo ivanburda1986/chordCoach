@@ -23,7 +23,7 @@
   width: 250px;
   border: 5px solid $inactiveBackground;
   border-radius: 10px;
-  padding: 5px 10px;
+  padding: 5px;
   display: flex;
   margin-bottom: 5px;
 }
@@ -33,6 +33,9 @@
   width: 50%;
   height: 2rem;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   padding: 5px 10px;
   background: $lightUI;
   border: 0;
